@@ -1,90 +1,326 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
+
+
 
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Notes">
+<meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/page/3/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Notes">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/guojian731.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guojian731.github.io/guojian731.github.io/page/3/"/>
+
+
+
+
+
+  <title>Notes</title>
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+
+
+
+
+
+
+
+
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
   
-    <article id="post-JVM-3-字符串的存储方式以及equals、intern、-之间的区别" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/" class="article-date">
-  <time datetime="2017-12-11T09:59:40.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/">JVM-3-字符串的存储方式以及equals、intern、==之间的区别</a>
-    </h1>
+    
   
 
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/guojian731.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/guojian731.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/guojian731.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/guojian731.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/guojian731.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/" itemprop="url">JVM-3-字符串的存储方式以及equals、intern、==之间的区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:59:40+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><p><strong>在jvm中，字符串有着非常“高等的地位”。在1.7以后，堆空间分为字符串常量池（也有叫做缓冲区）和非字符串常量池。</strong></p>
+      
+
+      
+        
+          
+            <h1 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h1><p><strong>在jvm中，字符串有着非常“高等的地位”。在1.7以后，堆空间分为字符串常量池（也有叫做缓冲区）和非字符串常量池。</strong></p>
 <p><strong>字符串常量池：用来存储字符串的字面量。</strong></p>
 <p><strong>非字符串常量池：存储字符串对象以及其他普通的对象。</strong></p>
 <h1 id="为什么要有字符串常量池："><a href="#为什么要有字符串常量池：" class="headerlink" title="为什么要有字符串常量池："></a>为什么要有字符串常量池：</h1><p><strong>字符串的分配，和其他的对象分配一样，耗费高昂的时间与空间代价。JVM为了提高性能和减少内存开销，在实例化字符串常量的时候进行了一些优化。为了减少在JVM中创建的字符串的数量，字符串类维护了一个字符串池，每当代码创建字符串常量时，JVM会首先检查字符串常量池。如果字符串已经存在池中，就返回池中的实例引用。如果字符串不在池中，就会实例化一个字符串并放到池中。Java能够进行这样的优化是因为字符串是不可变的，可以不用担心数据冲突进行共享。</strong></p>
@@ -101,44 +337,125 @@
 <h2 id="第三部分解析："><a href="#第三部分解析：" class="headerlink" title="第三部分解析："></a>第三部分解析：</h2><p>根据第二部分自己看吧~</p>
 <p><strong>注：在字符串尽量少使用 String ss=”ab”+”cd”这样的操作，因为这样的操作如同新建了StringBuilder，然后进行append，这好像并没有什么不妥，但是要记住，当你要遍历时，每次都会新建一个StringBuilder，这样很浪费资源。</strong></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/" data-id="cjg11c9ee000b80uwofls3cj7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-JVM-2-常用命令" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/JVM-2-常用命令/" class="article-date">
-  <time datetime="2017-12-11T09:48:41.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/JVM-2-常用命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/JVM-2-常用命令/">JVM-2-常用命令</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/JVM-2-常用命令/" itemprop="url">JVM-2-常用命令</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:48:41+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="堆内存设定"><a href="#堆内存设定" class="headerlink" title="堆内存设定"></a>堆内存设定</h1><p>-Xmx ：最大堆内存</p>
+      
+
+      
+        
+          
+            <h1 id="堆内存设定"><a href="#堆内存设定" class="headerlink" title="堆内存设定"></a>堆内存设定</h1><p>-Xmx ：最大堆内存</p>
 <p>-Xms ：初始堆内存 </p>
 <h1 id="占空间设定"><a href="#占空间设定" class="headerlink" title="占空间设定"></a>占空间设定</h1><p>-Xss ：指定线程最大栈空间</p>
 <h1 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h1><p><strong>理解为永久区perm，在jdk1.6和1.7中存在，在1.8中剔除</strong></p>
@@ -166,44 +483,125 @@
 <h1 id="堆溢出处理："><a href="#堆溢出处理：" class="headerlink" title="堆溢出处理："></a>堆溢出处理：</h1><p>-XX:+HeapDumpOnOutOfMemoryError 在内存溢出时到处整个堆信息。</p>
 <p>-XX:+HeapDumpPath:d:/a.dmp 和-XX:+HeapDumpOnOutOfMemoryError配合使用，导出堆的存放路径。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/JVM-2-常用命令/" data-id="cjg11c9eb000980uwrwu87fvh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-JVM-1-内部构成" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/JVM-1-内部构成/" class="article-date">
-  <time datetime="2017-12-11T09:41:06.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/JVM-1-内部构成/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/JVM-1-内部构成/">JVM-1-内部构成</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/JVM-1-内部构成/" itemprop="url">JVM-1-内部构成</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:41:06+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p><img src="JVM-1-内部构成/jvm-内部构成表.png" alt="jvm内部构成表"></p>
+      
+
+      
+        
+          
+            <p><img src="JVM-1-内部构成/jvm-内部构成表.png" alt="jvm内部构成表"></p>
 <h1 id="类加载子系统："><a href="#类加载子系统：" class="headerlink" title="类加载子系统："></a>类加载子系统：</h1><p><strong>类加载子系统是负责从文件系统或者网络中加载class信息。（class信息，是已经编译过的java文件，所以这也就是为什么我们在linux系统上，需要上传WebRoot文件或者用ant编译工具进行编译）</strong></p>
 <h1 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h1><p><strong>加载的类信息放在方法区中的内存空间中，除了类的基本信息之外，还保存了运行时常量池信息，包括字符串字面量和数字常量。</strong></p>
 <h1 id="java堆："><a href="#java堆：" class="headerlink" title="java堆："></a>java堆：</h1><p><strong>java堆是在虚拟机启动的时候建立，是java程序中最主要的内存工作区域。几乎所有的java对象都会放在java堆中。堆空间所有线程共享。</strong></p>
@@ -212,88 +610,250 @@
 <h1 id="PC寄存器："><a href="#PC寄存器：" class="headerlink" title="PC寄存器："></a>PC寄存器：</h1><p><strong>也是每个线程的私有空间，java虚拟机会为每一个java线程穿件PC寄存器。在任意时刻，一个java线程总是执行一个方法，这个正在被执行的方法成为当前方法。如果当前方法不是本地方法，PC寄存器就会指向当前正在被执行的指令。如果当前方法是本地方法，那么PC寄存器的值就是undifined。</strong></p>
 <h1 id="执行引擎："><a href="#执行引擎：" class="headerlink" title="执行引擎："></a>执行引擎：</h1><p><strong>是java虚拟机最核心的组件之一，它负责执行虚拟机的字节码。现代虚拟机为了提高执行效率，会使用即使编译技术讲方法编译成机器码后再执行。</strong></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/JVM-1-内部构成/" data-id="cjg11c9e0000280uwixfvr1be" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-java-利用注解完成字典表对应数据" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/java-利用注解完成字典表对应数据/" class="article-date">
-  <time datetime="2017-12-11T09:33:56.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/java-利用注解完成字典表对应数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/java-利用注解完成字典表对应数据/">java-利用注解完成字典表对应数据</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/java-利用注解完成字典表对应数据/" itemprop="url">java-利用注解完成字典表对应数据</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:33:56+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="设计思路："><a href="#设计思路：" class="headerlink" title="设计思路："></a>设计思路：</h1><p><strong>1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男”</strong></p>
+      
+
+      
+        
+          
+            <h1 id="设计思路："><a href="#设计思路：" class="headerlink" title="设计思路："></a>设计思路：</h1><p><strong>1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男”</strong></p>
 <p><strong>2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> DictACC &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">code</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>3.建立一个类BV，code表示数据库存储的名字，name表示需要回显的名字</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BV</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String code=<span class="string">"code"</span>;    </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String name=<span class="string">"name"</span>;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>4.在pojo中字段sex，再建立sex_n表示要回显的字段（_n必须对应）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType_n;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex_n;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType</span><span class="params">(String orgType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType = orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType_n</span><span class="params">(String orgType_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType_n = orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex_n</span><span class="params">(String sex_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex_n = sex_n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>5.代码如下：map相当与数据库中取出来的数据库字典表</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        </span><br><span class="line">        HashMap&lt;String, String&gt; map=<span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"部门1"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"部门2"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"3"</span>, <span class="string">"部门3"</span>);</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"男"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"女"</span>);</span><br><span class="line">        </span><br><span class="line">        User user=<span class="keyword">new</span> User();</span><br><span class="line">        User user1=<span class="keyword">new</span> User();</span><br><span class="line">        </span><br><span class="line">        List&lt;User&gt; userList=<span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">        userList.add(user);</span><br><span class="line">        userList.add(user1);</span><br><span class="line">        Doaction.fill(userList,map);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userList.size(); i++) &#123;</span><br><span class="line">            System.out.println(userList.get(<span class="number">0</span>).getOrgType_n());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><strong>6.利用反射完成对sex_n等赋值</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Doaction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(List&lt;T&gt; pojoList, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = getDictMap(pojoList.get(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = map.get(<span class="string">"codeMap"</span>);</span><br><span class="line">        Map&lt;String, Field&gt; nameMap = map.get(<span class="string">"nameMap"</span>);</span><br><span class="line">        <span class="keyword">for</span> (T pojo:pojoList) &#123;</span><br><span class="line">            fillname(pojo, codeMap, nameMap, dictmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取带DictACC字典注解的字段，并拼接成Map </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Map&lt;String, Map&lt;String, Field&gt;&gt; getDictMap(T t) &#123;</span><br><span class="line">        <span class="comment">//字典code值组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        <span class="comment">//需要从code值转成value组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; nameMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        List&lt;Field&gt; fieldlist =<span class="keyword">new</span> ArrayList&lt;Field&gt;();</span><br><span class="line">        <span class="comment">//获取父类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getSuperclass().getDeclaredFields()));</span><br><span class="line">        <span class="comment">//获取本类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getDeclaredFields()));</span><br><span class="line">        <span class="keyword">for</span> (Field field : fieldlist) &#123;</span><br><span class="line">            <span class="keyword">if</span> (field.getAnnotation(DictACC.class) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                DictACC ann = field.getAnnotation(DictACC.class);</span><br><span class="line">                <span class="keyword">if</span> (ann.code().equals(BV.code)) &#123;</span><br><span class="line">                    codeMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ann.code().equals(BV.name)) &#123;</span><br><span class="line">                    nameMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, Map&lt;String, Field&gt;&gt;();</span><br><span class="line">        map.put(<span class="string">"codeMap"</span>, codeMap);</span><br><span class="line">        map.put(<span class="string">"nameMap"</span>, nameMap);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fillname</span><span class="params">(T t, Map&lt;String, Field&gt; codeMap,</span></span></span><br><span class="line"><span class="function"><span class="params">            Map&lt;String, Field&gt; nameMap, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;String, Field&gt; entry : nameMap.entrySet()) &#123;</span><br><span class="line">            <span class="comment">//获取codekey</span></span><br><span class="line">            String codeKey = entry.getKey().substring(<span class="number">0</span>,</span><br><span class="line">                    entry.getKey().length() - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (codeMap.get(codeKey) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                Field field = codeMap.get(codeKey);</span><br><span class="line">                <span class="comment">//获取code的值</span></span><br><span class="line">                String value = String.valueOf(field.get(t));</span><br><span class="line">                String targetKey = codeKey.split(<span class="string">"@"</span>)[<span class="number">0</span>] + <span class="string">"@"</span> + value;</span><br><span class="line">                <span class="keyword">if</span> (dictmap.containsKey(targetKey)) &#123;</span><br><span class="line">                    <span class="comment">//从字典表获取那么中应该存的值</span></span><br><span class="line">                    String targetValue = dictmap.get(targetKey);</span><br><span class="line">                    Field targetField = entry.getValue();</span><br><span class="line">                    targetField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                    <span class="comment">//给name赋值</span></span><br><span class="line">                    targetField.set(t, targetValue);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/java-利用注解完成字典表对应数据/" data-id="cjg11c9em000l80uw6lvnecnn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/注解/">注解</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-mybatis-xml文件解释" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/mybatis-xml文件解释/" class="article-date">
-  <time datetime="2017-12-11T09:26:38.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/mybatis-xml文件解释/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/mybatis-xml文件解释/">mybatis-xml文件解释</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/mybatis-xml文件解释/" itemprop="url">mybatis-xml文件解释</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:26:38+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="mybatis将表的属性用resultMap表示"><a href="#mybatis将表的属性用resultMap表示" class="headerlink" title="mybatis将表的属性用resultMap表示"></a>mybatis将表的属性用resultMap表示</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.model.TMarine"</span> &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"ID"</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"ADDRESS"</span> <span class="attr">property</span>=<span class="string">"address"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"AREA_ID"</span> <span class="attr">property</span>=<span class="string">"areaId"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CONTACT"</span> <span class="attr">property</span>=<span class="string">"contact"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CREATE_TIME"</span> <span class="attr">property</span>=<span class="string">"createTime"</span> <span class="attr">jdbcType</span>=<span class="string">"TIMESTAMP"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"FAX"</span> <span class="attr">property</span>=<span class="string">"fax"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"FIRST_LETTER"</span> <span class="attr">property</span>=<span class="string">"firstLetter"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_DEL"</span> <span class="attr">property</span>=<span class="string">"isDel"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_MODABLE"</span> <span class="attr">property</span>=<span class="string">"isModable"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_ORGAN"</span> <span class="attr">property</span>=<span class="string">"isOrgan"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"LEVEL_ID"</span> <span class="attr">property</span>=<span class="string">"levelId"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"MARINE_CODE"</span> <span class="attr">property</span>=<span class="string">"marineCode"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"MARINE_NAME"</span> <span class="attr">property</span>=<span class="string">"marineName"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"PHONE"</span> <span class="attr">property</span>=<span class="string">"phone"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"POSTCODE"</span> <span class="attr">property</span>=<span class="string">"postcode"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"UPDATE_TIME"</span> <span class="attr">property</span>=<span class="string">"updateTime"</span> <span class="attr">jdbcType</span>=<span class="string">"TIMESTAMP"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"PID"</span> <span class="attr">property</span>=<span class="string">"pid"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+
+      
+        
+          
+            <h1 id="mybatis将表的属性用resultMap表示"><a href="#mybatis将表的属性用resultMap表示" class="headerlink" title="mybatis将表的属性用resultMap表示"></a>mybatis将表的属性用resultMap表示</h1><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">"BaseResultMap"</span> <span class="attr">type</span>=<span class="string">"com.model.TMarine"</span> &gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"ID"</span> <span class="attr">property</span>=<span class="string">"id"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"ADDRESS"</span> <span class="attr">property</span>=<span class="string">"address"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"AREA_ID"</span> <span class="attr">property</span>=<span class="string">"areaId"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CONTACT"</span> <span class="attr">property</span>=<span class="string">"contact"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"CREATE_TIME"</span> <span class="attr">property</span>=<span class="string">"createTime"</span> <span class="attr">jdbcType</span>=<span class="string">"TIMESTAMP"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"FAX"</span> <span class="attr">property</span>=<span class="string">"fax"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"FIRST_LETTER"</span> <span class="attr">property</span>=<span class="string">"firstLetter"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_DEL"</span> <span class="attr">property</span>=<span class="string">"isDel"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_MODABLE"</span> <span class="attr">property</span>=<span class="string">"isModable"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"IS_ORGAN"</span> <span class="attr">property</span>=<span class="string">"isOrgan"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"LEVEL_ID"</span> <span class="attr">property</span>=<span class="string">"levelId"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"MARINE_CODE"</span> <span class="attr">property</span>=<span class="string">"marineCode"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"MARINE_NAME"</span> <span class="attr">property</span>=<span class="string">"marineName"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"PHONE"</span> <span class="attr">property</span>=<span class="string">"phone"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"POSTCODE"</span> <span class="attr">property</span>=<span class="string">"postcode"</span> <span class="attr">jdbcType</span>=<span class="string">"VARCHAR"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"UPDATE_TIME"</span> <span class="attr">property</span>=<span class="string">"updateTime"</span> <span class="attr">jdbcType</span>=<span class="string">"TIMESTAMP"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"PID"</span> <span class="attr">property</span>=<span class="string">"pid"</span> <span class="attr">jdbcType</span>=<span class="string">"INTEGER"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>resultMap中的id标签，作为唯一表示。</p>
 <h1 id="套用sql，常将表的属性分隔。"><a href="#套用sql，常将表的属性分隔。" class="headerlink" title="套用sql，常将表的属性分隔。"></a>套用sql，常将表的属性分隔。</h1><pre><code class="xml">
 <span class="tag">&lt;<span class="name">sql</span> <span class="attr">id</span>=<span class="string">"Base_Column_List"</span> &gt;</span>
@@ -334,44 +894,125 @@ where ID = #{id,jdbcType=INTEGER}
 <h1 id="resultMap-和-resultType-的区别"><a href="#resultMap-和-resultType-的区别" class="headerlink" title="resultMap 和 resultType 的区别"></a>resultMap 和 resultType 的区别</h1><p>resultType和resultMap 均指返回类型，resultType是直接表示返回类型的，而resultMap则是对外部ResultMap的引用，但是resultType跟resultMap不能同时存在。</p>
 <p>个人理解：当你的数据只是想单纯的返回一个map，用resultType=”java.util.HashMap”,如果想返回一个对象或者一个对象的列表，resultMap=”BaseResultMap”,BaseResultMap是一个映射，即表的属性。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/mybatis-xml文件解释/" data-id="cjg11c9ew000z80uw6hu9i351" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/">mybatis</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-Linux-安装tomcat7时遇到的情况" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/Linux-安装tomcat7时遇到的情况/" class="article-date">
-  <time datetime="2017-12-11T07:26:23.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/Linux-安装tomcat7时遇到的情况/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/Linux-安装tomcat7时遇到的情况/">Linux-安装tomcat7时遇到的情况</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/Linux-安装tomcat7时遇到的情况/" itemprop="url">Linux-安装tomcat7时遇到的情况</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T15:26:23+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>首先我们需要在linux上安装jdk，<a href="http://guojian.fun/2017/12/11/linux-%E5%AE%89%E8%A3%85jdk1-8/" target="_blank" rel="noopener">linux-centOS7下安装jdk1.8</a>。</p>
+      
+
+      
+        
+          
+            <p>首先我们需要在linux上安装jdk，<a href="http://guojian.fun/2017/12/11/linux-%E5%AE%89%E8%A3%85jdk1-8/" target="_blank" rel="noopener">linux-centOS7下安装jdk1.8</a>。</p>
 <p>解压文件很简单，这里主要是我分享一下我遇到的问题</p>
 <p><strong>1、下载apache-tomcat-8.0.47.tar.gz包并且解压，命令为tar-zxvf  apache-tomcat-8.0.47.tar.gz</strong></p>
 <p><strong>2、在解压的文件下，新建目录logs(与bin目录平级)，这个目录是用来记录日志的。不建的话，tomcat会提示你的。</strong></p>
@@ -389,44 +1030,125 @@ where ID = #{id,jdbcType=INTEGER}
 <p>我在官网上重新下了不同版本的包，均是这个错误。然后在资料上查询是jvm的版本低于tomcat支持的版本，即tomcat的版本过高，所以我尝试用了版本较低的tomcat版本，错误消失。</p>
 <p><strong>6、进行访问192.168.14.172:8080 访问成功，我们linux上安装tomcat就结束了。</strong></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/Linux-安装tomcat7时遇到的情况/" data-id="cjg11c9en000o80uw0iawz5xq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-linux-安装jdk1-8" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/linux-安装jdk1-8/" class="article-date">
-  <time datetime="2017-12-11T07:07:07.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/linux-安装jdk1-8/">linux-centOS7下安装jdk1.8</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/" itemprop="url">linux-centOS7下安装jdk1.8</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T15:07:07+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p><strong>准备环境：centos7</strong></p>
+      
+
+      
+        
+          
+            <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><p><strong>准备环境：centos7</strong></p>
 <p><strong>jdk1.8的压缩包：jdk-8u144-linux-x64.tar.gz</strong></p>
 <p>在新建的centos7下，我新建了一个用户guojian(我的名字)。</p>
 <h1 id="卸载OpenJDK"><a href="#卸载OpenJDK" class="headerlink" title="卸载OpenJDK"></a>卸载OpenJDK</h1><p>自带的linux下会自带OpenJDK，有时候我们并不了解，所以建议删除它。</p>
@@ -459,44 +1181,125 @@ where ID = #{id,jdbcType=INTEGER}
 <p><img src="linux-安装jdk1-8/linux4.png" alt="你想输入的替代文字"></p>
 <p>配置结束。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/linux-安装jdk1-8/" data-id="cjg11c9f0001680uwgzh1soip" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jdk/">jdk</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-linux-权限管理" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/linux-权限管理/" class="article-date">
-  <time datetime="2017-12-11T06:59:55.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/linux-权限管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/linux-权限管理/">linux-权限管理</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/linux-权限管理/" itemprop="url">linux-权限管理</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T14:59:55+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p><strong>在linux下我们ll的时候就会看见相应文件的权限，总共有十位。</strong></p>
+      
+
+      
+        
+          
+            <p><strong>在linux下我们ll的时候就会看见相应文件的权限，总共有十位。</strong></p>
 <p><img src="linux-权限管理/linux1.png" alt="你想输入的替代文字"></p>
 <h1 id="第一位："><a href="#第一位：" class="headerlink" title="第一位："></a>第一位：</h1><p><strong>代表着当前文件的类型。如果是-代表的就是文件，如果是d就代表这文件夹。</strong></p>
 <h1 id="第2-9位："><a href="#第2-9位：" class="headerlink" title="第2-9位："></a>第2-9位：</h1><p><strong>根据上图描述，其实是分为三组的，分别是所有者、用户组、其他。每个组都有三个权限分别是可读、可写、可执行。</strong></p>
@@ -508,44 +1311,125 @@ where ID = #{id,jdbcType=INTEGER}
 <p><strong>作用于文件：当使用chmod  774 start.sh，当文件是可执行文件，其他用户只能查看文件，而不能执行.sh的可执行文件。 </strong></p>
 <p><strong>现实操作中，需要将文件夹和里面的文件进行分别配置可能达到最好的效果。</strong></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/linux-权限管理/" data-id="cjg11c9ez001480uwbiydt7zi" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-log4j2配置详解" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/log4j2配置详解/" class="article-date">
-  <time datetime="2017-12-11T06:48:21.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/log4j2配置详解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/log4j2配置详解/">log4j2配置详解</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/log4j2配置详解/" itemprop="url">log4j2配置详解</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T14:48:21+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="输出规则："><a href="#输出规则：" class="headerlink" title="输出规则："></a>输出规则：</h1><p><console>标签是控制台，表示在控制台进行输出。</console></p>
+      
+
+      
+        
+          
+            <h1 id="输出规则："><a href="#输出规则：" class="headerlink" title="输出规则："></a>输出规则：</h1><p><console>标签是控制台，表示在控制台进行输出。</console></p>
 <p>Log4j由三个重要的组成的构建组成：记录器(Loggers)、输出源（Appenders）、</p>
 <p>和布局(Layouts)</p>
 <p>记录器的Level是日志记录的优先级：debug&lt;info&lt;warn&lt;error</p>
@@ -593,44 +1477,125 @@ where ID = #{id,jdbcType=INTEGER}
 <p>应加<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(logger.isDebugEnacled())&#123;</span><br><span class="line"></span><br><span class="line">    logger.debug(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">logger.debug(<span class="string">"processing debug with id:&#123;&#125; symbol:&#123;&#125;"</span>,id,symbol)</span><br></pre></td></tr></table></figure></p>
 </rollingfile>
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/log4j2配置详解/" data-id="cjg11c9f1001880uwll8o3dq3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log4j2/">log4j2</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-ActiveMQ的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/11/ActiveMQ的简单实现/" class="article-date">
-  <time datetime="2017-12-11T05:00:11.000Z" itemprop="datePublished">2017-12-11</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/11/ActiveMQ的简单实现/">ActiveMQ的简单实现</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/" itemprop="url">ActiveMQ的简单实现</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T13:00:11+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>jdk1.8</strong></p>
+      
+
+      
+        
+          
+            <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>jdk1.8</strong></p>
 <p><strong>ActiveMQ环境并启动</strong></p>
 <p><strong>ActiveMQ的依赖包</strong></p>
 <pre><code>&lt;dependencies&gt;
@@ -657,128 +1622,308 @@ where ID = #{id,jdbcType=INTEGER}
 <p><strong>然后我们运行QueueConsumer，那么十条信息会被消费者消费。然后我们再启动一个消费者，即有两个消费者时，在运行QueueProducer，两个消费者会依次消费信息</strong></p>
 <p><img src="ActiveMQ的简单实现/active2.png" alt="你想输入的替代文字"> <img src="ActiveMQ的简单实现/active3.png" alt="你想输入的替代文字"></p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/11/ActiveMQ的简单实现/" data-id="cjg11c9e8000580uwv5e129jp" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+  </section>
 
   
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/guojian731.github.io/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/guojian731.github.io/">1</a><a class="page-number" href="/guojian731.github.io/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/guojian731.github.io/page/4/">4</a><a class="extend next" rel="next" href="/guojian731.github.io/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
 
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-
-  
+  <aside id="sidebar" class="sidebar">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Jian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/guojian731.github.io/archives/">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/guojian731.github.io/tags/index.html">
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
     </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
-    </div>
-  </div>
+  </aside>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2018/04/15/hello-world/">Hello World</a>
-          </li>
-        
-          <li>
-            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
-          </li>
-        
-          <li>
-            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Jian</span>
+
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
