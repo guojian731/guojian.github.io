@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>spring-2-自动化装配 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。 环境： 所需manven包1234567891011121314151617&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;  &amp;l">
+<meta name="keywords" content="spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="spring-2-自动化装配">
+<meta property="og:url" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。 环境： 所需manven包1234567891011121314151617&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;  &amp;l">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring1.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring2.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring3.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring4.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring5.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/springV1.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/springV2.png">
+<meta property="og:updated_time" content="2017-12-14T13:28:47.359Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="spring-2-自动化装配">
+<meta name="twitter:description" content="Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。 环境： 所需manven包1234567891011121314151617&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;  &amp;l">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-spring-2-自动化装配" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/13/spring-2-自动化装配/" class="article-date">
+  <time datetime="2017-12-13T08:33:05.000Z" itemprop="datePublished">2017-12-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      spring-2-自动化装配
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。</strong></p>
+<p>环境：</p>
+<p>所需manven包<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>junit<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- &lt;scope&gt;test&lt;/scope&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;spring.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>使用的spring.version 是3.2.9</p>
+<p>我们注意到junit 的下面有一个<scope>test</scope>，是什么意思呢。说明这个jar只会在你测试的resourse 下才会被使用，正常的代码区域是不会被引用的。所以，在做测试的情况下如果没有建立测试的resourse的话，需要把这个注掉。</p>
+<h1 id="使用注解形式："><a href="#使用注解形式：" class="headerlink" title="使用注解形式："></a>使用注解形式：</h1><p>之前我们一定接触过Spring，多数是用Spring xml的配置进行的。我们这次使用注解方式进行使用。</p>
+<p>Spring从两个角度来实现自动化装配：</p>
+<p><strong>组件扫描(component scanning)：Spring会自动发现应用上下文中所创建的bean。</strong></p>
+<p><strong>自动装配(autowiring)：Spring自动满足bean之间的依赖。</strong></p>
+<p>举个例子： </p>
+<p><img src="spring-2-自动化装配/spring1.png" alt="jvm装载步骤"></p>
+<p>如图所示，在java文件夹下建立action包逻辑处理，config 配置文件包，service接口包，以及impl实现类包。然后我们像做项目一样，需要一个支付的模块，分别建立一个pay子包。</p>
+<p>先介绍几个spring用到的注解</p>
+<p><strong>@Configuration:spring将这个类设置为config</strong></p>
+<p><strong>@ComponentScan:这个注解在spring中启动扫描</strong></p>
+<p><strong>@Component：使用这个注解，就可以使类能够让spring扫描到。</strong></p>
+<p>先看我们的支付接口Payservice，它只有一个方法，就是支付。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> service.pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Payservice</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">pay</span><span class="params">(Integer num)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后是我们的手机支付的实现类，继承Payservice接口</p>
+<p>我们使用@Component使这个类在spring能够发现这个类，并进行创建bean。创建的bean会有名字，如果@Component不写的话，那么就是phonePayServiceImpl，如果写了的话创建的名字就是你写的那个@Component(value = “phonePayServiceImpl”)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> impl.pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PhonePayServiceImpl</span> <span class="keyword">implements</span> <span class="title">Payservice</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">(Integer num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"使用手机支付了"</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>来写我们的PayConig</p>
+<p>@Configuration Spring在启动时会寻找这个注解，知道他是config类，然后再进行相关操作。</p>
+<p>@ComponentScan：需要扫描的包，如果不写其他的话，它会扫描的读当前包下的所有文件。我们把PayConfig放在impl.pay下就可以了。如果你想像我一样，将配置类统一管理的话，那么就明确一下包路径。当然你也可以建立一个JavaConfig类，然后设置为它的总包路径impl就可以了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">package</span> config.pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(basePackages = <span class="string">"impl.pay"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在我们测试一下是否成功</p>
+<p>@Autowired 我们完成以上的操作，spring已经发现了需要创建的bean，但是没有将需要创建的bean的其他对象进行装配，这时候使用@Autowired 就可以完成自动装配</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> config.pay.PayConfig;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = PayConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Payservice payservice;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        payservice.pay(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="spring-2-自动化装配/spring2.png" alt="jvm装载步骤"></p>
+<p>运行成功。</p>
+<h2 id="一个接口多个实现类"><a href="#一个接口多个实现类" class="headerlink" title="一个接口多个实现类"></a>一个接口多个实现类</h2><p>问题，我们当一个接口有一个实现类的时候，装配成功了。就像之前说的，在PayTest中，我们只是调用了pay接口，它是使用电脑支付、手机支付我们都不知道，完成了解耦。但是如果两个实现类我们建立后，在PayTest会装配到底会装配哪一个实现类呢，我们做一下测试，新建一个实现类computerPayServiceImpl。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> impl.pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(value = <span class="string">"computerPayServiceImpl"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComputerPayServiceImpl</span> <span class="keyword">implements</span> <span class="title">Payservice</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">(Integer num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"使用电脑支付了"</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们再调用一次。</p>
+<p><img src="spring-2-自动化装配/spring3.png" alt="jvm装载步骤"></p>
+<p>我们发现调用失败了，spring不知道到底该调哪一个。但是这种场景经常出现，我们该怎么办？</p>
+<p>这个时候我们就只是单单使用@Autowired这个注解了，还应加入@Qualifier注解，并写上spring创建bean的名字。这样spring就知道应该加载哪个bean了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> config.pay.PayConfig;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = PayConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"computerPayServiceImpl"</span>)</span><br><span class="line">    <span class="keyword">private</span> Payservice payservice;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        payservice.pay(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="spring-2-自动化装配/spring4.png" alt="jvm装载步骤"></p>
+<h1 id="显示配置Bean之java代码"><a href="#显示配置Bean之java代码" class="headerlink" title="显示配置Bean之java代码"></a>显示配置Bean之java代码</h1><p>当我们有的时候无法为bean添加@component的方法，有时候这个类不是我们创建的，那么就无法使用自动装配的方式了，显而易见，spring就不会发现这个bean了，那么怎么办，spring有两个解决方式，分别是java显示配置和xml显示配置，现在先说一下使用java显示代码配置。</p>
+<p>我们还是这个例子，然后把PhonePayServiceImpl实现类注掉，保证payservice先有一个实现类以便测试。然后将ComputerPayServiceImpl中的@component去掉，这样我们payconfig进行包扫描时，因为ComputerPayServiceImpl没有@component注解，那么spring就不会发现bean。我们测试一下。</p>
+<p><img src="spring-2-自动化装配/spring5.png" alt="jvm装载步骤"></p>
+<p><img src="spring-2-自动化装配/springV1.png" alt="jvm装载步骤"></p>
+<p>测试结果为：</p>
+<p>我们重点看到红线标记部分（如果你用的也是idea的话），可以看到要装配computerPayServiceImpl的payservice1提示无法找到这个bean，但是要装配phonePayServiceImpl却能，这就很说明问题了。</p>
+<p>这个时候我们在javaConfig下显示的配置bean。</p>
+<pre><code class="java"><span class="keyword">package</span> config.pay;
+
+<span class="keyword">import</span> impl.pay.ComputerPayServiceImpl;
+<span class="keyword">import</span> impl.pay.PhonePayServiceImpl;
+<span class="keyword">import</span> org.springframework.context.annotation.Bean;
+<span class="keyword">import</span> org.springframework.context.annotation.ComponentScan;
+<span class="keyword">import</span> org.springframework.context.annotation.Configuration;
+<span class="keyword">import</span> service.pay.Payservice;
+
+<span class="meta">@Configuration</span>
+<span class="meta">@ComponentScan</span>(basePackages = <span class="string">"impl.pay"</span>)
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayConfig</span> </span>{
+
+
+    <span class="meta">@Bean</span>(name = <span class="string">"computerPayServiceImpl"</span>)
+    <span class="function"><span class="keyword">public</span> Payservice <span class="title">getComputerPayService</span> <span class="params">()</span></span>{
+        <span class="keyword">return</span> <span class="keyword">new</span> ComputerPayServiceImpl();
+    }
+
+}
+</code></pre>
+<p>@bean注解：告诉spring这个方法将会返回一个对象，该对象要注册为Spring应用上下文的bean。方法体中包含了最终产生bean实例的逻辑。</p>
+<p>默认情况下，bean的ID与带有@Bean注解的方法名是一样的，如下图的话，bean的名字就是getPayService。也可以使用@Bean的name属性指定。</p>
+<p><img src="spring-2-自动化装配/springV2.png" alt="jvm装载步骤"></p>
+<p>我们也无用运行测试类，直接用idea观察，就会发现，computerPayServiceImpl不是醒目的红色而是绿色了，如果不是用idea，运行一下程序即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/13/spring-2-自动化装配/" data-id="cjg11c9fh001u80uwitj4wyjk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/13/Spring-全注解项目构建/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Spring-全注解项目构建
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/12/JVM-7-垃圾回收器介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JVM-7-垃圾回收器介绍</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

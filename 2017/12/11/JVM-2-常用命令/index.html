@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JVM-2-常用命令 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="堆内存设定-Xmx ：最大堆内存 -Xms ：初始堆内存  占空间设定-Xss ：指定线程最大栈空间 方法区：理解为永久区perm，在jdk1.6和1.7中存在，在1.8中剔除 -XX:PermSize：初始化方法区。 -XX:MaxPermSize:最大方法区：默认情况为64M 输出-XX:+PrintGC 打印gc日志 -XX:+PrintGCDetails  打印详细的gc日志 -XX:+P">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM-2-常用命令">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/JVM-2-常用命令/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="堆内存设定-Xmx ：最大堆内存 -Xms ：初始堆内存  占空间设定-Xss ：指定线程最大栈空间 方法区：理解为永久区perm，在jdk1.6和1.7中存在，在1.8中剔除 -XX:PermSize：初始化方法区。 -XX:MaxPermSize:最大方法区：默认情况为64M 输出-XX:+PrintGC 打印gc日志 -XX:+PrintGCDetails  打印详细的gc日志 -XX:+P">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T09:52:23.364Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM-2-常用命令">
+<meta name="twitter:description" content="堆内存设定-Xmx ：最大堆内存 -Xms ：初始堆内存  占空间设定-Xss ：指定线程最大栈空间 方法区：理解为永久区perm，在jdk1.6和1.7中存在，在1.8中剔除 -XX:PermSize：初始化方法区。 -XX:MaxPermSize:最大方法区：默认情况为64M 输出-XX:+PrintGC 打印gc日志 -XX:+PrintGCDetails  打印详细的gc日志 -XX:+P">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JVM-2-常用命令" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/JVM-2-常用命令/" class="article-date">
+  <time datetime="2017-12-11T09:48:41.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JVM-2-常用命令
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="堆内存设定"><a href="#堆内存设定" class="headerlink" title="堆内存设定"></a>堆内存设定</h1><p>-Xmx ：最大堆内存</p>
+<p>-Xms ：初始堆内存 </p>
+<h1 id="占空间设定"><a href="#占空间设定" class="headerlink" title="占空间设定"></a>占空间设定</h1><p>-Xss ：指定线程最大栈空间</p>
+<h1 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h1><p><strong>理解为永久区perm，在jdk1.6和1.7中存在，在1.8中剔除</strong></p>
+<p>-XX:PermSize：初始化方法区。</p>
+<p>-XX:MaxPermSize:最大方法区：默认情况为64M</p>
+<h1 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h1><p>-XX:+PrintGC 打印gc日志</p>
+<p>-XX:+PrintGCDetails  打印详细的gc日志</p>
+<p>-XX:+PrintHeapAtGC 在每次GC前后分别打印堆的信息。</p>
+<p>-XX:+PrintGCTimeStamps 该参数会在每个GC发生时，额外的输出GC发生的时间，该输出时间为虚拟机启动后的时间偏移量。</p>
+<p>-XX:+PrintGCApplicationConcurrentTime 打印应用程序的执行时间</p>
+<p>-XX:+PrintGCApplicationStoppedTime 打印应用程序由于GC而产生的停顿时间。</p>
+<p>-XX:+PrintReferenceGC 跟踪系统中软引用、弱引用、虚引用和Finallize队列。</p>
+<p>-Xloggc:log/gc.log  在当前目录下的log文件夹下的log文件夹下的gc.log文件中记录所有的GC日志。</p>
+<h1 id="类加载-卸载的跟踪"><a href="#类加载-卸载的跟踪" class="headerlink" title="类加载/卸载的跟踪"></a>类加载/卸载的跟踪</h1><p>-verbose:class 跟踪类的加载和卸载</p>
+<p>-XX:+TranceClassLoading 跟踪类的加载</p>
+<p>-XX:+TranceClassUnloading 跟踪类的卸载</p>
+<p>Java虚拟机还允许研发人员在运行时打印、查看系统中类的分布情况。只要在系统中启动时加上-XX:+PrintClassHistogram参数，然后在Java的控制台中按下Ctrl+Break组合键，控制台上就会显示当前的类信息柱状图。</p>
+<h1 id="系统参数查看："><a href="#系统参数查看：" class="headerlink" title="系统参数查看："></a>系统参数查看：</h1><p>-XX:+PrintVMOptions 在程序运行时，打印虚拟机接收到的命令行显示参数。</p>
+<p>-XX:+PrintCommandLineFlags 可以打印传递给虚拟机的显示和隐示参数。</p>
+<p>-XX:+PrintFlagsFinal 打印所有的系统参数的值（大约有500多个）</p>
+<h1 id="新生代配置："><a href="#新生代配置：" class="headerlink" title="新生代配置："></a>新生代配置：</h1><p>-Xmn 用于设置新生代的大小。新生代大小一般设置为整个堆空间的1/3到1/4之间。(-Xmn1m)</p>
+<p>-XX:SurvivorRatio=eden/from=eden/to 设置新生代中eden空间和from/to空间的比例关系。</p>
+<p>（-XX:SurvivorRatio=2 新生代内存有10m，那么eden区的内存即为5m）</p>
+<p>-XX:NewRatio=老年代/新生代 设置新生代和老年代的比例（与-Xmn区别是一个是设置新生代绝对大小，一个是根据比例设置）</p>
+<h1 id="堆溢出处理："><a href="#堆溢出处理：" class="headerlink" title="堆溢出处理："></a>堆溢出处理：</h1><p>-XX:+HeapDumpOnOutOfMemoryError 在内存溢出时到处整个堆信息。</p>
+<p>-XX:+HeapDumpPath:d:/a.dmp 和-XX:+HeapDumpOnOutOfMemoryError配合使用，导出堆的存放路径。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/11/JVM-2-常用命令/" data-id="cjg11c9eb000980uwrwu87fvh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JVM-3-字符串的存储方式以及equals、intern、==之间的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/11/JVM-1-内部构成/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JVM-1-内部构成</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

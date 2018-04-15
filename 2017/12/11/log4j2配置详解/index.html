@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>log4j2配置详解 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="输出规则：标签是控制台，表示在控制台进行输出。 Log4j由三个重要的组成的构建组成：记录器(Loggers)、输出源（Appenders）、 和布局(Layouts) 记录器的Level是日志记录的优先级：debug&amp;lt;info&amp;lt;warn&amp;lt;error 记录器的level级别为info，那么这个记录器记录的级别就是&amp;gt;= info,即info、warn、error。 输出源：o">
+<meta name="keywords" content="log4j2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="log4j2配置详解">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/log4j2配置详解/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="输出规则：标签是控制台，表示在控制台进行输出。 Log4j由三个重要的组成的构建组成：记录器(Loggers)、输出源（Appenders）、 和布局(Layouts) 记录器的Level是日志记录的优先级：debug&amp;lt;info&amp;lt;warn&amp;lt;error 记录器的level级别为info，那么这个记录器记录的级别就是&amp;gt;= info,即info、warn、error。 输出源：o">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T06:56:22.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="log4j2配置详解">
+<meta name="twitter:description" content="输出规则：标签是控制台，表示在控制台进行输出。 Log4j由三个重要的组成的构建组成：记录器(Loggers)、输出源（Appenders）、 和布局(Layouts) 记录器的Level是日志记录的优先级：debug&amp;lt;info&amp;lt;warn&amp;lt;error 记录器的level级别为info，那么这个记录器记录的级别就是&amp;gt;= info,即info、warn、error。 输出源：o">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-log4j2配置详解" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/log4j2配置详解/" class="article-date">
+  <time datetime="2017-12-11T06:48:21.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      log4j2配置详解
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="输出规则："><a href="#输出规则：" class="headerlink" title="输出规则："></a>输出规则：</h1><p><console>标签是控制台，表示在控制台进行输出。</console></p>
+<p>Log4j由三个重要的组成的构建组成：记录器(Loggers)、输出源（Appenders）、</p>
+<p>和布局(Layouts)</p>
+<p>记录器的Level是日志记录的优先级：debug&lt;info&lt;warn&lt;error</p>
+<p>记录器的level级别为info，那么这个记录器记录的级别就是&gt;= info,即info、warn、error。</p>
+<h1 id="输出源："><a href="#输出源：" class="headerlink" title="输出源："></a>输出源：</h1><p>org.apache.log4j.ConsoleAppender(控制台)</p>
+<p>org.apache.log4j.FileAppender(文件)</p>
+<p>org.apache.log4j.DailyRollingFileAppender(每天产生一个日志文件)</p>
+<p>org.apache.log4j.RollingFileAppender(文件大小到达指定尺寸的时候产生一个新的文件)</p>
+<p>org.apache.log4j.WriterAppender(将日志信息以流的格式发送到任意指定的地方)</p>
+<p>org.apache.log4j.SocketAppender(socket)</p>
+<p>org.apache.log4j.NtEventLogAppender(NT的Event Log)</p>
+<p>org.apache.log4j.JMSAppender(电子邮件)</p>
+<h1 id="layout-布局"><a href="#layout-布局" class="headerlink" title="layout(布局)"></a>layout(布局)</h1><h2 id="布局种类"><a href="#布局种类" class="headerlink" title="布局种类"></a>布局种类</h2><p>org.apache.log4j.HTMLLayout（以HTML表格形式布局）</p>
+<p>org.apache.log4j.PatternLayout(可以灵活地指定布局模式)</p>
+<p>org.apache.log4j.SimpleLayout(包含日志信息的级别和信息字符串)</p>
+<p>org.apache.log4j.TTCCLayout(包含日志产生的时间、线程、类别等等信息)</p>
+<p>如果使用了PatternLayout，则Log4j采用类似C语言中println函数的打印格式格式化日志信息</p>
+<p>%m 输出代码中的指定消息</p>
+<p>%P 输出优先级，即debug、info、warn、error、fatal</p>
+<p>%r 输出自应用启动到输出该log信息耗费的毫秒数</p>
+<p>%c 输出所属的类目，通常就是所在类的全名</p>
+<p>%t 输出产生该日志事件的线程名</p>
+<p>%n 输出一个回车换行符,Windows平台下为”/n/r”，Unix平台为“/n”</p>
+<p>%d 输出日志时间点的日期或事件，默认格式为ISO8601，也可以在其后制定格式。</p>
+<p>%l 输出日志事件的发生位置，包括类目名、发生的线程，以及在代码中的行数。</p>
+<p>Configuration标签</p>
+<p>Status属性：有八种，可以检测log4j2的配置文件是否有错，也可以检测到死循环的logger。</p>
+<p>monitorInterval：自动检测配置文件的事件间隔，单位是秒，最小间隔是5秒。Log4j2检测到配置文件有变化，会重新配置自己。</p>
+<h2 id="输出源标签："><a href="#输出源标签：" class="headerlink" title="输出源标签："></a>输出源标签：</h2><p><console>是将日志输出到控制台上。</console></p>
+<rollingfile>
+
+<p>Filename:日志存放路径</p>
+<p>bufferedIO：是否有缓存IO</p>
+<p>bufferSize：bufferSize内存大小</p>
+<p>filePattern：压缩后的路径</p>
+<p>PatternLayout下的pattern：日志输出的内容</p>
+<p>SizeBasedTriggeringPolicy：容量达到多少进行压缩</p>
+<p>Loggers：</p>
+<p>Additivity：false 避免重复打印</p>
+<p>log4j2.xml样本<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Configuration</span> <span class="attr">status</span>=<span class="string">"OFF"</span> &gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Appenders</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Console</span> <span class="attr">name</span>=<span class="string">"console"</span> <span class="attr">target</span>=<span class="string">"SYSTEM_OUT"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;yyyy-MM-dd HH:mm:ss,SSS&#125;][%p][%c&#123;1&#125;][Line:%L] %m%n"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Console</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">RollingFile</span> <span class="attr">name</span>=<span class="string">"clearcontrolLog"</span> <span class="attr">fileName</span>=<span class="string">"/amots/appfiles/logs/clearcontrol/clearcontrolLog.log"</span> <span class="attr">bufferedIO</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">bufferSize</span>=<span class="string">"8192"</span> <span class="attr">filePattern</span>=<span class="string">"/amots/appfiles/logs/clearcontrol/clearcontrolLog-%d&#123;yyyy-MM-dd-HH&#125;-%i.log.gz"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;yyyy-MM-dd HH:mm:ss,SSS&#125;][%p][%c&#123;1&#125;][Line:%L] %m%n"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Policies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">TimeBasedTriggeringPolicy</span> <span class="attr">interval</span>=<span class="string">"24"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">SizeBasedTriggeringPolicy</span> <span class="attr">size</span>=<span class="string">"30MB"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Policies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RollingFile</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">RollingFile</span> <span class="attr">name</span>=<span class="string">"clearofbaseLog"</span> <span class="attr">fileName</span>=<span class="string">"/amots/appfiles/logs/clearofbase/clearofbaseLog.log"</span> <span class="attr">bufferedIO</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag"></span></span><br><span class="line"><span class="tag"><span class="attr">bufferSize</span>=<span class="string">"8192"</span> <span class="attr">filePattern</span>=<span class="string">"/amots/appfiles/logs/clearofbase/clearofbaseLog-%d&#123;yyyy-MM-dd-HH&#125;-%i.log.gz"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">PatternLayout</span> <span class="attr">pattern</span>=<span class="string">"[%d&#123;yyyy-MM-dd HH:mm:ss,SSS&#125;][%p][%c&#123;1&#125;][Line:%L] %m%n"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Policies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">TimeBasedTriggeringPolicy</span> <span class="attr">interval</span>=<span class="string">"24"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">SizeBasedTriggeringPolicy</span> <span class="attr">size</span>=<span class="string">"30MB"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Policies</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">RollingFile</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Appenders</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Loggers</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- amots --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Logger</span> <span class="attr">name</span>=<span class="string">"clearcontrol"</span> <span class="attr">level</span>=<span class="string">"INFO"</span> <span class="attr">additivity</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &lt;AppenderRef ref="console" /&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">AppenderRef</span> <span class="attr">ref</span>=<span class="string">"clearcontrolLog"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Logger</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">Logger</span> <span class="attr">name</span>=<span class="string">"clearofbase"</span> <span class="attr">level</span>=<span class="string">"INFO"</span> <span class="attr">additivity</span>=<span class="string">"false"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- &lt;AppenderRef ref="console" /&gt; --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">AppenderRef</span> <span class="attr">ref</span>=<span class="string">"clearcontrolLog"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Logger</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Loggers</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">Configuration</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>注：</p>
+<p>1、应用中不可直接使用日志系统(log4j、Logback)中的api，而应依赖使用日志框架的SLF4J中的框架，使用门面模式的日志模式的框架、有利于维护和各个类的日志处理方式统一。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.slf4j.Logger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger logger=LoggerFactory.getLogger(ABC.class);</span><br></pre></td></tr></table></figure>
+<p>2、对trace/debug/ingo级别的日志输出，必须使用条件形式或者使用占位符的方式。在使用logger输出时，如果配置级别为info，那么在输出日志时，如果不加，日志不会打印，但是会执行字符串拼接。对象会执行toString()方法，浪费系统资源，执行了操作，还没有打印日志。</p>
+<p>应加<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span>(logger.isDebugEnacled())&#123;</span><br><span class="line"></span><br><span class="line">    logger.debug(<span class="string">""</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">logger.debug(<span class="string">"processing debug with id:&#123;&#125; symbol:&#123;&#125;"</span>,id,symbol)</span><br></pre></td></tr></table></figure></p>
+</rollingfile>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/11/log4j2配置详解/" data-id="cjg11c9f1001880uwll8o3dq3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/log4j2/">log4j2</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/11/linux-权限管理/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          linux-权限管理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/11/ActiveMQ的简单实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ActiveMQ的简单实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

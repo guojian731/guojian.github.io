@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>rabbitmq-5-生产者和消费着的简单实现 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在之前介绍这么多之后，我们也需要进行一下java代码的实现。 direct交换器direct生产者123456789101112131415161718192021222324252627282930313233343536373839404142434445import com.rabbitmq.client.AMQP;import com.rabbitmq.client.Channel;im">
+<meta name="keywords" content="rabbitMQ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq-5-生产者和消费着的简单实现">
+<meta property="og:url" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在之前介绍这么多之后，我们也需要进行一下java代码的实现。 direct交换器direct生产者123456789101112131415161718192021222324252627282930313233343536373839404142434445import com.rabbitmq.client.AMQP;import com.rabbitmq.client.Channel;im">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq-5-生产者和消费着的简单实现/r5.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq-5-生产者和消费着的简单实现/rabbitmq1.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq-5-生产者和消费着的简单实现/rabbitmq2.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq-5-生产者和消费着的简单实现/rabbitmq3.png">
+<meta property="og:updated_time" content="2018-01-30T08:50:55.730Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="rabbitmq-5-生产者和消费着的简单实现">
+<meta name="twitter:description" content="在之前介绍这么多之后，我们也需要进行一下java代码的实现。 direct交换器direct生产者123456789101112131415161718192021222324252627282930313233343536373839404142434445import com.rabbitmq.client.AMQP;import com.rabbitmq.client.Channel;im">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq-5-生产者和消费着的简单实现/r5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-rabbitmq-5-生产者和消费着的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/" class="article-date">
+  <time datetime="2018-01-26T07:18:03.000Z" itemprop="datePublished">2018-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      rabbitmq-5-生产者和消费着的简单实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="rabbitmq-5-生产者和消费着的简单实现/r5.png" alt="jvm装载步骤"></p>
+<p>在之前介绍这么多之后，我们也需要进行一下java代码的实现。</p>
+<h1 id="direct交换器"><a href="#direct交换器" class="headerlink" title="direct交换器"></a>direct交换器</h1><h2 id="direct生产者"><a href="#direct生产者" class="headerlink" title="direct生产者"></a>direct生产者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.AMQP;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Channel;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Connection;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.ConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirectSender</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String QUEUE_NAME = <span class="string">"log-direct"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ConnectionFactory factory=<span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        factory.setHost(<span class="string">"192.168.14.128"</span>);</span><br><span class="line">        factory.setUsername(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPassword(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">	<span class="comment">//设置vhost</span></span><br><span class="line">        factory.setVirtualHost(<span class="string">"test_vhost"</span>);</span><br><span class="line">        Connection connection = factory.newConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * String queue:声明的队列名称</span></span><br><span class="line"><span class="comment">         * boolean durable：是否队列持久化</span></span><br><span class="line"><span class="comment">         * boolean exclusive：是否为私有</span></span><br><span class="line"><span class="comment">         * boolean autoDelete：最后一个消费者取消订阅的时候，对列是否自动移出</span></span><br><span class="line"><span class="comment">         * Map&lt;String,Object&gt; arguments</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">		</span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *定义交换器的类型</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.exchangeDeclare(QUEUE_NAME,<span class="string">"direct"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">20</span>;i++)&#123;</span><br><span class="line">            String message = <span class="string">"Hello World"</span>+i+<span class="string">"!"</span>;</span><br><span class="line">            channel.basicPublish(<span class="string">""</span>, QUEUE_NAME, <span class="keyword">null</span>, message.getBytes());</span><br><span class="line">            System.out.println(<span class="string">" [x] Sent '"</span> + message + <span class="string">"'"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        channel.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="direct消费者"><a href="#direct消费者" class="headerlink" title="direct消费者"></a>direct消费者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeoutException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirectCustomer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String QUEUE_NAME=<span class="string">"log-direct"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        ConnectionFactory factory=<span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        factory.setHost(<span class="string">"192.168.14.128"</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">        factory.setUsername(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPassword(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setVirtualHost(<span class="string">"test_vhost"</span>);</span><br><span class="line"></span><br><span class="line">        Connection connection=factory.newConnection();</span><br><span class="line">        <span class="keyword">final</span> Channel channel = connection.createChannel();</span><br><span class="line">		</span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * String queue:声明的队列名称</span></span><br><span class="line"><span class="comment">         * boolean durable：是否队列持久化</span></span><br><span class="line"><span class="comment">         * boolean exclusive：是否为私有</span></span><br><span class="line"><span class="comment">         * boolean autoDelete：最后一个消费者取消订阅的时候，对列是否自动移出</span></span><br><span class="line"><span class="comment">         * Map&lt;String,Object&gt; arguments</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *定义交换器的类型</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.exchangeDeclare(QUEUE_NAME,<span class="string">"direct"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 告诉服务器我们需要那个频道的消息，如果频道中有消息，就会执行回调函数</span></span><br><span class="line">        Consumer consumer=<span class="keyword">new</span> DefaultConsumer(channel)&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String message=<span class="keyword">new</span> String(body,<span class="string">"utf-8"</span>);</span><br><span class="line">                System.out.println(<span class="string">"Customer Received '"</span> + message + <span class="string">"'"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//订阅队列</span></span><br><span class="line">        channel.basicConsume(QUEUE_NAME, <span class="keyword">true</span>, consumer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们这里在消费者和生产者都定义了队列和交换器，如果定义的队列信息一致，那么rabbitmq不会做出任何改变。如果你在运行消费者的时候定义了队列需要持久化，而在生产者的时候定义队列不需要持久化，那么就会出现错误。为了验证我们之前说过的，订阅到rabbitmq队列的多个消费者是顺序接收消息的，所以我们先启动两个消费者，再启动生产者。</p>
+<p><strong>生产了创建了21条数据，并被两个消费者依次消费</strong></p>
+<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq1.png" alt="生产者"></p>
+<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq2.png" alt="消费者1"></p>
+<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq3.png" alt="消费者2"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/" data-id="cjg11c9fg001t80uw39gj21vg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/29/rabbitmq-7-设置集群/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rabbitmq-7-设置集群
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">rabbitmq-4-rabbitmq中常用设置语句</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

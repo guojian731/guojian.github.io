@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JVM-5-JIT编译及静态编译 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="对于执行的字节码会从两处进行优化。 第一，就是使用javac编译时。 第二，就是使用JIT（just-in-time）即时编译，在运行时。 编译时计算：如果在程序中出现了计算表达式，如果表达式的值能够在编译时确定，那么表达式的计算会提前到编译阶段，而不是在运行时计算。1234for(int i=0;i&amp;lt;60*60*24*1000；i++)&amp;#123;&amp;#125; 我们经常会用到这样的写法60">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM-5-JIT编译及静态编译">
+<meta property="og:url" content="http://yoursite.com/2017/12/12/JVM-5-JIT编译及静态编译/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="对于执行的字节码会从两处进行优化。 第一，就是使用javac编译时。 第二，就是使用JIT（just-in-time）即时编译，在运行时。 编译时计算：如果在程序中出现了计算表达式，如果表达式的值能够在编译时确定，那么表达式的计算会提前到编译阶段，而不是在运行时计算。1234for(int i=0;i&amp;lt;60*60*24*1000；i++)&amp;#123;&amp;#125; 我们经常会用到这样的写法60">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T18:26:48.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM-5-JIT编译及静态编译">
+<meta name="twitter:description" content="对于执行的字节码会从两处进行优化。 第一，就是使用javac编译时。 第二，就是使用JIT（just-in-time）即时编译，在运行时。 编译时计算：如果在程序中出现了计算表达式，如果表达式的值能够在编译时确定，那么表达式的计算会提前到编译阶段，而不是在运行时计算。1234for(int i=0;i&amp;lt;60*60*24*1000；i++)&amp;#123;&amp;#125; 我们经常会用到这样的写法60">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JVM-5-JIT编译及静态编译" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/JVM-5-JIT编译及静态编译/" class="article-date">
+  <time datetime="2017-12-11T17:17:15.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JVM-5-JIT编译及静态编译
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>对于执行的字节码会从两处进行优化。</p>
+<p><strong>第一，就是使用javac编译时。</strong></p>
+<p><strong>第二，就是使用JIT（just-in-time）即时编译，在运行时。</strong></p>
+<h1 id="编译时计算："><a href="#编译时计算：" class="headerlink" title="编译时计算："></a>编译时计算：</h1><p>如果在程序中出现了计算表达式，如果表达式的值能够在编译时确定，那么表达式的计算会提前到编译阶段，而不是在运行时计算。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">1000</span>；i++)&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们经常会用到这样的写法60<em>60</em>24*1000，那么是不是每次循环都都要进行一次？其实不是，因为在编译的时候，对于给定的表达式会自动计算并给出结果。</p>
+<p>字符串相加：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String info1=<span class="string">"ab"</span>;</span><br><span class="line"></span><br><span class="line">String info2=“a”+“b”；</span><br><span class="line"></span><br><span class="line">String <span class="keyword">const</span>=<span class="string">"a"</span>;</span><br><span class="line"></span><br><span class="line">String info3=<span class="keyword">const</span>+<span class="string">"b"</span>;</span><br></pre></td></tr></table></figure></p>
+<p>三个值的字面量都是”ab”，那么他们相等吗，info1==info2 是相等的，理由：因为在info的“+”并为在运行时进行，在编译的时候就进行了，所以不会产生新的对象。而info3有一个未知的变量，所以“+”在运行时进行，产生了新的对象。</p>
+<p>在变量字符串连接：</p>
+<p>例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addString2</span><span class="params">(String ...str1)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    String str3=<span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(String str:str1)&#123;</span><br><span class="line"></span><br><span class="line">            str3+=str1;        </span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当变量字符串相加时，系统会先将字符串转化为StringBuilder，然后做append操作。但是在for循环中，是每一次循环都建立一个StringBuilder对象，这样很费系统资源，正确的做法是在循环外建立一个StringBuilder，然后做append(）操作。S</p>
+<h1 id="JIT编译"><a href="#JIT编译" class="headerlink" title="JIT编译"></a>JIT编译</h1><p>java虚拟机有三种执行方式，分别是解释执行(-Xint)、混合模式(-mixed mode )、编译执行(-Xcomp),默认是混合模式。</p>
+<p>解释执行表示全部代码均解释执行，不做任何JIT编译，使用java -Xint -version来开启。</p>
+<p>混合模式是根据是否会是热点代码，如果是，都会编译执行。</p>
+<p>编译模式，所有代码均编译执行。</p>
+<p>一般来说，编译模式的执行效率会远远高于解释模式。大家可以使用同一段代码根据-Xint、-Xcomp来比较。</p>
+<h1 id="JIT编译阀值："><a href="#JIT编译阀值：" class="headerlink" title="JIT编译阀值："></a>JIT编译阀值：</h1><p>-client模式下，阀值是1500次</p>
+<p>-server模式下，阀值是10000次。</p>
+<p>使用-XX:CompileThreshold可以设置这个阀值。（-XX:CompileThreshold=500）</p>
+<p>使用-XX:PrintCompilation可以打印出即时编译的日志。（-XX:PrintCompilation）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/12/JVM-5-JIT编译及静态编译/" data-id="cjg11c9ek000j80uw7d1m8mdg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/12/JVM-6-垃圾回收概念与算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JVM-6-垃圾回收概念与算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/12/JVM-4-装载（加载、连接、初始化）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JVM-4-装载（加载、连接、初始化）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

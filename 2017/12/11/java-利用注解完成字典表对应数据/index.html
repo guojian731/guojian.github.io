@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>java-利用注解完成字典表对应数据 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+<meta name="keywords" content="java基础,注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-利用注解完成字典表对应数据">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/java-利用注解完成字典表对应数据/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T09:37:46.933Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-利用注解完成字典表对应数据">
+<meta name="twitter:description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-java-利用注解完成字典表对应数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/java-利用注解完成字典表对应数据/" class="article-date">
+  <time datetime="2017-12-11T09:33:56.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java-利用注解完成字典表对应数据
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计思路："><a href="#设计思路：" class="headerlink" title="设计思路："></a>设计思路：</h1><p><strong>1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男”</strong></p>
+<p><strong>2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> DictACC &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">code</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.建立一个类BV，code表示数据库存储的名字，name表示需要回显的名字</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BV</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String code=<span class="string">"code"</span>;    </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String name=<span class="string">"name"</span>;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.在pojo中字段sex，再建立sex_n表示要回显的字段（_n必须对应）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType_n;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex_n;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType</span><span class="params">(String orgType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType = orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType_n</span><span class="params">(String orgType_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType_n = orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex_n</span><span class="params">(String sex_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex_n = sex_n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>5.代码如下：map相当与数据库中取出来的数据库字典表</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        </span><br><span class="line">        HashMap&lt;String, String&gt; map=<span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"部门1"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"部门2"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"3"</span>, <span class="string">"部门3"</span>);</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"男"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"女"</span>);</span><br><span class="line">        </span><br><span class="line">        User user=<span class="keyword">new</span> User();</span><br><span class="line">        User user1=<span class="keyword">new</span> User();</span><br><span class="line">        </span><br><span class="line">        List&lt;User&gt; userList=<span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">        userList.add(user);</span><br><span class="line">        userList.add(user1);</span><br><span class="line">        Doaction.fill(userList,map);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userList.size(); i++) &#123;</span><br><span class="line">            System.out.println(userList.get(<span class="number">0</span>).getOrgType_n());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>6.利用反射完成对sex_n等赋值</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Doaction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(List&lt;T&gt; pojoList, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = getDictMap(pojoList.get(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = map.get(<span class="string">"codeMap"</span>);</span><br><span class="line">        Map&lt;String, Field&gt; nameMap = map.get(<span class="string">"nameMap"</span>);</span><br><span class="line">        <span class="keyword">for</span> (T pojo:pojoList) &#123;</span><br><span class="line">            fillname(pojo, codeMap, nameMap, dictmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取带DictACC字典注解的字段，并拼接成Map </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Map&lt;String, Map&lt;String, Field&gt;&gt; getDictMap(T t) &#123;</span><br><span class="line">        <span class="comment">//字典code值组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        <span class="comment">//需要从code值转成value组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; nameMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        List&lt;Field&gt; fieldlist =<span class="keyword">new</span> ArrayList&lt;Field&gt;();</span><br><span class="line">        <span class="comment">//获取父类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getSuperclass().getDeclaredFields()));</span><br><span class="line">        <span class="comment">//获取本类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getDeclaredFields()));</span><br><span class="line">        <span class="keyword">for</span> (Field field : fieldlist) &#123;</span><br><span class="line">            <span class="keyword">if</span> (field.getAnnotation(DictACC.class) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                DictACC ann = field.getAnnotation(DictACC.class);</span><br><span class="line">                <span class="keyword">if</span> (ann.code().equals(BV.code)) &#123;</span><br><span class="line">                    codeMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ann.code().equals(BV.name)) &#123;</span><br><span class="line">                    nameMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, Map&lt;String, Field&gt;&gt;();</span><br><span class="line">        map.put(<span class="string">"codeMap"</span>, codeMap);</span><br><span class="line">        map.put(<span class="string">"nameMap"</span>, nameMap);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fillname</span><span class="params">(T t, Map&lt;String, Field&gt; codeMap,</span></span></span><br><span class="line"><span class="function"><span class="params">            Map&lt;String, Field&gt; nameMap, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;String, Field&gt; entry : nameMap.entrySet()) &#123;</span><br><span class="line">            <span class="comment">//获取codekey</span></span><br><span class="line">            String codeKey = entry.getKey().substring(<span class="number">0</span>,</span><br><span class="line">                    entry.getKey().length() - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (codeMap.get(codeKey) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                Field field = codeMap.get(codeKey);</span><br><span class="line">                <span class="comment">//获取code的值</span></span><br><span class="line">                String value = String.valueOf(field.get(t));</span><br><span class="line">                String targetKey = codeKey.split(<span class="string">"@"</span>)[<span class="number">0</span>] + <span class="string">"@"</span> + value;</span><br><span class="line">                <span class="keyword">if</span> (dictmap.containsKey(targetKey)) &#123;</span><br><span class="line">                    <span class="comment">//从字典表获取那么中应该存的值</span></span><br><span class="line">                    String targetValue = dictmap.get(targetKey);</span><br><span class="line">                    Field targetField = entry.getValue();</span><br><span class="line">                    targetField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                    <span class="comment">//给name赋值</span></span><br><span class="line">                    targetField.set(t, targetValue);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/11/java-利用注解完成字典表对应数据/" data-id="cjg11c9em000l80uw6lvnecnn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java基础/">java基础</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/注解/">注解</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/11/JVM-1-内部构成/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JVM-1-内部构成
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/11/mybatis-xml文件解释/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">mybatis-xml文件解释</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

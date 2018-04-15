@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>JVM-6-垃圾回收概念与算法 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GC中的垃圾，特指存在于内存中的、不会被使用的对象，而“回收”，相当于把垃圾桶“倒掉”。 常用的垃圾回收算法 1、引用计数法对于一个对象A，任何一个对象引用了A，则A的计数器+1，当引用失效后，引用计数器-1。只要对象A的计数器为0，那么A对象就不会被引用。 它有两个严重的问题： 无法处理循环引用的情况。因此，在Java的垃圾回收器中，没有使用这种算法。 引用计数器要求在每次因引用产生和消除时，需">
+<meta name="keywords" content="JVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM-6-垃圾回收概念与算法">
+<meta property="og:url" content="http://yoursite.com/2017/12/12/JVM-6-垃圾回收概念与算法/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="GC中的垃圾，特指存在于内存中的、不会被使用的对象，而“回收”，相当于把垃圾桶“倒掉”。 常用的垃圾回收算法 1、引用计数法对于一个对象A，任何一个对象引用了A，则A的计数器+1，当引用失效后，引用计数器-1。只要对象A的计数器为0，那么A对象就不会被引用。 它有两个严重的问题： 无法处理循环引用的情况。因此，在Java的垃圾回收器中，没有使用这种算法。 引用计数器要求在每次因引用产生和消除时，需">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T18:26:55.417Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JVM-6-垃圾回收概念与算法">
+<meta name="twitter:description" content="GC中的垃圾，特指存在于内存中的、不会被使用的对象，而“回收”，相当于把垃圾桶“倒掉”。 常用的垃圾回收算法 1、引用计数法对于一个对象A，任何一个对象引用了A，则A的计数器+1，当引用失效后，引用计数器-1。只要对象A的计数器为0，那么A对象就不会被引用。 它有两个严重的问题： 无法处理循环引用的情况。因此，在Java的垃圾回收器中，没有使用这种算法。 引用计数器要求在每次因引用产生和消除时，需">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JVM-6-垃圾回收概念与算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/JVM-6-垃圾回收概念与算法/" class="article-date">
+  <time datetime="2017-12-11T18:09:45.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JVM-6-垃圾回收概念与算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>GC中的垃圾，特指存在于内存中的、不会被使用的对象，而“回收”，相当于把垃圾桶“倒掉”。</p>
+<p>常用的垃圾回收算法</p>
+<h1 id="1、引用计数法"><a href="#1、引用计数法" class="headerlink" title="1、引用计数法"></a>1、引用计数法</h1><p>对于一个对象A，任何一个对象引用了A，则A的计数器+1，当引用失效后，引用计数器-1。只要对象A的计数器为0，那么A对象就不会被引用。</p>
+<p>它有两个严重的问题：</p>
+<p><strong>无法处理循环引用的情况。因此，在Java的垃圾回收器中，没有使用这种算法。</strong></p>
+<p><strong>引用计数器要求在每次因引用产生和消除时，需要伴随一次加法操作和减法操作，对系统性能呢个有一定的影响。</strong></p>
+<p>例子：如果A、B对象相互引用，计数器均不为0，但是没有第三个对象引用他们，A，B应该是被回收的对象，但是由于他们两个相互引用，从而使垃圾回收期无法识别，引起内存泄漏。</p>
+<h1 id="2、标记清除法"><a href="#2、标记清除法" class="headerlink" title="2、标记清除法"></a>2、标记清除法</h1><p>标记清除法是现代垃圾回收算法的思想基础。标记清除算法将垃圾回收分为两个阶段：标记阶段和清除阶段。一个可行的实现是，在标记阶段，首先通过根节点，标记所有从根节点开始的可达对象。因此，未被标记的对象就是未被引用的垃圾对象。然后，在清除阶段，清除所有未被标记的对象。标记清除算法可能产生最大的为题是空间碎片。</p>
+<p><strong>标记清除算法先通过根节点标记所有可达对象，然后清除所有不可达对象，回收的空间是不连续的，不连续的空间的工作效率要低于连续的空间。这就是该算法最大的缺点。</strong></p>
+<h1 id="3、复制算法"><a href="#3、复制算法" class="headerlink" title="3、复制算法"></a>3、复制算法</h1><p>复制算法的核心思想：将原有的空间内存分为两块，每次只使用其中一块，在垃圾回收时，将正在使用内存中的存活对象复制到未使用的内存块中，之后，清除正在使用的内存块中的所有对象，交换两个内存的角色，完成垃圾回收。</p>
+<p>当需要回收的垃圾对象很多，需要复制的对象很少的时候，这个算法效率是很高的。此算法是不会产生空间碎片的，但是复制算法的代价就是将系统内存折半，因此单纯的复制算法让人难以接受。</p>
+<p>在Java新生代的串行收集器中，使用了复制算法的思想。新生代分为eden空间，from区和to区三个部分。from区和to区就是两块内存大小相等，地位相等，可进行角色转换的内存块。from和to空间也被成为survivor空间，即存活者空间，用于存放未被回收的对象。</p>
+<h1 id="4、标记压缩法"><a href="#4、标记压缩法" class="headerlink" title="4、标记压缩法"></a>4、标记压缩法</h1><p>因为复制算法适合只使用于垃圾对象多，存活对象少的情况，那么老年代这种垃圾对象少，存活对象多的情况，是不适合用复制算法的。标记压缩算法也是从根节点开始，对所有可达的对象做一次标记，它并不是简单的清理未标记的对象，而是将所有存活的对象压缩到内存的另一端，然后清理边界之外的所有对象。<br>标记压缩算法最终效果等同于标记清除法执行完成后，再进行一次内存碎片整理，因此，也可以把它成为标记清除压缩算法。</p>
+<h1 id="5、分代算法"><a href="#5、分代算法" class="headerlink" title="5、分代算法"></a>5、分代算法</h1><p>前面的几种算法，他们没法完全替代其他算法，都有自己的优点和缺点。根据垃圾回收对象的特性，使用合适的算法回收，才是明智的选择。<br>分代算法就是基于这种思想，它将内存区间根据对象的特点分为几块，根据每块内存区间的特点，使用不同的回收算法，一提高垃圾回收的效率。</p>
+<h1 id="6、分区算法"><a href="#6、分区算法" class="headerlink" title="6、分区算法"></a>6、分区算法</h1><p>分区算法将按照对象的生命周期长短划分成两个部分，分区算法将整个堆空间划分成连续的不同的小区间。每一个小区间都独立使用，独立回收。这种算法的好处是可以控制一次回收多少个小区间。</p>
+<p>一般来说，在相同条件下，堆空间越大，一次GC所需要的时间越长，从而产生的停顿越长，即stop-the-world。为了更好的控制GC产生的停顿时间，将一块大的内存区域分割成多个小块，根据目标的停顿时间，每次合理的回收若干个小区间，而不是整个堆空间，从而减少一次GC的停顿。</p>
+<p>jdk1.8中的G1垃圾回收器就是使用的这种方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/12/JVM-6-垃圾回收概念与算法/" data-id="cjg11c9e9000680uwvb5lur0s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/">JVM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/12/JVM-7-垃圾回收器介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          JVM-7-垃圾回收器介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/12/JVM-5-JIT编译及静态编译/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JVM-5-JIT编译及静态编译</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

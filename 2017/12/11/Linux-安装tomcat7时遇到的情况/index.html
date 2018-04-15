@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Linux-安装tomcat7时遇到的情况 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="首先我们需要在linux上安装jdk，linux-centOS7下安装jdk1.8。 解压文件很简单，这里主要是我分享一下我遇到的问题 1、下载apache-tomcat-8.0.47.tar.gz包并且解压，命令为tar-zxvf  apache-tomcat-8.0.47.tar.gz 2、在解压的文件下，新建目录logs(与bin目录平级)，这个目录是用来记录日志的。不建的话，tomcat会">
+<meta name="keywords" content="linux,tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux-安装tomcat7时遇到的情况">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/Linux-安装tomcat7时遇到的情况/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="首先我们需要在linux上安装jdk，linux-centOS7下安装jdk1.8。 解压文件很简单，这里主要是我分享一下我遇到的问题 1、下载apache-tomcat-8.0.47.tar.gz包并且解压，命令为tar-zxvf  apache-tomcat-8.0.47.tar.gz 2、在解压的文件下，新建目录logs(与bin目录平级)，这个目录是用来记录日志的。不建的话，tomcat会">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-11T09:23:08.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux-安装tomcat7时遇到的情况">
+<meta name="twitter:description" content="首先我们需要在linux上安装jdk，linux-centOS7下安装jdk1.8。 解压文件很简单，这里主要是我分享一下我遇到的问题 1、下载apache-tomcat-8.0.47.tar.gz包并且解压，命令为tar-zxvf  apache-tomcat-8.0.47.tar.gz 2、在解压的文件下，新建目录logs(与bin目录平级)，这个目录是用来记录日志的。不建的话，tomcat会">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Linux-安装tomcat7时遇到的情况" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/Linux-安装tomcat7时遇到的情况/" class="article-date">
+  <time datetime="2017-12-11T07:26:23.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux-安装tomcat7时遇到的情况
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们需要在linux上安装jdk，<a href="http://guojian.fun/2017/12/11/linux-%E5%AE%89%E8%A3%85jdk1-8/" target="_blank" rel="noopener">linux-centOS7下安装jdk1.8</a>。</p>
+<p>解压文件很简单，这里主要是我分享一下我遇到的问题</p>
+<p><strong>1、下载apache-tomcat-8.0.47.tar.gz包并且解压，命令为tar-zxvf  apache-tomcat-8.0.47.tar.gz</strong></p>
+<p><strong>2、在解压的文件下，新建目录logs(与bin目录平级)，这个目录是用来记录日志的。不建的话，tomcat会提示你的。</strong></p>
+<p><strong>3、因为我用的是centos7，因为防火墙的原因是不会在外网访问的。所以我们要讲8080端口写入到防火墙了。</strong></p>
+<p>注意：防火墙操作需要root用户，所以不是root用户先切换到root用户。</p>
+<p>firewall-cmd –zone=public(作用域) –add-port=80/tcp(端口和访问类型) –permanent(永久生效)</p>
+<p>添加端口：firewall-cmd –zone=public –add-port=8080/tcp –permanent</p>
+<p>重启防火墙：firewall-cmd –reload</p>
+<p>检查8080端口是否添加到：firewall-cmd –list-ports</p>
+<p>如果以后想删除,命令为firewall-cmd –zone= public –remove-port=8080/tcp –permanent（这句话现在就不要执行了）。</p>
+<p><strong>4、将bin目录下的权限都改一下，否则无法执行。</strong></p>
+<p>在bin的目录下 chmod 775 * </p>
+<p><strong>5、在logs目录下查看日志catalina.out</strong></p>
+<p>Error: Could not find or load main class org.apache.catalina.startup.Bootstrap</p>
+<p>我在官网上重新下了不同版本的包，均是这个错误。然后在资料上查询是jvm的版本低于tomcat支持的版本，即tomcat的版本过高，所以我尝试用了版本较低的tomcat版本，错误消失。</p>
+<p><strong>6、进行访问192.168.14.172:8080 访问成功，我们linux上安装tomcat就结束了。</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/11/Linux-安装tomcat7时遇到的情况/" data-id="cjg11c9en000o80uw0iawz5xq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/11/mybatis-xml文件解释/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mybatis-xml文件解释
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/11/linux-安装jdk1-8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">linux-centOS7下安装jdk1.8</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

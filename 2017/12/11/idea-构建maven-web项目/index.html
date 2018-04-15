@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>idea-构建maven web项目 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="idea配置maven在File-OtherSettings-Default Settings…下进行maven配置  选择maven进行maven项目配置。  然后设置maven下的runner  新建项目点击File-new…-project  groupId 是组，ArtifactId是项目名称。    然后进行项目构建，当maven显示构建成功，完成后，说明我们的项目构建成功了。构建完成的">
+<meta name="keywords" content="idea">
+<meta property="og:type" content="article">
+<meta property="og:title" content="idea-构建maven web项目">
+<meta property="og:url" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="idea配置maven在File-OtherSettings-Default Settings…下进行maven配置  选择maven进行maven项目配置。  然后设置maven下的runner  新建项目点击File-new…-project  groupId 是组，ArtifactId是项目名称。    然后进行项目构建，当maven显示构建成功，完成后，说明我们的项目构建成功了。构建完成的">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea1.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea2.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea3.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea4.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea5.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea6.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea7.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea8.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea9.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea11.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea12.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea13.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea14.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea15.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea16.png">
+<meta property="og:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea17.png">
+<meta property="og:updated_time" content="2017-12-11T03:38:00.311Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="idea-构建maven web项目">
+<meta name="twitter:description" content="idea配置maven在File-OtherSettings-Default Settings…下进行maven配置  选择maven进行maven项目配置。  然后设置maven下的runner  新建项目点击File-new…-project  groupId 是组，ArtifactId是项目名称。    然后进行项目构建，当maven显示构建成功，完成后，说明我们的项目构建成功了。构建完成的">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/11/idea-构建maven-web项目/idea-构建maven-web项目/idea1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-idea-构建maven-web项目" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/11/idea-构建maven-web项目/" class="article-date">
+  <time datetime="2017-12-11T02:49:12.000Z" itemprop="datePublished">2017-12-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      idea-构建maven web项目
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="idea配置maven"><a href="#idea配置maven" class="headerlink" title="idea配置maven"></a>idea配置maven</h1><p>在File-OtherSettings-Default Settings…下进行maven配置</p>
+<p><img src="idea-构建maven-web项目/idea1.png" alt="你想输入的替代文字"></p>
+<p>选择maven进行maven项目配置。</p>
+<p><img src="idea-构建maven-web项目/idea2.png" alt="你想输入的替代文字"></p>
+<p>然后设置maven下的runner</p>
+<p><img src="idea-构建maven-web项目/idea3.png" alt="你想输入的替代文字"></p>
+<h1 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h1><p>点击File-new…-project</p>
+<p><img src="idea-构建maven-web项目/idea4.png" alt="你想输入的替代文字"></p>
+<p>groupId 是组，ArtifactId是项目名称。</p>
+<p><img src="idea-构建maven-web项目/idea5.png" alt="你想输入的替代文字"></p>
+<p><img src="idea-构建maven-web项目/idea6.png" alt="你想输入的替代文字"></p>
+<p><img src="idea-构建maven-web项目/idea7.png" alt="你想输入的替代文字"></p>
+<p>然后进行项目构建，当maven显示构建成功，完成后，说明我们的项目构建成功了。构建完成的标志就是下图所示</p>
+<p><img src="idea-构建maven-web项目/idea8.png" alt="你想输入的替代文字"></p>
+<p>期间错误：</p>
+<p>有时候会显示maven一直在下载，浪费很长时间也没有下载下来，这个时候可以修改一下maven的Settings.xml的配置文件，增加一个国内的镜像，我添加的是阿里巴巴的镜像。</p>
+<p><img src="idea-构建maven-web项目/idea9.png" alt="你想输入的替代文字"></p>
+<p><strong>建议：期间先使用mvn -v 命令查看maven和jdk版本，最好与idea配置的maven一致。</strong></p>
+<h1 id="配置项目"><a href="#配置项目" class="headerlink" title="配置项目"></a>配置项目</h1><p>在main下新建一个java文件，并设置为Sources用来存放java文件，将resources设置为Resources。配置完成后是样子。</p>
+<p><img src="idea-构建maven-web项目/idea11.png" alt="你想输入的替代文字"></p>
+<p>设置Artfacts，这个是设置输出目录，如果这个不设置，之后就算是配置了tomcat也无法启动项目，因为tomcat找不到相应的目录。</p>
+<p><img src="idea-构建maven-web项目/idea12.png" alt="你想输入的替代文字"></p>
+<h1 id="配置Tomcat"><a href="#配置Tomcat" class="headerlink" title="配置Tomcat"></a>配置Tomcat</h1><p><img src="idea-构建maven-web项目/idea13.png" alt="你想输入的替代文字"></p>
+<p><img src="idea-构建maven-web项目/idea14.png" alt="你想输入的替代文字"></p>
+<p>然后选择Deployment选项，选择我们刚才设置的Artfacts。Application Context是设置项目名称，不设置就是没有。</p>
+<p><img src="idea-构建maven-web项目/idea15.png" alt="你想输入的替代文字"></p>
+<p><img src="idea-构建maven-web项目/idea16.png" alt="你想输入的替代文字"></p>
+<p>然后启动tomcat，配置完成</p>
+<p><img src="idea-构建maven-web项目/idea17.png" alt="你想输入的替代文字"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/11/idea-构建maven-web项目/" data-id="cjg11c9es000v80uw4h1qf3bj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/idea/">idea</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/12/11/java多线程-join/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          java多线程-join()
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/10/Spring-1-基础概念之依赖装配/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Spring-1-基础概念之依赖装配</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ActiveMQ/">ActiveMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IO/">IO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/idea/">idea</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java基础/">java基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java多线程/">java多线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jdk/">jdk</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/log4j2/">log4j2</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rabbitMQ/">rabbitMQ</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springBoot/">springBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springMVC/">springMVC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tomcat/">tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/微服务/">微服务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/杂谈/">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/注解/">注解</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ActiveMQ/" style="font-size: 12px;">ActiveMQ</a> <a href="/tags/IO/" style="font-size: 10px;">IO</a> <a href="/tags/JVM/" style="font-size: 20px;">JVM</a> <a href="/tags/idea/" style="font-size: 10px;">idea</a> <a href="/tags/java基础/" style="font-size: 10px;">java基础</a> <a href="/tags/java多线程/" style="font-size: 16px;">java多线程</a> <a href="/tags/jdk/" style="font-size: 10px;">jdk</a> <a href="/tags/linux/" style="font-size: 14px;">linux</a> <a href="/tags/log4j2/" style="font-size: 10px;">log4j2</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/rabbitMQ/" style="font-size: 18px;">rabbitMQ</a> <a href="/tags/spring/" style="font-size: 14px;">spring</a> <a href="/tags/springBoot/" style="font-size: 10px;">springBoot</a> <a href="/tags/springMVC/" style="font-size: 10px;">springMVC</a> <a href="/tags/tomcat/" style="font-size: 10px;">tomcat</a> <a href="/tags/微服务/" style="font-size: 12px;">微服务</a> <a href="/tags/杂谈/" style="font-size: 10px;">杂谈</a> <a href="/tags/注解/" style="font-size: 10px;">注解</a> <a href="/tags/设计模式/" style="font-size: 10px;">设计模式</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/04/15/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/06/rabbitmq-8-负载均衡与故障转移/">rabbitmq-8-负载均衡与故障转移</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/29/rabbitmq-7-设置集群/">rabbitmq-7-设置集群</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/">rabbitmq-5-生产者和消费着的简单实现</a>
+          </li>
+        
+          <li>
+            <a href="/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/">rabbitmq-4-rabbitmq中常用设置语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
