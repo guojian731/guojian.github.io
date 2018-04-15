@@ -87,25 +87,25 @@
 <meta property="og:site_name" content="Notes">
 <meta property="og:description" content="之前我们已经设置了单机版的rabbitmq，并且设置了user、exchange、queue、vhost等。现在我们要在我们的电脑里设置集群啦。我使用的是虚拟机，所以很轻松的就复制了之前的rabbitmq环境来进行集群设置。 集群你要知道之前我们了解了一些rabbitmq的基础知识，包括单机版安装、rabbitmq的构成等。如果你的rabbitmq服务器遇到内存崩溃了或者断电的情况，那么我们该进">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/r7.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq1.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq2.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq3.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq4.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq5.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq6.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq7.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq8.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq9.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq10.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq11.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq12.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/rabbitmq13.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/r7.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq2.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq3.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq4.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq5.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq6.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq7.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq8.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq9.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq10.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq11.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq12.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq13.png">
 <meta property="og:updated_time" content="2018-02-06T08:41:43.879Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rabbitmq-7-设置集群">
 <meta name="twitter:description" content="之前我们已经设置了单机版的rabbitmq，并且设置了user、exchange、queue、vhost等。现在我们要在我们的电脑里设置集群啦。我使用的是虚拟机，所以很轻松的就复制了之前的rabbitmq环境来进行集群设置。 集群你要知道之前我们了解了一些rabbitmq的基础知识，包括单机版安装、rabbitmq的构成等。如果你的rabbitmq服务器遇到内存崩溃了或者断电的情况，那么我们该进">
-<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq-7-设置集群/r7.png">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/r7.png">
 
 
 
@@ -335,7 +335,7 @@
       
 
       
-        <p><img src="rabbitmq-7-设置集群/r7.png" alt="jvm装载步骤"></p>
+        <p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/r7.png" alt="jvm装载步骤"></p>
 <p>之前我们已经设置了单机版的rabbitmq，并且设置了user、exchange、queue、vhost等。现在我们要在我们的电脑里设置集群啦。我使用的是虚拟机，所以很轻松的就复制了之前的rabbitmq环境来进行集群设置。</p>
 <h1 id="集群你要知道"><a href="#集群你要知道" class="headerlink" title="集群你要知道"></a>集群你要知道</h1><p><em>之前我们了解了一些rabbitmq的基础知识，包括单机版安装、rabbitmq的构成等。如果你的rabbitmq服务器遇到内存崩溃了或者断电的情况，那么我们该进行集群啦。</em></p>
 <h2 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h2><p>到目前为止，我们对于rabbitmq的内部还算不上了解。确实，我们知道队列和交换器的含义，以及如何将它们绑定在一起。也知道该使用哪种类型的交换器。但是背后发生了什么，这是我们不知道的。Rabbitmq是如何记录所有你使用的各种基础构件，同时它们又如何装配成一个消息通讯服务器的呢？</p>
@@ -387,34 +387,34 @@
 <li>停止端口号为5673的应用程序。</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost stop_app</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq1.png" alt="jvm装载步骤"></p>
 <ul>
 <li>将重设第二个节点的元数据和状态为清空的状态：</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost reset</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq2.png" alt="jvm装载步骤"></p>
 <ul>
 <li>将其加入集群</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost join_cluster rabbit@localhost</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq3.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq3.png" alt="jvm装载步骤"></p>
 <ul>
 <li>重新启动第二个节点的应用程序，它就变成集群中的一元了</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost start_app</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq4.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq4.png" alt="jvm装载步骤"></p>
 <ul>
 <li>查看集群信息</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl cluster_status</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq5.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq5.png" alt="jvm装载步骤"></p>
 <p>我们可以看到，集群中有两个节点，而且都是运行状态。</p>
 <p>我们在将第三个节点添加进来。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq6.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq6.png" alt="jvm装载步骤"></p>
 <h2 id="设置节点类型"><a href="#设置节点类型" class="headerlink" title="设置节点类型"></a>设置节点类型</h2><p>我们通过./rabbitmqctl cluster_status命令查看了有关于节点的信息，我们发现我们添加的节点都是disc的，也就是数据都存储在硬盘上的。如何设置节点存储的信息在ram(内存中)呢。</p>
 <p>首先我们先停止我们刚才加进来的5674节点，重新将它配制成ram节点，命令也非常简单。为什么我要先配置5672节点为disc之后，在设置为ram呢，其实没有前后关系，只是自己尝试去停止节点之后，再应用节点。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5674<span class="meta">@localhost</span> join_cluster --ram rabbit<span class="meta">@localhost</span></span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq7.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq7.png" alt="jvm装载步骤"></p>
 <p>我们这就可以看到集群5674节点为ram节点了。</p>
 <h1 id="多服务器集群"><a href="#多服务器集群" class="headerlink" title="多服务器集群"></a>多服务器集群</h1><p><em>之前我们在一台机器上设置了集群，现在我们在试试在多台机器上设置集群，我们这里使用虚拟机建立三个服务器。集群需要rabbitmq、erlang的版本最好是一模一样，否则可能发生错误。</em></p>
 <p>首先，我们需要知道rabbitmq集群对延迟非常敏感，应当指在本地局域网内使用。使用集群来提供地理可用性或者通过WAN来路由消息，都会导致超时和怪异的集群行为，因此这是不明智的。</p>
@@ -422,9 +422,9 @@
 <p><em>因为我们是一台服务器一个rabbitmq服务，那么我们就不用在此之前停止management插件了。</em></p>
 <h2 id="修改Erlang-cookie"><a href="#修改Erlang-cookie" class="headerlink" title="修改Erlang cookie"></a>修改Erlang cookie</h2><p>多服务器集群(一个服务器一个rabbitmq服务)与单机集群(一个服务器多个rabbitmq服务)。使每个节点的Erlang cookie相同，他们就可以互相通信。如果节点的Erlang cookie字符串不相同，那么当Erlang cookie节点尝试相互认证时会导致集群失败。</p>
 <p>那么Erlang cookie在哪呢，官网上有介绍，当然也有最简单的办法，就是在先运行一下rabbitmq，然后查看日志，里面有你想要的信息。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq8.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq8.png" alt="jvm装载步骤"></p>
 <p>在日志中可以看到我们的节点名称、home路径、日志路径等。我们根据home路径可知，.erlang.cookie文件就在root下。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq9.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq9.png" alt="jvm装载步骤"></p>
 <p>修改一下.erlang.cookie的内容吧，做为测试，我将.erlang.cookie的内容改成AAAAAAAAAAAAAAAAAAAAAAAAA。</p>
 <ul>
 <li>因为.erlang.cookie是只读的，修改之前我们应该有修改权限</li>
@@ -444,7 +444,7 @@
 <h2 id="修改hostname"><a href="#修改hostname" class="headerlink" title="修改hostname"></a>修改hostname</h2><p>因为rabbitmq的hostname不能是系统默认的，所以我们在做集群之前需要先改一下hostname。</p>
 <p>查看hostname命令，然后可以可以在/etc/hostname下修改。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq10.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq10.png" alt="jvm装载步骤"></p>
 <font color="red" size="4"><em>修改hostname之后需要重新启动，重启后生效。</em></font>
 
 <p>然后进行与单服务器集群一样的设置。</p>
@@ -452,13 +452,13 @@
 <font color="red" size="4"><em>但是进行添加节点的时候，发现出问题了，问题如下</em></font>
 
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl join_cluster rabbit@guo128</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq11.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq11.png" alt="jvm装载步骤"></p>
 <p>这是因为两个节点需要相互解析，所以最好在每个服务器上都记录一下服务器的ip以及名称。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq12.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq12.png" alt="jvm装载步骤"></p>
 <p>设置好以后继续执行。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl join_cluster rabbit@guo128</span><br><span class="line">./rabbitmqctl start_app</span><br></pre></td></tr></table></figure>
 <p>最后查看一下集群状态，成功！</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq13.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq13.png" alt="jvm装载步骤"></p>
 
       
     </div>

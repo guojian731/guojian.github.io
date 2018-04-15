@@ -87,15 +87,15 @@
 <meta property="og:site_name" content="Notes">
 <meta property="og:description" content="准备准备环境：centos7 jdk1.8的压缩包：jdk-8u144-linux-x64.tar.gz 在新建的centos7下，我新建了一个用户guojian(我的名字)。 卸载OpenJDK自带的linux下会自带OpenJDK，有时候我们并不了解，所以建议删除它。 使用rpm -qa|grep jdk；检查一下。  发现确实存在两个版本1.7和1.8，使用yum -y remove jav">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux-安装jdk1-8/linux1.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux-安装jdk1-8/linux2.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux-安装jdk1-8/linux3.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux-安装jdk1-8/linux4.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux2.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux3.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux4.png">
 <meta property="og:updated_time" content="2017-12-11T07:23:36.348Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux-centOS7下安装jdk1.8">
 <meta name="twitter:description" content="准备准备环境：centos7 jdk1.8的压缩包：jdk-8u144-linux-x64.tar.gz 在新建的centos7下，我新建了一个用户guojian(我的名字)。 卸载OpenJDK自带的linux下会自带OpenJDK，有时候我们并不了解，所以建议删除它。 使用rpm -qa|grep jdk；检查一下。  发现确实存在两个版本1.7和1.8，使用yum -y remove jav">
-<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux-安装jdk1-8/linux1.png">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux1.png">
 
 
 
@@ -330,17 +330,17 @@
 <p>在新建的centos7下，我新建了一个用户guojian(我的名字)。</p>
 <h1 id="卸载OpenJDK"><a href="#卸载OpenJDK" class="headerlink" title="卸载OpenJDK"></a>卸载OpenJDK</h1><p>自带的linux下会自带OpenJDK，有时候我们并不了解，所以建议删除它。</p>
 <p>使用rpm -qa|grep jdk；检查一下。</p>
-<p><img src="linux-安装jdk1-8/linux1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux1.png" alt="你想输入的替代文字"></p>
 <p>发现确实存在两个版本1.7和1.8，使用yum -y remove java java* 进行批量卸载。</p>
 <p>提示我们必须使用root用户才能卸载，我们登录root用户执行即可。</p>
 <p>yum -y remove java copy-java* 把copy-jdk开头的也卸载掉。 </p>
 <p>卸载完成后，使用exit退出root用户。</p>
 <h1 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h1><p>查看一下自己目录的位置：$HOME</p>
-<p><img src="linux-安装jdk1-8/linux2.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux2.png" alt="你想输入的替代文字"></p>
 <p>我们进入/home/guojian下使用mkdir 分别两个文件夹download(用下上传下载用),usr(作为安装软件的目录)。</p>
 <p>用ftp软件工具将下载好的压缩包上传到download下。</p>
 <p>然后进行解压。<br>tar-zxvf jdk-8u144-linux-x64.tar.gz</p>
-<p><img src="linux-安装jdk1-8/linux3.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux3.png" alt="你想输入的替代文字"></p>
 <p>使用ll命令检查一下，发现解压成功。<br>然后将文件夹更名为jdk1.8</p>
 <p>mv jdk1.8.0_144  jdk1.8</p>
 <p>将文件夹移动到/home/guojian/usr下</p>
@@ -355,7 +355,7 @@
 <p>保存退出。</p>
 <p>我们使用java -version检查一下是否配置成功。<br>发现没有，原因是.bash_profile文件的原因，是用户下的配置文件，每次用户登录的时候自动载入，所以我们需要重新登录一次或者使用source .bash_profile;进行加载。</p>
 <p>再次使用java -version </p>
-<p><img src="linux-安装jdk1-8/linux4.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux4.png" alt="你想输入的替代文字"></p>
 <p>配置结束。</p>
 
       

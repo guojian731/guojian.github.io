@@ -87,13 +87,13 @@
 <meta property="og:site_name" content="Notes">
 <meta property="og:description" content="Class类型通常以文件的形式存在（当然，任何二进制流都可以是class类型），只有被java虚拟机装在的class类型才能在程序中使用。系统装载Class类型可以分为加载、连接和初始化3个步骤。其中连接又可分为验证、准备、解析3步。  装载类的条件：Class只有在必要的时候才会被装载，JVM虚拟机不会无条件地加载Class类型。Java虚拟机规定，一个类或接口在初次使用前，必须要进行初始化。这">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/JVM-4-装载（加载、连接、初始化）/jvm1.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/JVM-4-装载（加载、连接、初始化）/jvm2.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm2.png">
 <meta property="og:updated_time" content="2017-12-13T12:44:46.897Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM-4-装载（加载、连接、初始化）">
 <meta name="twitter:description" content="Class类型通常以文件的形式存在（当然，任何二进制流都可以是class类型），只有被java虚拟机装在的class类型才能在程序中使用。系统装载Class类型可以分为加载、连接和初始化3个步骤。其中连接又可分为验证、准备、解析3步。  装载类的条件：Class只有在必要的时候才会被装载，JVM虚拟机不会无条件地加载Class类型。Java虚拟机规定，一个类或接口在初次使用前，必须要进行初始化。这">
-<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/JVM-4-装载（加载、连接、初始化）/jvm1.png">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm1.png">
 
 
 
@@ -324,7 +324,7 @@
 
       
         <p><strong>Class类型通常以文件的形式存在（当然，任何二进制流都可以是class类型），只有被java虚拟机装在的class类型才能在程序中使用。系统装载Class类型可以分为加载、连接和初始化3个步骤。其中连接又可分为验证、准备、解析3步。</strong></p>
-<p><img src="JVM-4-装载（加载、连接、初始化）/jvm1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm1.png" alt="jvm装载步骤"></p>
 <h1 id="装载类的条件："><a href="#装载类的条件：" class="headerlink" title="装载类的条件："></a>装载类的条件：</h1><p><strong>Class只有在必要的时候才会被装载，JVM虚拟机不会无条件地加载Class类型。Java虚拟机规定，一个类或接口在初次使用前，必须要进行初始化。这里指的“使用”，是主动使用、主动使用只有下列几种情况。</strong></p>
 <p>1、当创建一个类的实例的时候，new关键字、或者通过反射、克隆、反序列化。</p>
 <p>2、当调用类的静态方法时，即当使用了字节码invokestatic指令。</p>
@@ -404,7 +404,7 @@ System.out.println(<span class="string">"父类PerSon的方法"</span>);
 <p>注：这里说明其他类调用一个类的final修饰的变量时，是不会存在类的加载的，是在编译时直接放在常量池的。     </p>
 <h1 id="加载类"><a href="#加载类" class="headerlink" title="加载类"></a>加载类</h1><p>加载类处于类加载的第一个阶段。在加载类时，Java虚拟机必须完成以下工作：</p>
 <p>   通过类的全名，获取类的二进制数据流<br>   解析类的二进制数据流为方法区内的数据结构<br>   创建java.lang.Class类的实例，表示该类型</p>
-<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><h2 id="验证类"><a href="#验证类" class="headerlink" title="验证类"></a>验证类</h2><p><img src="JVM-4-装载（加载、连接、初始化）/jvm2.png" alt="jvm装载步骤"></p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><h2 id="验证类"><a href="#验证类" class="headerlink" title="验证类"></a>验证类</h2><p><img src="/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm2.png" alt="jvm装载步骤"></p>
 <h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>当一个类验证通过时，虚拟机就会进入准备阶段。在这个阶段，虚拟机就会为这个类分配相应的内存空间，并设置初始值。<br>int：0</p>
 <p>long:0L</p>
 <p>short:(short)0</p>

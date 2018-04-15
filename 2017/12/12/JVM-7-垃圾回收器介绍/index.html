@@ -87,12 +87,12 @@
 <meta property="og:site_name" content="Notes">
 <meta property="og:description" content="串行回收器：串行回收器可以在新生代和老年代使用，根据作用不同的堆空间，分为新生代串行回收器和老年串行回收器。 新生代串行回收器：特点： 1、它仅仅使用单线程进行垃圾回收。 2、它是独占式的垃圾回收。 在串行收集器进行垃圾回收时，java应用程序中的线程都需要暂停，等待垃圾回收的完成。应用程序停止工作，进行等待，这种现象称之为“stop-the-world”。它将造成非常糟糕的用户体验，在实时性比较">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-7-垃圾回收器介绍/JVM-7-垃圾回收器介绍/CMS流程图.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-7-垃圾回收器介绍/CMS流程图.png">
 <meta property="og:updated_time" content="2017-12-11T18:27:03.078Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JVM-7-垃圾回收器介绍">
 <meta name="twitter:description" content="串行回收器：串行回收器可以在新生代和老年代使用，根据作用不同的堆空间，分为新生代串行回收器和老年串行回收器。 新生代串行回收器：特点： 1、它仅仅使用单线程进行垃圾回收。 2、它是独占式的垃圾回收。 在串行收集器进行垃圾回收时，java应用程序中的线程都需要暂停，等待垃圾回收的完成。应用程序停止工作，进行等待，这种现象称之为“stop-the-world”。它将造成非常糟糕的用户体验，在实时性比较">
-<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-7-垃圾回收器介绍/JVM-7-垃圾回收器介绍/CMS流程图.png">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/12/JVM-7-垃圾回收器介绍/CMS流程图.png">
 
 
 
@@ -346,7 +346,7 @@
 <p>我们可以使用-XX:UseAdaptiveSizePolicy可以打开GC自适应策略，在这个模式下，新生代大小，eden，old和suivivior的比例、晋升老年代的对象年龄等参数会被自动整理，来达到堆大小、吞吐量和停顿时间的平衡点。我们可以制定虚拟机的最大堆，目标吞吐量GCTimeRatio和停顿时间MaxGCPauseMilis，让虚拟机自己完成工作。</p>
 <h2 id="老年代ParallerOldGC回收器"><a href="#老年代ParallerOldGC回收器" class="headerlink" title="老年代ParallerOldGC回收器"></a>老年代ParallerOldGC回收器</h2><p>老年代ParallelOldGC是回收器也是多线程并发的收集器。它也是一个关注吞吐量的回收器，它只能和新生代ParallelGC回收器一起使用。也是使用标记压缩算法。</p>
 <p>XX:ParallelGCThreads也可用于设置垃圾回收时的线程数量。那么我们看到新生代ParNew回收器也会使用这个参数，那么岂不是冲突了吗？不会的，因为两个收集器是不可能在一起使用的，所以参数一样的，但是并不会起到冲突。</p>
-<h1 id="并发垃圾回收器"><a href="#并发垃圾回收器" class="headerlink" title="并发垃圾回收器"></a>并发垃圾回收器</h1><h2 id="老年代CMS垃圾回收器"><a href="#老年代CMS垃圾回收器" class="headerlink" title="老年代CMS垃圾回收器"></a>老年代CMS垃圾回收器</h2><p>与Parallel和ParallelOldGC不同，CMS回收器主要关注于系统的停顿时间。CMS是Concurrent Mark Sweep的缩写，意为并发标记清除，从名称上可以得出，它使用的是标记清除算法，同时它是一个使用多线程并行回收的垃圾收集器。<br><img src="JVM-7-垃圾回收器介绍/CMS流程图.png" alt="CMS流程图"></p>
+<h1 id="并发垃圾回收器"><a href="#并发垃圾回收器" class="headerlink" title="并发垃圾回收器"></a>并发垃圾回收器</h1><h2 id="老年代CMS垃圾回收器"><a href="#老年代CMS垃圾回收器" class="headerlink" title="老年代CMS垃圾回收器"></a>老年代CMS垃圾回收器</h2><p>与Parallel和ParallelOldGC不同，CMS回收器主要关注于系统的停顿时间。CMS是Concurrent Mark Sweep的缩写，意为并发标记清除，从名称上可以得出，它使用的是标记清除算法，同时它是一个使用多线程并行回收的垃圾收集器。<br><img src="/guojian731.github.io/2017/12/12/JVM-7-垃圾回收器介绍/CMS流程图.png" alt="CMS流程图"></p>
 <p>STW：停顿时间的缩写，在这个时间段应用程序的所有进程全部暂停。</p>
 <p>我们可以看见，CMS中只有初始标记和重新标记两步需要应用程序暂停，其他步骤都是可以与应用程序一起执行的，所以说CMS不是一个独占式的垃圾回收器。初始标记、并发标记、重新标记都是为了标记出需要回收的垃圾对象，并发清理则在标记完成之后，正是回收垃圾对象。并发重置指在垃圾回收完成后，重新初始化CMS数据结构和数据，为下一次垃圾回收做准备。</p>
 <p>在整个CMS回收过程中，默认情况下，在并发标记之后，会有一个预清理的操作（也可以关闭开关-XX:-CMSPrecleaningEnable，不进行预清理）。预清理是并发的，除了为正式做准备和检查以外，预清理还会尝试控制一次停顿时间。由于重新标记是独占CPU的，如果新生代发生GC的时候，就会立即触发一次重新标记，那么一次停顿时间可能会很长。为了避免这种情况，预处理时，会特意等待一次新生代GC的发生，然后根据历史性能数据预测下一次新生代GC可能发生的时间，然后在当前时间和预测时间的中间时刻，进行重新标记。这样，从最大程度上避免新生代GC和重新标记重合，尽可能减少一次的停顿时间。</p>

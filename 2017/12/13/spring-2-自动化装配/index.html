@@ -87,18 +87,18 @@
 <meta property="og:site_name" content="Notes">
 <meta property="og:description" content="Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。 环境： 所需manven包1234567891011121314151617&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;  &amp;l">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring1.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring2.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring3.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring4.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring5.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/springV1.png">
-<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/springV2.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring2.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring3.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring4.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring5.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/springV1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/springV2.png">
 <meta property="og:updated_time" content="2017-12-14T13:28:47.359Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring-2-自动化装配">
 <meta name="twitter:description" content="Spring Context负责创建bean，又使用DI（依赖注入）满足bean之间的依赖。接下来我们谈如何使用。 环境： 所需manven包1234567891011121314151617&amp;lt;dependency&amp;gt;  &amp;lt;groupId&amp;gt;junit&amp;lt;/groupId&amp;gt;  &amp;lt;artifactId&amp;gt;junit&amp;lt;/artifactId&amp;gt;  &amp;l">
-<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring-2-自动化装配/spring1.png">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring1.png">
 
 
 
@@ -338,7 +338,7 @@
 <p><strong>组件扫描(component scanning)：Spring会自动发现应用上下文中所创建的bean。</strong></p>
 <p><strong>自动装配(autowiring)：Spring自动满足bean之间的依赖。</strong></p>
 <p>举个例子： </p>
-<p><img src="spring-2-自动化装配/spring1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring1.png" alt="jvm装载步骤"></p>
 <p>如图所示，在java文件夹下建立action包逻辑处理，config 配置文件包，service接口包，以及impl实现类包。然后我们像做项目一样，需要一个支付的模块，分别建立一个pay子包。</p>
 <p>先介绍几个spring用到的注解</p>
 <p><strong>@Configuration:spring将这个类设置为config</strong></p>
@@ -356,19 +356,19 @@
 <p>现在我们测试一下是否成功</p>
 <p>@Autowired 我们完成以上的操作，spring已经发现了需要创建的bean，但是没有将需要创建的bean的其他对象进行装配，这时候使用@Autowired 就可以完成自动装配</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> config.pay.PayConfig;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = PayConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Payservice payservice;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        payservice.pay(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="spring-2-自动化装配/spring2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring2.png" alt="jvm装载步骤"></p>
 <p>运行成功。</p>
 <h2 id="一个接口多个实现类"><a href="#一个接口多个实现类" class="headerlink" title="一个接口多个实现类"></a>一个接口多个实现类</h2><p>问题，我们当一个接口有一个实现类的时候，装配成功了。就像之前说的，在PayTest中，我们只是调用了pay接口，它是使用电脑支付、手机支付我们都不知道，完成了解耦。但是如果两个实现类我们建立后，在PayTest会装配到底会装配哪一个实现类呢，我们做一下测试，新建一个实现类computerPayServiceImpl。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> impl.pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.springframework.stereotype.Component;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span>(value = <span class="string">"computerPayServiceImpl"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComputerPayServiceImpl</span> <span class="keyword">implements</span> <span class="title">Payservice</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pay</span><span class="params">(Integer num)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"使用电脑支付了"</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>我们再调用一次。</p>
-<p><img src="spring-2-自动化装配/spring3.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring3.png" alt="jvm装载步骤"></p>
 <p>我们发现调用失败了，spring不知道到底该调哪一个。但是这种场景经常出现，我们该怎么办？</p>
 <p>这个时候我们就只是单单使用@Autowired这个注解了，还应加入@Qualifier注解，并写上spring创建bean的名字。这样spring就知道应该加载哪个bean了。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pay;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> config.pay.PayConfig;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> org.junit.runner.RunWith;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Qualifier;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.ContextConfiguration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.test.context.junit4.SpringJUnit4ClassRunner;</span><br><span class="line"><span class="keyword">import</span> service.pay.Payservice;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(classes = PayConfig.class)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PayTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">	<span class="meta">@Qualifier</span>(<span class="string">"computerPayServiceImpl"</span>)</span><br><span class="line">    <span class="keyword">private</span> Payservice payservice;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        payservice.pay(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="spring-2-自动化装配/spring4.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring4.png" alt="jvm装载步骤"></p>
 <h1 id="显示配置Bean之java代码"><a href="#显示配置Bean之java代码" class="headerlink" title="显示配置Bean之java代码"></a>显示配置Bean之java代码</h1><p>当我们有的时候无法为bean添加@component的方法，有时候这个类不是我们创建的，那么就无法使用自动装配的方式了，显而易见，spring就不会发现这个bean了，那么怎么办，spring有两个解决方式，分别是java显示配置和xml显示配置，现在先说一下使用java显示代码配置。</p>
 <p>我们还是这个例子，然后把PhonePayServiceImpl实现类注掉，保证payservice先有一个实现类以便测试。然后将ComputerPayServiceImpl中的@component去掉，这样我们payconfig进行包扫描时，因为ComputerPayServiceImpl没有@component注解，那么spring就不会发现bean。我们测试一下。</p>
-<p><img src="spring-2-自动化装配/spring5.png" alt="jvm装载步骤"></p>
-<p><img src="spring-2-自动化装配/springV1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/spring5.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/springV1.png" alt="jvm装载步骤"></p>
 <p>测试结果为：</p>
 <p>我们重点看到红线标记部分（如果你用的也是idea的话），可以看到要装配computerPayServiceImpl的payservice1提示无法找到这个bean，但是要装配phonePayServiceImpl却能，这就很说明问题了。</p>
 <p>这个时候我们在javaConfig下显示的配置bean。</p>
@@ -396,7 +396,7 @@
 </code></pre>
 <p>@bean注解：告诉spring这个方法将会返回一个对象，该对象要注册为Spring应用上下文的bean。方法体中包含了最终产生bean实例的逻辑。</p>
 <p>默认情况下，bean的ID与带有@Bean注解的方法名是一样的，如下图的话，bean的名字就是getPayService。也可以使用@Bean的name属性指定。</p>
-<p><img src="spring-2-自动化装配/springV2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2017/12/13/spring-2-自动化装配/springV2.png" alt="jvm装载步骤"></p>
 <p>我们也无用运行测试类，直接用idea观察，就会发现，computerPayServiceImpl不是醒目的红色而是绿色了，如果不是用idea，运行一下程序即可。</p>
 
       

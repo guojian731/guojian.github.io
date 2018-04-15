@@ -328,7 +328,7 @@
 <h2 id="双引号赋值："><a href="#双引号赋值：" class="headerlink" title="双引号赋值："></a>双引号赋值：</h2><p>String s1=”11”;<br>创建一个对象的时候，会判断字符串常量池是否会有”11”，没有在字符串常量池添加”11”，并在非字符串常量池创建String对象，这时s1变量是指向字符串常量的”11”的。</p>
 <h2 id="构造器创建："><a href="#构造器创建：" class="headerlink" title="构造器创建："></a>构造器创建：</h2><p>String s2=new String(“11”);</p>
 <p>创建对象，并不会在字符串常量池进行操作，只会在非字符串常量池建立对象，s2指向指向这个对象。</p>
-<p><img src="JVM-3-字符串的存储方式以及equals、intern、-之间的区别/jvm1.png" alt="jvm内部构成表"></p>
+<p><img src="/guojian731.github.io/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/jvm1.png" alt="jvm内部构成表"></p>
 <p>所以再用“==”判断的时候是false，因为两个变量的指向是不一样的。</p>
 <h1 id="equals、-、intern-之间的区别"><a href="#equals、-、intern-之间的区别" class="headerlink" title="equals、==、intern()之间的区别"></a>equals、==、intern()之间的区别</h1><p>equals：是父类Object的方法，String重类写了这一方法，判断是否是首先判断是否是同一对象，是的话返回true。接着判断是否是String类型、如果是再判断是否值相同。<br>==：判断两个对象是否是同一对象，即两个对象的指向是否相同。<br>intern()：其实并不是用来判断是否相等的用途，它是在非字符串常量池添加字面量，所以他通常和new String()结合使用，可以在非字符串常量池建立变量并且指向它。<br>实例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">String s1=<span class="string">"ab"</span>;</span><br><span class="line">String s2=<span class="string">"abcd"</span>;</span><br><span class="line">String s3=<span class="string">"ab"</span>+<span class="string">"cd"</span>;</span><br><span class="line">String s4=s1+<span class="string">"cd"</span>;</span><br><span class="line">         </span><br><span class="line">System.out.println(<span class="string">"----第一部分  ----"</span>);</span><br><span class="line">System.out.println(s2==s3);<span class="comment">//true</span></span><br><span class="line">System.out.println(s2==s3.intern());<span class="comment">//true</span></span><br><span class="line">System.out.println(s2.intern()==s3);<span class="comment">//true</span></span><br><span class="line">         </span><br><span class="line">System.out.println(<span class="string">"---- 第二部分 ----"</span>);</span><br><span class="line">System.out.println(s2==s4);<span class="comment">//false</span></span><br><span class="line">System.out.println(s2==s4.intern());<span class="comment">//true</span></span><br><span class="line">System.out.println(s2.intern()==s4);<span class="comment">//false</span></span><br><span class="line">System.out.println(<span class="string">"---- 第三部分 ----"</span>);</span><br><span class="line">System.out.println(s3==s4);<span class="comment">//false</span></span><br><span class="line">System.out.println(s3==s4.intern());<span class="comment">//true</span></span><br><span class="line">System.out.println(s3.intern()==s4);<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
@@ -601,7 +601,7 @@
       
         
           
-            <p><img src="JVM-1-内部构成/jvm-内部构成表.png" alt="jvm内部构成表"></p>
+            <p><img src="/guojian731.github.io/2017/12/11/JVM-1-内部构成/jvm-内部构成表.png" alt="jvm内部构成表"></p>
 <h1 id="类加载子系统："><a href="#类加载子系统：" class="headerlink" title="类加载子系统："></a>类加载子系统：</h1><p><strong>类加载子系统是负责从文件系统或者网络中加载class信息。（class信息，是已经编译过的java文件，所以这也就是为什么我们在linux系统上，需要上传WebRoot文件或者用ant编译工具进行编译）</strong></p>
 <h1 id="方法区："><a href="#方法区：" class="headerlink" title="方法区："></a>方法区：</h1><p><strong>加载的类信息放在方法区中的内存空间中，除了类的基本信息之外，还保存了运行时常量池信息，包括字符串字面量和数字常量。</strong></p>
 <h1 id="java堆："><a href="#java堆：" class="headerlink" title="java堆："></a>java堆：</h1><p><strong>java堆是在虚拟机启动的时候建立，是java程序中最主要的内存工作区域。几乎所有的java对象都会放在java堆中。堆空间所有线程共享。</strong></p>
@@ -1153,17 +1153,17 @@ where ID = #{id,jdbcType=INTEGER}
 <p>在新建的centos7下，我新建了一个用户guojian(我的名字)。</p>
 <h1 id="卸载OpenJDK"><a href="#卸载OpenJDK" class="headerlink" title="卸载OpenJDK"></a>卸载OpenJDK</h1><p>自带的linux下会自带OpenJDK，有时候我们并不了解，所以建议删除它。</p>
 <p>使用rpm -qa|grep jdk；检查一下。</p>
-<p><img src="linux-安装jdk1-8/linux1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux1.png" alt="你想输入的替代文字"></p>
 <p>发现确实存在两个版本1.7和1.8，使用yum -y remove java java* 进行批量卸载。</p>
 <p>提示我们必须使用root用户才能卸载，我们登录root用户执行即可。</p>
 <p>yum -y remove java copy-java* 把copy-jdk开头的也卸载掉。 </p>
 <p>卸载完成后，使用exit退出root用户。</p>
 <h1 id="安装jdk1-8"><a href="#安装jdk1-8" class="headerlink" title="安装jdk1.8"></a>安装jdk1.8</h1><p>查看一下自己目录的位置：$HOME</p>
-<p><img src="linux-安装jdk1-8/linux2.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux2.png" alt="你想输入的替代文字"></p>
 <p>我们进入/home/guojian下使用mkdir 分别两个文件夹download(用下上传下载用),usr(作为安装软件的目录)。</p>
 <p>用ftp软件工具将下载好的压缩包上传到download下。</p>
 <p>然后进行解压。<br>tar-zxvf jdk-8u144-linux-x64.tar.gz</p>
-<p><img src="linux-安装jdk1-8/linux3.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux3.png" alt="你想输入的替代文字"></p>
 <p>使用ll命令检查一下，发现解压成功。<br>然后将文件夹更名为jdk1.8</p>
 <p>mv jdk1.8.0_144  jdk1.8</p>
 <p>将文件夹移动到/home/guojian/usr下</p>
@@ -1178,7 +1178,7 @@ where ID = #{id,jdbcType=INTEGER}
 <p>保存退出。</p>
 <p>我们使用java -version检查一下是否配置成功。<br>发现没有，原因是.bash_profile文件的原因，是用户下的配置文件，每次用户登录的时候自动载入，所以我们需要重新登录一次或者使用source .bash_profile;进行加载。</p>
 <p>再次使用java -version </p>
-<p><img src="linux-安装jdk1-8/linux4.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-安装jdk1-8/linux4.png" alt="你想输入的替代文字"></p>
 <p>配置结束。</p>
 
           
@@ -1300,7 +1300,7 @@ where ID = #{id,jdbcType=INTEGER}
         
           
             <p><strong>在linux下我们ll的时候就会看见相应文件的权限，总共有十位。</strong></p>
-<p><img src="linux-权限管理/linux1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/linux-权限管理/linux1.png" alt="你想输入的替代文字"></p>
 <h1 id="第一位："><a href="#第一位：" class="headerlink" title="第一位："></a>第一位：</h1><p><strong>代表着当前文件的类型。如果是-代表的就是文件，如果是d就代表这文件夹。</strong></p>
 <h1 id="第2-9位："><a href="#第2-9位：" class="headerlink" title="第2-9位："></a>第2-9位：</h1><p><strong>根据上图描述，其实是分为三组的，分别是所有者、用户组、其他。每个组都有三个权限分别是可读、可写、可执行。</strong></p>
 <p><strong>平常我们会用 chmod  775 test.txt来修改权限，这个775代表的是什么意思呢。</strong></p>
@@ -1610,7 +1610,7 @@ where ID = #{id,jdbcType=INTEGER}
 <p>因为是默认启动，所以连接工厂的用户名、密码以及ip均是默认。</p>
 <p>然后我们输入默认网址：127.0.0.1:8161  初始帐号密码是admin/admin</p>
 <p>可以查看队列的详细信息。</p>
-<p><img src="ActiveMQ的简单实现/active1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active1.png" alt="你想输入的替代文字"></p>
 <p>我们可以在这里看一下信息：</p>
 <p><strong>name：名称</strong></p>
 <p><strong>Number Of Pending Messages ：被挂起的消息，指的是还未被消费的信息。</strong></p>
@@ -1620,7 +1620,7 @@ where ID = #{id,jdbcType=INTEGER}
 <p>然后我们创建消费者进行消费</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueConsumer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String queneName = <span class="string">"qqueue-test"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JMSException </span>&#123;</span><br><span class="line">        <span class="comment">//创建工厂</span></span><br><span class="line">        ConnectionFactory connectionFactory=<span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"admin"</span>,<span class="string">"admin"</span>,<span class="string">"failover://tcp://localhost:61616"</span>);</span><br><span class="line">        <span class="comment">//新建连接</span></span><br><span class="line">        Connection connection=connectionFactory.createConnection();</span><br><span class="line">        <span class="comment">//启动连接</span></span><br><span class="line">        connection.start();</span><br><span class="line">        <span class="comment">//创建会话，并且设置会话的模式</span></span><br><span class="line">        Session  session=connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">        <span class="comment">//创建一个目标</span></span><br><span class="line">        Destination destination=session.createQueue(queneName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建一个消费者</span></span><br><span class="line">        MessageConsumer consumer=session.createConsumer(destination);</span><br><span class="line">        <span class="comment">//创建一个监听</span></span><br><span class="line">        consumer.setMessageListener(<span class="keyword">new</span> MessageListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message message)</span> </span>&#123;</span><br><span class="line">                TextMessage textMessage= (TextMessage) message;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"接收消息："</span>+textMessage.getText());</span><br><span class="line">                &#125; <span class="keyword">catch</span> (JMSException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//连接不能在这里关闭，可以让监听一直启动，因为lisener是异步的，当线程还没执行完任务时，连接就已经关闭了。</span></span><br><span class="line">        <span class="comment">//connection.close();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>然后我们运行QueueConsumer，那么十条信息会被消费者消费。然后我们再启动一个消费者，即有两个消费者时，在运行QueueProducer，两个消费者会依次消费信息</strong></p>
-<p><img src="ActiveMQ的简单实现/active2.png" alt="你想输入的替代文字"> <img src="ActiveMQ的简单实现/active3.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active2.png" alt="你想输入的替代文字"> <img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active3.png" alt="你想输入的替代文字"></p>
 
           
         

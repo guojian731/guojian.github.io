@@ -249,7 +249,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/04/15/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/04/16/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guo Jian">
@@ -268,7 +268,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/guojian731.github.io/2018/04/15/hello-world/" itemprop="url">Hello World</a></h1>
+                <a class="post-title-link" href="/guojian731.github.io/2018/04/16/hello-world/" itemprop="url">Hello World</a></h1>
         
 
         <div class="post-meta">
@@ -280,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-15T01:13:47+08:00">
-                2018-04-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T00:38:08+08:00">
+                2018-04-16
               </time>
             
 
@@ -448,7 +448,7 @@
       
         
           
-            <p><img src="rabbitmq-8-负载均衡与故障转移/r8.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/02/06/rabbitmq-8-负载均衡与故障转移/r8.png" alt="jvm装载步骤"></p>
 
           
         
@@ -568,7 +568,7 @@
       
         
           
-            <p><img src="rabbitmq-7-设置集群/r7.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/r7.png" alt="jvm装载步骤"></p>
 <p>之前我们已经设置了单机版的rabbitmq，并且设置了user、exchange、queue、vhost等。现在我们要在我们的电脑里设置集群啦。我使用的是虚拟机，所以很轻松的就复制了之前的rabbitmq环境来进行集群设置。</p>
 <h1 id="集群你要知道"><a href="#集群你要知道" class="headerlink" title="集群你要知道"></a>集群你要知道</h1><p><em>之前我们了解了一些rabbitmq的基础知识，包括单机版安装、rabbitmq的构成等。如果你的rabbitmq服务器遇到内存崩溃了或者断电的情况，那么我们该进行集群啦。</em></p>
 <h2 id="集群架构"><a href="#集群架构" class="headerlink" title="集群架构"></a>集群架构</h2><p>到目前为止，我们对于rabbitmq的内部还算不上了解。确实，我们知道队列和交换器的含义，以及如何将它们绑定在一起。也知道该使用哪种类型的交换器。但是背后发生了什么，这是我们不知道的。Rabbitmq是如何记录所有你使用的各种基础构件，同时它们又如何装配成一个消息通讯服务器的呢？</p>
@@ -620,34 +620,34 @@
 <li>停止端口号为5673的应用程序。</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost stop_app</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq1.png" alt="jvm装载步骤"></p>
 <ul>
 <li>将重设第二个节点的元数据和状态为清空的状态：</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost reset</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq2.png" alt="jvm装载步骤"></p>
 <ul>
 <li>将其加入集群</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost join_cluster rabbit@localhost</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq3.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq3.png" alt="jvm装载步骤"></p>
 <ul>
 <li>重新启动第二个节点的应用程序，它就变成集群中的一元了</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5673@localhost start_app</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq4.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq4.png" alt="jvm装载步骤"></p>
 <ul>
 <li>查看集群信息</li>
 </ul>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl cluster_status</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq5.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq5.png" alt="jvm装载步骤"></p>
 <p>我们可以看到，集群中有两个节点，而且都是运行状态。</p>
 <p>我们在将第三个节点添加进来。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq6.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq6.png" alt="jvm装载步骤"></p>
 <h2 id="设置节点类型"><a href="#设置节点类型" class="headerlink" title="设置节点类型"></a>设置节点类型</h2><p>我们通过./rabbitmqctl cluster_status命令查看了有关于节点的信息，我们发现我们添加的节点都是disc的，也就是数据都存储在硬盘上的。如何设置节点存储的信息在ram(内存中)呢。</p>
 <p>首先我们先停止我们刚才加进来的5674节点，重新将它配制成ram节点，命令也非常简单。为什么我要先配置5672节点为disc之后，在设置为ram呢，其实没有前后关系，只是自己尝试去停止节点之后，再应用节点。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl -n rabbit_5674<span class="meta">@localhost</span> join_cluster --ram rabbit<span class="meta">@localhost</span></span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq7.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq7.png" alt="jvm装载步骤"></p>
 <p>我们这就可以看到集群5674节点为ram节点了。</p>
 <h1 id="多服务器集群"><a href="#多服务器集群" class="headerlink" title="多服务器集群"></a>多服务器集群</h1><p><em>之前我们在一台机器上设置了集群，现在我们在试试在多台机器上设置集群，我们这里使用虚拟机建立三个服务器。集群需要rabbitmq、erlang的版本最好是一模一样，否则可能发生错误。</em></p>
 <p>首先，我们需要知道rabbitmq集群对延迟非常敏感，应当指在本地局域网内使用。使用集群来提供地理可用性或者通过WAN来路由消息，都会导致超时和怪异的集群行为，因此这是不明智的。</p>
@@ -655,9 +655,9 @@
 <p><em>因为我们是一台服务器一个rabbitmq服务，那么我们就不用在此之前停止management插件了。</em></p>
 <h2 id="修改Erlang-cookie"><a href="#修改Erlang-cookie" class="headerlink" title="修改Erlang cookie"></a>修改Erlang cookie</h2><p>多服务器集群(一个服务器一个rabbitmq服务)与单机集群(一个服务器多个rabbitmq服务)。使每个节点的Erlang cookie相同，他们就可以互相通信。如果节点的Erlang cookie字符串不相同，那么当Erlang cookie节点尝试相互认证时会导致集群失败。</p>
 <p>那么Erlang cookie在哪呢，官网上有介绍，当然也有最简单的办法，就是在先运行一下rabbitmq，然后查看日志，里面有你想要的信息。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq8.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq8.png" alt="jvm装载步骤"></p>
 <p>在日志中可以看到我们的节点名称、home路径、日志路径等。我们根据home路径可知，.erlang.cookie文件就在root下。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq9.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq9.png" alt="jvm装载步骤"></p>
 <p>修改一下.erlang.cookie的内容吧，做为测试，我将.erlang.cookie的内容改成AAAAAAAAAAAAAAAAAAAAAAAAA。</p>
 <ul>
 <li>因为.erlang.cookie是只读的，修改之前我们应该有修改权限</li>
@@ -677,7 +677,7 @@
 <h2 id="修改hostname"><a href="#修改hostname" class="headerlink" title="修改hostname"></a>修改hostname</h2><p>因为rabbitmq的hostname不能是系统默认的，所以我们在做集群之前需要先改一下hostname。</p>
 <p>查看hostname命令，然后可以可以在/etc/hostname下修改。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hostname</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq10.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq10.png" alt="jvm装载步骤"></p>
 <font color="red" size="4"><em>修改hostname之后需要重新启动，重启后生效。</em></font>
 
 <p>然后进行与单服务器集群一样的设置。</p>
@@ -685,13 +685,13 @@
 <font color="red" size="4"><em>但是进行添加节点的时候，发现出问题了，问题如下</em></font>
 
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl join_cluster rabbit@guo128</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-7-设置集群/rabbitmq11.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq11.png" alt="jvm装载步骤"></p>
 <p>这是因为两个节点需要相互解析，所以最好在每个服务器上都记录一下服务器的ip以及名称。</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq12.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq12.png" alt="jvm装载步骤"></p>
 <p>设置好以后继续执行。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl join_cluster rabbit@guo128</span><br><span class="line">./rabbitmqctl start_app</span><br></pre></td></tr></table></figure>
 <p>最后查看一下集群状态，成功！</p>
-<p><img src="rabbitmq-7-设置集群/rabbitmq13.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/rabbitmq13.png" alt="jvm装载步骤"></p>
 
           
         
@@ -811,15 +811,15 @@
       
         
           
-            <p><img src="rabbitmq-5-生产者和消费着的简单实现/r5.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/r5.png" alt="jvm装载步骤"></p>
 <p>在之前介绍这么多之后，我们也需要进行一下java代码的实现。</p>
 <h1 id="direct交换器"><a href="#direct交换器" class="headerlink" title="direct交换器"></a>direct交换器</h1><h2 id="direct生产者"><a href="#direct生产者" class="headerlink" title="direct生产者"></a>direct生产者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.AMQP;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Channel;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Connection;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.ConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirectSender</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String QUEUE_NAME = <span class="string">"log-direct"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ConnectionFactory factory=<span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        factory.setHost(<span class="string">"192.168.14.128"</span>);</span><br><span class="line">        factory.setUsername(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPassword(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">	<span class="comment">//设置vhost</span></span><br><span class="line">        factory.setVirtualHost(<span class="string">"test_vhost"</span>);</span><br><span class="line">        Connection connection = factory.newConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line"></span><br><span class="line">        <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * String queue:声明的队列名称</span></span><br><span class="line"><span class="comment">         * boolean durable：是否队列持久化</span></span><br><span class="line"><span class="comment">         * boolean exclusive：是否为私有</span></span><br><span class="line"><span class="comment">         * boolean autoDelete：最后一个消费者取消订阅的时候，对列是否自动移出</span></span><br><span class="line"><span class="comment">         * Map&lt;String,Object&gt; arguments</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">		</span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *定义交换器的类型</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.exchangeDeclare(QUEUE_NAME,<span class="string">"direct"</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=<span class="number">20</span>;i++)&#123;</span><br><span class="line">            String message = <span class="string">"Hello World"</span>+i+<span class="string">"!"</span>;</span><br><span class="line">            channel.basicPublish(<span class="string">""</span>, QUEUE_NAME, <span class="keyword">null</span>, message.getBytes());</span><br><span class="line">            System.out.println(<span class="string">" [x] Sent '"</span> + message + <span class="string">"'"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        channel.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="direct消费者"><a href="#direct消费者" class="headerlink" title="direct消费者"></a>direct消费者</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.*;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeoutException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DirectCustomer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String QUEUE_NAME=<span class="string">"log-direct"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException, TimeoutException </span>&#123;</span><br><span class="line">        ConnectionFactory factory=<span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        factory.setHost(<span class="string">"192.168.14.128"</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">        factory.setUsername(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setPassword(<span class="string">"admin"</span>);</span><br><span class="line">        factory.setVirtualHost(<span class="string">"test_vhost"</span>);</span><br><span class="line"></span><br><span class="line">        Connection connection=factory.newConnection();</span><br><span class="line">        <span class="keyword">final</span> Channel channel = connection.createChannel();</span><br><span class="line">		</span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         * String queue:声明的队列名称</span></span><br><span class="line"><span class="comment">         * boolean durable：是否队列持久化</span></span><br><span class="line"><span class="comment">         * boolean exclusive：是否为私有</span></span><br><span class="line"><span class="comment">         * boolean autoDelete：最后一个消费者取消订阅的时候，对列是否自动移出</span></span><br><span class="line"><span class="comment">         * Map&lt;String,Object&gt; arguments</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">false</span>,<span class="keyword">null</span>);</span><br><span class="line"></span><br><span class="line">         <span class="comment">/**</span></span><br><span class="line"><span class="comment">         *定义交换器的类型</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        channel.exchangeDeclare(QUEUE_NAME,<span class="string">"direct"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 告诉服务器我们需要那个频道的消息，如果频道中有消息，就会执行回调函数</span></span><br><span class="line">        Consumer consumer=<span class="keyword">new</span> DefaultConsumer(channel)&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleDelivery</span><span class="params">(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, <span class="keyword">byte</span>[] body)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">                String message=<span class="keyword">new</span> String(body,<span class="string">"utf-8"</span>);</span><br><span class="line">                System.out.println(<span class="string">"Customer Received '"</span> + message + <span class="string">"'"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//订阅队列</span></span><br><span class="line">        channel.basicConsume(QUEUE_NAME, <span class="keyword">true</span>, consumer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>我们这里在消费者和生产者都定义了队列和交换器，如果定义的队列信息一致，那么rabbitmq不会做出任何改变。如果你在运行消费者的时候定义了队列需要持久化，而在生产者的时候定义队列不需要持久化，那么就会出现错误。为了验证我们之前说过的，订阅到rabbitmq队列的多个消费者是顺序接收消息的，所以我们先启动两个消费者，再启动生产者。</p>
 <p><strong>生产了创建了21条数据，并被两个消费者依次消费</strong></p>
-<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq1.png" alt="生产者"></p>
-<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq2.png" alt="消费者1"></p>
-<p><img src="rabbitmq-5-生产者和消费着的简单实现/rabbitmq3.png" alt="消费者2"></p>
+<p><img src="/guojian731.github.io/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq1.png" alt="生产者"></p>
+<p><img src="/guojian731.github.io/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq2.png" alt="消费者1"></p>
+<p><img src="/guojian731.github.io/2018/01/26/rabbitmq-5-生产者和消费着的简单实现/rabbitmq3.png" alt="消费者2"></p>
 
           
         
@@ -939,7 +939,7 @@
       
         
           
-            <p><img src="rabbitmq-4-rabbitmq中常用设置语句/r4.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/24/rabbitmq-4-rabbitmq中常用设置语句/r4.png" alt="jvm装载步骤"></p>
 <p>我们在之前讲解了很多关于rabbitmq的构成以及设置语句，其实也很多，所以单独写一篇来记录。</p>
 <h1 id="启动-关闭rabbitmq"><a href="#启动-关闭rabbitmq" class="headerlink" title="启动/关闭rabbitmq"></a>启动/关闭rabbitmq</h1><p>启动服务 ./rabbitmq-server </p>
 <p>守护程序启动服务 ./rabbitmq-server -detached</p>
@@ -1076,7 +1076,7 @@
       
         
           
-            <p><img src="rabbitmq-3-运行和管理/r3.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/r3.png" alt="jvm装载步骤"></p>
 <h1 id="服务器管理"><a href="#服务器管理" class="headerlink" title="服务器管理"></a>服务器管理</h1><p>启动服务 ./rabbitmq-server </p>
 <p>守护程序启动服务 ./rabbitmq-server -detached</p>
 <p>启动守护进程会显示警告：Warning: PID file not written; -detached was passed.在后台启动服务器进程。请注意，这将导致pid不被写入到pid文件中。</p>
@@ -1084,14 +1084,14 @@
 <p>停止远程节点 ./rabbitmqctl stop -n <a href="mailto:rabbit@192.168.14.130" target="_blank" rel="noopener">rabbit@192.168.14.130</a></p>
 <h1 id="管理用户"><a href="#管理用户" class="headerlink" title="管理用户"></a>管理用户</h1><p><strong>添加一个账户为admin,密码为admin的用户</strong></p>
 <p>./rabbitmqctl add_user admin admin </p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq1.png" alt="你想输入的替代文字"></p>
 <p><strong>查看用户列表</strong></p>
 <p>./rabbitmqctl list_users</p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq2.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq2.png" alt="你想输入的替代文字"></p>
 <p><strong>修改用户密码</strong></p>
 <p>将admin用户的密码修改为admintest</p>
 <p>./rabbitmqctl change_password admin admintest</p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq3.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq3.png" alt="你想输入的替代文字"></p>
 <h1 id="rabbitMQ权限系统"><a href="#rabbitMQ权限系统" class="headerlink" title="rabbitMQ权限系统"></a>rabbitMQ权限系统</h1><p>rabbitMQ创建用户，然后为其赋予权限。rabbitmq的权限分为读、写、配置三个方面。RabbitMQ用户一个好的地方就是在于单个用户可以跨越多个vhost用户进行授权。当应用程序需要跨越多个安全域进行通信时(使用虚拟机进行隔离)，这会极大地方便访问控制的管理。</p>
 <p><strong>读-有关消费信息的任何操作，包括”清除”整个队列(同样需要绑定操作成功)。</strong></p>
 <p><strong>写-发布消息(同样需要绑定操作成功)。</strong></p>
@@ -1106,25 +1106,25 @@
 <h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p>-p test_vhost 为那个vhost设置权限<br>\admin 哪个用户<br>“.<em>“ 所有的权限<br>“check-.</em>“ 只匹配名字以”check-“开头的队列和交换器。<br>“” 不匹配队列和交换器（这就是如何对用户拒绝指定的权限）</p>
 <p>“.<em>“ “.</em>“ “.*” 配置的顺序依次为配置、写、读。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl set_permissions -p test_vhost \admin ".*" ".*" ".*"</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq4.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq4.png" alt="你想输入的替代文字"></p>
 <h2 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h2><p>检查一下vhost（以test_vhost）下的用户权限。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_permissions -p test_vhost</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq5.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq5.png" alt="你想输入的替代文字"></p>
 <p>如果在vhost_test下，允许admin用户对任何队列或者交换器可执行读操作，同时限制其只能对名字以”check-“开始的队列和交换器可执行读操作，同时限制这个用户不能进行配置。根据上面的介绍，你应该如此配置。</p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq6.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq6.png" alt="你想输入的替代文字"></p>
 <h2 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h2><p>删除test_vhost下的admin的权限设置。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl clear_permissions -p test_vhost admin</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq7.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq7.png" alt="你想输入的替代文字"></p>
 <h2 id="修改"><a href="#修改" class="headerlink" title="修改"></a>修改</h2><p>其实修改就是跟添加是一个语法啦，会覆盖之前的。</p>
 <h1 id="检查"><a href="#检查" class="headerlink" title="检查"></a>检查</h1><h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p><strong>列出默认的vhost(只是默认的vhost而不是所有的vhost的队列)队列信息和数量</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_queues</span><br></pre></td></tr></table></figure></p>
 <p><strong>列出vhost名为test_vhost队列信息和数量：</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_queues -p test_vhost</span><br></pre></td></tr></table></figure></p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq8.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq8.png" alt="你想输入的替代文字"></p>
 <p>查看队列的更多信息，举几个比较常用的<br>name:名称<br>messages：数量<br>consumers：附加的消费者数目<br>memory：占用的内存<br>durable:队列是否持久化<br>auto_delete:队列消息没有时是否删除队列</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_queues -p test_vhost name messages consumers memory durable auto_delete</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq9.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq9.png" alt="你想输入的替代文字"></p>
 <h2 id="交换器和绑定"><a href="#交换器和绑定" class="headerlink" title="交换器和绑定"></a>交换器和绑定</h2><p><strong>查看默认vhost：</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_exchanges</span><br></pre></td></tr></table></figure></p>
 <p><strong>列出vhost名为test_vhost：</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_exchanges -p test_vhost</span><br></pre></td></tr></table></figure></p>
-<p><img src="rabbitmq-3-运行和管理/rabbitmq10.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/18/rabbitmq-3-运行和管理/rabbitmq10.png" alt="你想输入的替代文字"></p>
 <p>当然你也可以输出更详细的</p>
 <p><exchangeinfoitem> must be a member of the list [name, type, durable, auto_delete, internal, arguments, policy].</exchangeinfoitem></p>
 
@@ -1246,7 +1246,7 @@
       
         
           
-            <p><img src="rabbitmq-2-理解消息通讯及构造/r2.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/15/rabbitmq-2-理解消息通讯及构造/r2.png" alt="jvm装载步骤"></p>
 <p><strong>在rabbitmq-1这篇博客里，是介绍如何安装erlang以及rabbitmq，和远程客户端的连接。但是我们还没理解什么是rabbitmq以及它其中的构造，这篇博客是我看完部分《RabbitMQ实战》这本书的理解。</strong></p>
 <h1 id="生产者和消费者模式"><a href="#生产者和消费者模式" class="headerlink" title="生产者和消费者模式"></a>生产者和消费者模式</h1><p>我们正常接触到的都是B/S或者C/S架构，都是一端发送请求，另一端处理数据。消息队列实现模式并不是这样的，举个例子来讲，我们都吃过自助餐，有一个自助餐桌，用来放厨师做出来的菜，厨师就相当于生产者，而消息就相当于放在自助餐桌里的菜，顾客就是消费者，消费者在自助餐桌上拿了一道菜，他甚至不知道这道菜是谁做的。这就起到了应用程序间解耦的作用。</p>
 <h1 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h1><p>生产者创建消息，然后发布到代理服务器(rabbitmq)。消息分为两部分：有效载荷(payload)和标签(label)。有效载荷就是你想要发送的数据，它可以是任何内容。标签描述了有效载荷，并且RabbitMQ用来它来决定谁将获得信息的拷贝。举例来说，不同于TCP协议来说，当你明确了指定的发送方和接收方时，AMQP只会用标签来表述这条信息（一个交换器的名称和可选的主题标记），然后把消息交给rabbitmq。rabbit会根据标记把信息发送给感兴趣的接收方。这种通讯方式是一种”发后即忘”的单项模式。生产者会创建消息并且设置标签。</p>
@@ -1299,10 +1299,10 @@
 <p>vhost的创建和权限控制非常独特，他们是AMQP中无法通过AMQP协议创建的基元(不同于队列，交换器和绑定)。对于RabbitMQ来说，你需要通过RabbitMQ的安装路径下的./sbin/目录中的rabbitmqctl工具来创建。</p>
 <p>新建一个名为test_vhost的vhost</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl add_vhost test_vhost</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-2-理解消息通讯及构造/vhost1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/15/rabbitmq-2-理解消息通讯及构造/vhost1.png" alt="你想输入的替代文字"></p>
 <p>查看当前vhost列表</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl list_vhosts</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitmq-2-理解消息通讯及构造/vhost2.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/15/rabbitmq-2-理解消息通讯及构造/vhost2.png" alt="你想输入的替代文字"></p>
 
           
         
@@ -1422,7 +1422,7 @@
       
         
           
-            <p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/r1.png" alt="jvm装载步骤"></p>
+            <p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/r1.png" alt="jvm装载步骤"></p>
 <p>首先应在rabbitMQ官网查看需要下载的版本，我们选择的是3.7.2，根据rabbitMQ的版本在erlang选择支持的版本，这里我们选择的是erlang是20.1。我是新建一个虚拟机进行配置，所以使用的root用户进行文件的安装。</p>
 <h1 id="安装erlang"><a href="#安装erlang" class="headerlink" title="安装erlang"></a>安装erlang</h1><p><strong>首先现在官网下载erlang</strong><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_20.1.tar.gz</span><br></pre></td></tr></table></figure></p>
 <p><strong>安装erlang依赖包</strong></p>
@@ -1433,12 +1433,12 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv otp_src_20.1 erlang20.1</span><br></pre></td></tr></table></figure>
 <p><strong>进入erlang20.1目录下</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./configure --prefix=/usr/local/erlang20.1 -with-ssl -enable-rhreads -enable-smp-support -enable-kernel-poll -enable-hipe -without-javac</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/erlang2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/erlang2.png" alt="jvm装载步骤"></p>
 <p><em>如果提示以上界面，说明erlang的配置项没有问题，再进行编译</em></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 <p>验证是否安装成功，进入bin/目录下，查看是否存在erl文件</p>
 <p>./erl </p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/erlang3.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/erlang3.png" alt="jvm装载步骤"></p>
 <p>使用halt().退出</p>
 <p><strong>我们为了能让erl全局使用，需设置环境变量，我如果只想在guojian用户下使用环境变量，就需要修改.bash_profile。</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PATH=$PATH:/usr/local/erlang20.1/bin</span><br></pre></td></tr></table></figure>
@@ -1452,30 +1452,30 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv rabbitmq_server-3.7.2/ /usr/local/rabbitmq-3.7.2</span><br></pre></td></tr></table></figure>
 <p>进入rabbitmq-3.7.2的sbin目录下</p>
 <p>执行 ./rabbitmq-server start</p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq1.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq1.png" alt="jvm装载步骤"></p>
 <p>如果出现rabbitmq的版本信息，说明你的rabbitmq已经启动了。</p>
 <p><strong>查看rabbitmq的状态</strong><br>./rabbitmqctl status</p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq2.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq2.png" alt="jvm装载步骤"></p>
 <p>如果你输入显示的是如下图所示，说明你没有配置erlang的环境变量，上面有。</p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq3.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq3.png" alt="jvm装载步骤"></p>
 <h2 id="客户端连接"><a href="#客户端连接" class="headerlink" title="客户端连接"></a>客户端连接</h2><p><strong>查看用户</strong></p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq4.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq4.png" alt="jvm装载步骤"></p>
 <p>我们可以看到有一个用户是guest，权限是administrator。这个地方是什么我们下一章会总体说明。因为guest是默认用户，所以它没有外网访问的权限，我们需要新建一个用户，才能完成不是非本地的连接。</p>
 <p>添加一个用户，名为test，密码为test</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl add_user test test</span><br></pre></td></tr></table></figure>
 <p>为用户test赋予权限</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./rabbitmqctl set_permissions -p / test ".*"  ".*"  ".*"</span><br></pre></td></tr></table></figure>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq5.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq5.png" alt="jvm装载步骤"></p>
 <p>在centos7开放端口，rabbitmq的默认端口是5672</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=5672/tcp --permanent</span><br></pre></td></tr></table></figure>
 <p>重启生效<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq6.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq6.png" alt="jvm装载步骤"></p>
 <p>远程客户端访问一下试试吧。</p>
 <p>所依赖的jar包</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.rabbitmq<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>amqp-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Channel;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.Connection;</span><br><span class="line"><span class="keyword">import</span> com.rabbitmq.client.ConnectionFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Send</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> String QUEUE_NAME = <span class="string">"hello"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] argv)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        ConnectionFactory factory=<span class="keyword">new</span> ConnectionFactory();</span><br><span class="line">        factory.setHost(<span class="string">"192.168.14.128"</span>);</span><br><span class="line">        factory.setUsername(<span class="string">"test"</span>);</span><br><span class="line">        factory.setPassword(<span class="string">"test"</span>);</span><br><span class="line">        factory.setPort(<span class="number">5672</span>);</span><br><span class="line">        Connection connection = factory.newConnection();</span><br><span class="line">        Channel channel = connection.createChannel();</span><br><span class="line">        channel.queueDeclare(QUEUE_NAME, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">false</span>, <span class="keyword">null</span>);</span><br><span class="line">        String message = <span class="string">"Hello World!"</span>;</span><br><span class="line">        channel.basicPublish(<span class="string">""</span>, QUEUE_NAME, <span class="keyword">null</span>, message.getBytes());</span><br><span class="line">        System.out.println(<span class="string">" [x] Sent '"</span> + message + <span class="string">"'"</span>);</span><br><span class="line">        channel.close();</span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>输出：</p>
-<p><img src="rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq7.png" alt="jvm装载步骤"></p>
+<p><img src="/guojian731.github.io/2018/01/11/rabbitMQ-1-cenotOS7下erlang、rabbitMQ安装/rabbitmq7.png" alt="jvm装载步骤"></p>
 
           
         
@@ -1607,16 +1607,16 @@
 <p>直接启动main函数就好了</p>
 <p>2、打成jar包，使用java命令运行</p>
 <p>首先将pom.xml中的步骤1改为jar包，然后在如图所示</p>
-<p><img src="springBoot-1-简单实例/springboot2.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/09/springBoot-1-简单实例/springboot2.png" alt="你想输入的替代文字"></p>
 <p>运行过后会在项目的target目录下生成jar包，然后进入target目录下执行命令</p>
 <p>java -jar msa-hello.jar</p>
 <p>3、使用maven运行</p>
 <p>mvn spring-boot:run</p>
 <p>这就需要使用pom.xml中步骤4的插件了，如果你没有，那么就无法执行了</p>
 <p>登录浏览器访问一下</p>
-<p><img src="springBoot-1-简单实例/springboot1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/09/springBoot-1-简单实例/springboot1.png" alt="你想输入的替代文字"></p>
 <p>这是因为我们找不到路径为空的方法，所以就返回的错误界面。如果出现这个界面说明我们的springBoot发布成功了。</p>
-<p><img src="springBoot-1-简单实例/springboot3.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/09/springBoot-1-简单实例/springboot3.png" alt="你想输入的替代文字"></p>
 <p>给了指定的路径，我们可以访问到我们想要的内容了</p>
 
           
@@ -1739,7 +1739,7 @@
           
             <p><strong>有关微服务的相关知识我是看《轻量级微服务架构》这本书作为我的微服务启蒙老师。</strong></p>
 <h1 id="微服务解决哪些问题"><a href="#微服务解决哪些问题" class="headerlink" title="微服务解决哪些问题"></a>微服务解决哪些问题</h1><p>1、传统的架构，是当服务端发出请求后，一个应用程序会有若干个模块组成，Module A,Module B,Module C<br>但是根据业务逻辑不同，C占用的系统资源比较高，运行一段时间，C就会成为整个系统的瓶颈。我们如何解决呢，就会使用分布式来将请求分流，来降低服务器的压力，使每个服务器的都能正常负载，叫做负载均衡。问题是得到了解决，但是相对于A，B来说，两个占用系统资源小，也同样因为C的原因进行了水平扩展，就会造成系统浪费。假设一下，一个互联网产品，每秒可能一个功能模块会被访问十多万次，水平扩展很有必要，项目中同样有一个模块只有管理员身份才能操作，而具有管理员权限的只有不到50人。那么管理员模块就没必要扩展这么多次，造成不必要的浪费。</p>
-<p><img src="微服务-1-了解微服务/springboot1.png" alt="你想输入的替代文字"></p>
+<p><img src="/guojian731.github.io/2018/01/08/微服务-1-了解微服务/springboot1.png" alt="你想输入的替代文字"></p>
 <p>2、越大的项目部署起来就需要越长的时间，加入你只改了一段代码，但是却要部署整个应用，部署效率太低。<br>3、将单个模块服务可能有更适合的语言，就可以使用，而不是想传统项目一样必须都使用java，造成技术选型单一。</p>
 <h1 id="微服务架构要求："><a href="#微服务架构要求：" class="headerlink" title="微服务架构要求："></a>微服务架构要求：</h1><p><strong>1、根据业务模块划分服务类型。</strong><br><strong>2、每个服务可独立部署并且相互隔离。</strong><br><strong>3、通过轻量级API调用服务。</strong><br><strong>4、服务需保证良好的高可用性。</strong></p>
 <p>我们需要根据业务的模块进行划分，就基金系统来说来书用户模块、产品模块、订单模块等。其中，每个模块都可以独立的部署，且相互隔离，每个服务可以独立的启动，不会依赖于其他服务。项目应该少耦合，但是不可能没有耦合，那样就是毫不相关的两个事，如果想根据用户id获取他之前所有的订单，就是耦合，我们应该通过HTTP或RPC的方式来调用，目的是为了降低调用所产生的性能开销。高可用性，就是每个服务都是分布式的，不可能只有一个，当这个服务无法响应时，可以调用没有发生故障的服务。</p>
