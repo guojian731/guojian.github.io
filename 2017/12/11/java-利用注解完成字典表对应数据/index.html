@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java基础,注解," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+<meta name="keywords" content="java基础,注解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java-利用注解完成字典表对应数据">
+<meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/2017/12/11/java-利用注解完成字典表对应数据/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-16T15:06:09.424Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java-利用注解完成字典表对应数据">
+<meta name="twitter:description" content="设计思路：1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男” 2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex1234567@Target(ElementType.FIELD)@Retention(RetentionPolicy.RUN">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/guojian731.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guojian731.github.io/guojian731.github.io/2017/12/11/java-利用注解完成字典表对应数据/"/>
+
+
+
+
+
+  <title>java-利用注解完成字典表对应数据 | Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/guojian731.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/guojian731.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/guojian731.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/guojian731.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/guojian731.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/java-利用注解完成字典表对应数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java-利用注解完成字典表对应数据</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T17:33:56+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="设计思路："><a href="#设计思路：" class="headerlink" title="设计思路："></a>设计思路：</h1><p><strong>1、首先将字典表的数据以Map的形式进行初始化，key格式为type+”@”+code,value值为正常回显的值，如”ta_sex”+”@”+”1”, “男”</strong></p>
+<p><strong>2、建立DictAcc注解，code代表是数据库字段还是需要回显的标识，type存储类型如ta_sex</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> DictACC &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">code</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>3.建立一个类BV，code表示数据库存储的名字，name表示需要回显的名字</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BV</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String code=<span class="string">"code"</span>;    </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> String name=<span class="string">"name"</span>;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>4.在pojo中字段sex，再建立sex_n表示要回显的字段（_n必须对应）</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_orgType"</span>)</span><br><span class="line">    <span class="keyword">public</span> String orgType_n;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.code, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex=<span class="string">"1"</span>;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="meta">@DictACC</span>(code = BV.name, type = <span class="string">"ta_sex"</span>)</span><br><span class="line">    <span class="keyword">public</span> String sex_n;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType</span><span class="params">(String orgType)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType = orgType;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getOrgType_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrgType_n</span><span class="params">(String orgType_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.orgType_n = orgType_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex = sex;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getSex_n</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> sex_n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex_n</span><span class="params">(String sex_n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.sex_n = sex_n;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>5.代码如下：map相当与数据库中取出来的数据库字典表</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        </span><br><span class="line">        HashMap&lt;String, String&gt; map=<span class="keyword">new</span> HashMap&lt;String, String&gt;();</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"部门1"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"部门2"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_orgType"</span>+<span class="string">"@"</span>+<span class="string">"3"</span>, <span class="string">"部门3"</span>);</span><br><span class="line">        </span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"1"</span>, <span class="string">"男"</span>);</span><br><span class="line">        map.put(<span class="string">"ta_sex"</span>+<span class="string">"@"</span>+<span class="string">"2"</span>, <span class="string">"女"</span>);</span><br><span class="line">        </span><br><span class="line">        User user=<span class="keyword">new</span> User();</span><br><span class="line">        User user1=<span class="keyword">new</span> User();</span><br><span class="line">        </span><br><span class="line">        List&lt;User&gt; userList=<span class="keyword">new</span> ArrayList&lt;User&gt;();</span><br><span class="line">        userList.add(user);</span><br><span class="line">        userList.add(user1);</span><br><span class="line">        Doaction.fill(userList,map);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; userList.size(); i++) &#123;</span><br><span class="line">            System.out.println(userList.get(<span class="number">0</span>).getOrgType_n());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>6.利用反射完成对sex_n等赋值</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Doaction</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fill</span><span class="params">(List&lt;T&gt; pojoList, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = getDictMap(pojoList.get(<span class="number">0</span>));</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = map.get(<span class="string">"codeMap"</span>);</span><br><span class="line">        Map&lt;String, Field&gt; nameMap = map.get(<span class="string">"nameMap"</span>);</span><br><span class="line">        <span class="keyword">for</span> (T pojo:pojoList) &#123;</span><br><span class="line">            fillname(pojo, codeMap, nameMap, dictmap);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取带DictACC字典注解的字段，并拼接成Map </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> t</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; Map&lt;String, Map&lt;String, Field&gt;&gt; getDictMap(T t) &#123;</span><br><span class="line">        <span class="comment">//字典code值组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; codeMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        <span class="comment">//需要从code值转成value组成的Map</span></span><br><span class="line">        Map&lt;String, Field&gt; nameMap = <span class="keyword">new</span> HashMap&lt;String, Field&gt;();</span><br><span class="line">        List&lt;Field&gt; fieldlist =<span class="keyword">new</span> ArrayList&lt;Field&gt;();</span><br><span class="line">        <span class="comment">//获取父类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getSuperclass().getDeclaredFields()));</span><br><span class="line">        <span class="comment">//获取本类的所有field</span></span><br><span class="line">        fieldlist.addAll(Arrays.asList(t.getClass().getDeclaredFields()));</span><br><span class="line">        <span class="keyword">for</span> (Field field : fieldlist) &#123;</span><br><span class="line">            <span class="keyword">if</span> (field.getAnnotation(DictACC.class) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                DictACC ann = field.getAnnotation(DictACC.class);</span><br><span class="line">                <span class="keyword">if</span> (ann.code().equals(BV.code)) &#123;</span><br><span class="line">                    codeMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (ann.code().equals(BV.name)) &#123;</span><br><span class="line">                    nameMap.put(ann.type() + <span class="string">"@"</span> + field.getName(), field);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        Map&lt;String, Map&lt;String, Field&gt;&gt; map = <span class="keyword">new</span> HashMap&lt;String, Map&lt;String, Field&gt;&gt;();</span><br><span class="line">        map.put(<span class="string">"codeMap"</span>, codeMap);</span><br><span class="line">        map.put(<span class="string">"nameMap"</span>, nameMap);</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">fillname</span><span class="params">(T t, Map&lt;String, Field&gt; codeMap,</span></span></span><br><span class="line"><span class="function"><span class="params">            Map&lt;String, Field&gt; nameMap, HashMap&lt;String, String&gt; dictmap)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> IllegalArgumentException, IllegalAccessException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (Entry&lt;String, Field&gt; entry : nameMap.entrySet()) &#123;</span><br><span class="line">            <span class="comment">//获取codekey</span></span><br><span class="line">            String codeKey = entry.getKey().substring(<span class="number">0</span>,</span><br><span class="line">                    entry.getKey().length() - <span class="number">2</span>);</span><br><span class="line">            <span class="keyword">if</span> (codeMap.get(codeKey) != <span class="keyword">null</span>) &#123;</span><br><span class="line">                Field field = codeMap.get(codeKey);</span><br><span class="line">                <span class="comment">//获取code的值</span></span><br><span class="line">                String value = String.valueOf(field.get(t));</span><br><span class="line">                String targetKey = codeKey.split(<span class="string">"@"</span>)[<span class="number">0</span>] + <span class="string">"@"</span> + value;</span><br><span class="line">                <span class="keyword">if</span> (dictmap.containsKey(targetKey)) &#123;</span><br><span class="line">                    <span class="comment">//从字典表获取那么中应该存的值</span></span><br><span class="line">                    String targetValue = dictmap.get(targetKey);</span><br><span class="line">                    Field targetField = entry.getValue();</span><br><span class="line">                    targetField.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">                    <span class="comment">//给name赋值</span></span><br><span class="line">                    targetField.set(t, targetValue);</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/guojian731.github.io/tags/java基础/" rel="tag"># java基础</a>
+          
+            <a href="/guojian731.github.io/tags/注解/" rel="tag"># 注解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/guojian731.github.io/2017/12/11/mybatis-xml文件解释/" rel="next" title="mybatis-xml文件解释">
+                <i class="fa fa-chevron-left"></i> mybatis-xml文件解释
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/guojian731.github.io/2017/12/11/JVM-1-内部构成/" rel="prev" title="JVM-1-内部构成">
+                JVM-1-内部构成 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Jian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/guojian731.github.io/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/guojian731.github.io/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设计思路："><span class="nav-number">1.</span> <span class="nav-text">设计思路：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Jian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

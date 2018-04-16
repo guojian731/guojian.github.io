@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="hexo," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="安装前言:我之前记录一下事情的时候都是在有道云笔记，17年的3月份开始写博客，后来了解到了markdown语法，并尝试用hexo/github搭建属于自己的博客。由于公司调用所以我之前写博客的电脑没有了，促成我这次博客迁移（如何新建博客挺多的）。 nodejs安装如我所愿，我有了一台新的电脑，我下载了nodejs并且安装，安装后检查是否安装成功。1node -v 1npm -v  git安装安装">
+<meta name="keywords" content="hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo-移植hexo">
+<meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:description" content="安装前言:我之前记录一下事情的时候都是在有道云笔记，17年的3月份开始写博客，后来了解到了markdown语法，并尝试用hexo/github搭建属于自己的博客。由于公司调用所以我之前写博客的电脑没有了，促成我这次博客迁移（如何新建博客挺多的）。 nodejs安装如我所愿，我有了一台新的电脑，我下载了nodejs并且安装，安装后检查是否安装成功。1node -v 1npm -v  git安装安装">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/r9.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/安装nodejs1.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/3git安装.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/2hexo安装.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/4hexo查看是否成功.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/5hexoinit.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/6-id_rsa.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/7github.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/8设置可以上传图片.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/9git下载.png">
+<meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/10git提交.png">
+<meta property="og:updated_time" content="2018-04-16T15:06:09.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo-移植hexo">
+<meta name="twitter:description" content="安装前言:我之前记录一下事情的时候都是在有道云笔记，17年的3月份开始写博客，后来了解到了markdown语法，并尝试用hexo/github搭建属于自己的博客。由于公司调用所以我之前写博客的电脑没有了，促成我这次博客迁移（如何新建博客挺多的）。 nodejs安装如我所愿，我有了一台新的电脑，我下载了nodejs并且安装，安装后检查是否安装成功。1node -v 1npm -v  git安装安装">
+<meta name="twitter:image" content="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/r9.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/guojian731.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/"/>
+
+
+
+
+
+  <title>hexo-移植hexo | Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/guojian731.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/guojian731.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/guojian731.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/guojian731.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/guojian731.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hexo-移植hexo</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T16:18:08+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/r9.png" alt="jvm装载步骤"></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><strong>前言:我之前记录一下事情的时候都是在有道云笔记，17年的3月份开始写博客，后来了解到了markdown语法，并尝试用hexo/github搭建属于自己的博客。由于公司调用所以我之前写博客的电脑没有了，促成我这次博客迁移（如何新建博客挺多的）。</strong></p>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><p>如我所愿，我有了一台新的电脑，我下载了nodejs并且安装，安装后检查是否安装成功。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/安装nodejs1.png" alt=""></p>
+<h2 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h2><h3 id="安装git，查看是否安装成功"><a href="#安装git，查看是否安装成功" class="headerlink" title="安装git，查看是否安装成功"></a>安装git，查看是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/3git安装.png" alt=""></p>
+<h2 id="hwxo安装"><a href="#hwxo安装" class="headerlink" title="hwxo安装"></a>hwxo安装</h2><h3 id="建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…"><a href="#建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…" class="headerlink" title="建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…"></a>建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/2hexo安装.png" alt=""></p>
+<h3 id="查看hexo是否安装成功"><a href="#查看hexo是否安装成功" class="headerlink" title="查看hexo是否安装成功"></a>查看hexo是否安装成功</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/4hexo查看是否成功.png" alt=""></p>
+<h3 id="初始化hexo，命令为-hexo-init"><a href="#初始化hexo，命令为-hexo-init" class="headerlink" title="初始化hexo，命令为 hexo init"></a>初始化hexo，命令为 hexo init</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/5hexoinit.png" alt=""></p>
+<h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><h2 id="Git个人信息配置"><a href="#Git个人信息配置" class="headerlink" title="Git个人信息配置"></a>Git个人信息配置</h2><h3 id="如果你之前已经配置好git个人信息，请跳过这一个-步骤，直接来到"><a href="#如果你之前已经配置好git个人信息，请跳过这一个-步骤，直接来到" class="headerlink" title="如果你之前已经配置好git个人信息，请跳过这一个 步骤，直接来到"></a>如果你之前已经配置好git个人信息，请跳过这一个 步骤，直接来到</h3><ul>
+<li><h3 id="设置Git的user-name和email：-如果是第一次的话"><a href="#设置Git的user-name和email：-如果是第一次的话" class="headerlink" title="设置Git的user name和email：(如果是第一次的话)"></a>设置Git的user name和email：(如果是第一次的话)</h3><p>  git config –global user.name “username”<br>  git config –global user.email “<a href="mailto:username@163.com" target="_blank" rel="noopener">username@163.com</a>“</p>
+</li>
+<li><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p>  ssh-keygen -t rsa -C “<a href="mailto:username@163.com" target="_blank" rel="noopener">username@163.com</a>“</p>
+</li>
+<li><h3 id="在这里会在C-Users-用户名-ssh-文件下生成三个文件，如下图。"><a href="#在这里会在C-Users-用户名-ssh-文件下生成三个文件，如下图。" class="headerlink" title="在这里会在C:\Users\用户名.ssh 文件下生成三个文件，如下图。"></a>在这里会在C:\Users\用户名.ssh 文件下生成三个文件，如下图。</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/6-id_rsa.png" alt=""></p>
+</li>
+<li><h3 id="将id-rsa-pub文件里的内容，添加到github上，这样我们就可以根据ssh-key方式下载代码了。"><a href="#将id-rsa-pub文件里的内容，添加到github上，这样我们就可以根据ssh-key方式下载代码了。" class="headerlink" title="将id_rsa.pub文件里的内容，添加到github上，这样我们就可以根据ssh key方式下载代码了。"></a>将id_rsa.pub文件里的内容，添加到github上，这样我们就可以根据ssh key方式下载代码了。</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/7github.png" alt=""></p>
+<h2 id="配置Deployment"><a href="#配置Deployment" class="headerlink" title="配置Deployment"></a>配置Deployment</h2><ul>
+<li><h3 id="同样在-config-yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）："><a href="#同样在-config-yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）：" class="headerlink" title="同样在_config.yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）："></a>同样在_config.yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）：</h3></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="修改参数，可以上传文件："><a href="#修改参数，可以上传文件：" class="headerlink" title="修改参数，可以上传文件："></a>修改参数，可以上传文件：</h3></li>
+<li><h3 id="hexo如果想支持文章中显示图片，需要下载插件并配置-config-yml。"><a href="#hexo如果想支持文章中显示图片，需要下载插件并配置-config-yml。" class="headerlink" title="hexo如果想支持文章中显示图片，需要下载插件并配置_config.yml。"></a>hexo如果想支持文章中显示图片，需要下载插件并配置_config.yml。</h3></li>
+<li><h3 id="post-asset-folder-设置为true"><a href="#post-asset-folder-设置为true" class="headerlink" title="post_asset_folder 设置为true"></a>post_asset_folder 设置为true</h3></li>
+<li><h3 id="npm-install-hexo-asset-image-–save-设置上传图片的插件"><a href="#npm-install-hexo-asset-image-–save-设置上传图片的插件" class="headerlink" title="npm install hexo-asset-image –save 设置上传图片的插件"></a>npm install hexo-asset-image –save 设置上传图片的插件</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/8设置可以上传图片.png" alt=""></p>
+<p><strong>这时候，使用hexo new “test”命令，如果你发现在新建一个test.md文件的同时，出现一个test的文件夹，那么说明成功了。</strong></p>
+<h1 id="移植"><a href="#移植" class="headerlink" title="移植"></a>移植</h1><p><strong><em>现在正式到我们的移植部分了，source是你写的文件，themes是主题。将这两个文件夹覆盖了，我们就完成了移植的部分了。我们现在做的是扩展的作用，当你使用hexo写博客的时候，其实上传到github上的是md文件生成的静态界面，而不是原始文件。如果我有两个电脑，我在B上写了文章，用hexo提交后，A电脑是无法更新到的，因为没办法转义。因为这个需求，我将真实的文件（source）也上传到github上，这样我在B写了文章，将source提交到github上，a那边更新source就会获取b更新的文件，实现同步了，同时你也起到了备份的作用。当然了，也可以使用更刺激的方法，将整个blog文件夹提交到github上也是一个不错的选择。</em></strong></p>
+<ul>
+<li><h3 id="git-初始化（git-init）"><a href="#git-初始化（git-init）" class="headerlink" title="git 初始化（git init）"></a>git 初始化（git init）</h3></li>
+<li><h3 id="git-添加关联（git-remote-add-origin-git-github-com-—–-git）"><a href="#git-添加关联（git-remote-add-origin-git-github-com-—–-git）" class="headerlink" title="git 添加关联（git remote add origin git@github.com:—–.git）"></a>git 添加关联（git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:—–.git）</h3></li>
+<li><h3 id="使用ssh方式下载项目-git-pull-origin-master"><a href="#使用ssh方式下载项目-git-pull-origin-master" class="headerlink" title="使用ssh方式下载项目 (git pull origin master)"></a>使用ssh方式下载项目 (git pull origin master)</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/9git下载.png" alt=""></p>
+<ul>
+<li><h3 id="修改、添加完文件后"><a href="#修改、添加完文件后" class="headerlink" title="修改、添加完文件后"></a>修改、添加完文件后</h3></li>
+<li><h3 id="使用git将改动的文件添加到本地库（git-add-）"><a href="#使用git将改动的文件添加到本地库（git-add-）" class="headerlink" title="使用git将改动的文件添加到本地库（git add .）"></a>使用git将改动的文件添加到本地库（git add .）</h3></li>
+<li><h3 id="提交并写注释-git-commit-m-‘4-16-commit’"><a href="#提交并写注释-git-commit-m-‘4-16-commit’" class="headerlink" title="提交并写注释 (git commit -m ‘4.16 commit’)"></a>提交并写注释 (git commit -m ‘4.16 commit’)</h3></li>
+<li><h3 id="push到github上-git-push-origin-master"><a href="#push到github上-git-push-origin-master" class="headerlink" title="push到github上(git push origin master)"></a>push到github上(git push origin master)</h3></li>
+<li><h3 id="查看git状态-git-status"><a href="#查看git状态-git-status" class="headerlink" title="查看git状态(git status)"></a>查看git状态(git status)</h3><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/10git提交.png" alt=""></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/guojian731.github.io/tags/hexo/" rel="tag"># hexo</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/guojian731.github.io/2018/02/06/rabbitmq-8-负载均衡与故障转移/" rel="next" title="rabbitmq-8-负载均衡与故障转移">
+                <i class="fa fa-chevron-left"></i> rabbitmq-8-负载均衡与故障转移
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/guojian731.github.io/2018/04/16/枚举的用法/" rel="prev" title="枚举的用法">
+                枚举的用法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Jian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/guojian731.github.io/archives/">
+              
+                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/guojian731.github.io/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#nodejs安装"><span class="nav-number">1.1.</span> <span class="nav-text">nodejs安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git安装"><span class="nav-number">1.2.</span> <span class="nav-text">git安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装git，查看是否安装成功"><span class="nav-number">1.2.1.</span> <span class="nav-text">安装git，查看是否安装成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hwxo安装"><span class="nav-number">1.3.</span> <span class="nav-text">hwxo安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…"><span class="nav-number">1.3.1.</span> <span class="nav-text">建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看hexo是否安装成功"><span class="nav-number">1.3.2.</span> <span class="nav-text">查看hexo是否安装成功</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化hexo，命令为-hexo-init"><span class="nav-number">1.3.3.</span> <span class="nav-text">初始化hexo，命令为 hexo init</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git配置"><span class="nav-number">2.</span> <span class="nav-text">Git配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git个人信息配置"><span class="nav-number">2.1.</span> <span class="nav-text">Git个人信息配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如果你之前已经配置好git个人信息，请跳过这一个-步骤，直接来到"><span class="nav-number">2.1.1.</span> <span class="nav-text">如果你之前已经配置好git个人信息，请跳过这一个 步骤，直接来到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置Git的user-name和email：-如果是第一次的话"><span class="nav-number">2.1.2.</span> <span class="nav-text">设置Git的user name和email：(如果是第一次的话)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成密钥"><span class="nav-number">2.1.3.</span> <span class="nav-text">生成密钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在这里会在C-Users-用户名-ssh-文件下生成三个文件，如下图。"><span class="nav-number">2.1.4.</span> <span class="nav-text">在这里会在C:\Users\用户名.ssh 文件下生成三个文件，如下图。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将id-rsa-pub文件里的内容，添加到github上，这样我们就可以根据ssh-key方式下载代码了。"><span class="nav-number">2.1.5.</span> <span class="nav-text">将id_rsa.pub文件里的内容，添加到github上，这样我们就可以根据ssh key方式下载代码了。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Deployment"><span class="nav-number">2.2.</span> <span class="nav-text">配置Deployment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#同样在-config-yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）："><span class="nav-number">2.2.1.</span> <span class="nav-text">同样在_config.yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改参数，可以上传文件："><span class="nav-number">2.2.2.</span> <span class="nav-text">修改参数，可以上传文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo如果想支持文章中显示图片，需要下载插件并配置-config-yml。"><span class="nav-number">2.2.3.</span> <span class="nav-text">hexo如果想支持文章中显示图片，需要下载插件并配置_config.yml。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#post-asset-folder-设置为true"><span class="nav-number">2.2.4.</span> <span class="nav-text">post_asset_folder 设置为true</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#npm-install-hexo-asset-image-–save-设置上传图片的插件"><span class="nav-number">2.2.5.</span> <span class="nav-text">npm install hexo-asset-image –save 设置上传图片的插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#移植"><span class="nav-number">3.</span> <span class="nav-text">移植</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#git-初始化（git-init）"><span class="nav-number">3.0.1.</span> <span class="nav-text">git 初始化（git init）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-添加关联（git-remote-add-origin-git-github-com-—–-git）"><span class="nav-number">3.0.2.</span> <span class="nav-text">git 添加关联（git remote add origin git@github.com:—–.git）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用ssh方式下载项目-git-pull-origin-master"><span class="nav-number">3.0.3.</span> <span class="nav-text">使用ssh方式下载项目 (git pull origin master)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改、添加完文件后"><span class="nav-number">3.0.4.</span> <span class="nav-text">修改、添加完文件后</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用git将改动的文件添加到本地库（git-add-）"><span class="nav-number">3.0.5.</span> <span class="nav-text">使用git将改动的文件添加到本地库（git add .）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提交并写注释-git-commit-m-‘4-16-commit’"><span class="nav-number">3.0.6.</span> <span class="nav-text">提交并写注释 (git commit -m ‘4.16 commit’)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push到github上-git-push-origin-master"><span class="nav-number">3.0.7.</span> <span class="nav-text">push到github上(git push origin master)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看git状态-git-status"><span class="nav-number">3.0.8.</span> <span class="nav-text">查看git状态(git status)</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Jian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
