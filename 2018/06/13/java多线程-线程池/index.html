@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java多线程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="线程是一种昂贵的资源，其开销主要包括以下几个方面： 线程的创建与启动的开销。与普通的对象相比，Java线程还占用了额外的存储空间–栈空间。并且，线程的启动会产生相应的线程调度开销。线程的销毁,线程的销毁也有其开销。线程调度的开销。线程的调度会导致上下文切换，从而增加处理器资源的消耗，使得应用程序本身可以使用的处理器资源减少。一个系统能够穿件的线程总是受限于该系统所拥有的处理器数目，无论是CPU密集">
+<meta name="keywords" content="java多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程-线程池">
+<meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/2018/06/13/java多线程-线程池/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:description" content="线程是一种昂贵的资源，其开销主要包括以下几个方面： 线程的创建与启动的开销。与普通的对象相比，Java线程还占用了额外的存储空间–栈空间。并且，线程的启动会产生相应的线程调度开销。线程的销毁,线程的销毁也有其开销。线程调度的开销。线程的调度会导致上下文切换，从而增加处理器资源的消耗，使得应用程序本身可以使用的处理器资源减少。一个系统能够穿件的线程总是受限于该系统所拥有的处理器数目，无论是CPU密集">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-18T16:21:53.462Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java多线程-线程池">
+<meta name="twitter:description" content="线程是一种昂贵的资源，其开销主要包括以下几个方面： 线程的创建与启动的开销。与普通的对象相比，Java线程还占用了额外的存储空间–栈空间。并且，线程的启动会产生相应的线程调度开销。线程的销毁,线程的销毁也有其开销。线程调度的开销。线程的调度会导致上下文切换，从而增加处理器资源的消耗，使得应用程序本身可以使用的处理器资源减少。一个系统能够穿件的线程总是受限于该系统所拥有的处理器数目，无论是CPU密集">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/guojian731.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guojian731.github.io/guojian731.github.io/2018/06/13/java多线程-线程池/"/>
+
+
+
+
+
+  <title>java多线程-线程池 | Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/guojian731.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/guojian731.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/guojian731.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/guojian731.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/guojian731.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/06/13/java多线程-线程池/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java多线程-线程池</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-13T18:01:46+08:00">
+                2018-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>线程是一种昂贵的资源，其开销主要包括以下几个方面：</p>
+<p>线程的创建与启动的开销。与普通的对象相比，Java线程还占用了额外的存储空间–栈空间。并且，线程的启动会产生相应的线程调度开销。<br>线程的销毁,线程的销毁也有其开销。<br>线程调度的开销。线程的调度会导致上下文切换，从而增加处理器资源的消耗，使得应用程序本身可以使用的处理器资源减少。<br>一个系统能够穿件的线程总是受限于该系统所拥有的处理器数目，无论是CPU密集型还是I/O密集型线程，这些线程的数量的临界值总是处理器的数目。</p>
+<p>因此，从整个系统乃至整个主机的角度来看，我们需要一种有效线程的方式。线程池就是有效使用线程的一种方式。</p>
+<p>常见的对象池（比如数据库连接池）的实现方式是对象池（本身也是个对象）内部威虎一定数量的对象，客户端需要一个对象的时候就向对象池申请一个对象，用完之后再将该对象返还给对象池，于是对象池中的一个对象就可以先后为多个客户端线程服务。线程池本身也是一个对象，不过他的实现方式与普通的对象池不同，线程池内部可以预先创建一定数量的工作者线程，客户端代码并不需要向线程池借用线程而是将其需要执行的任务作为一个对象提交给线程池，线程池可能将这些任务缓存在队列（工作队列）中，而线程池内部的各个工作者线程则不断地从队列中去除任务并执行。因为，线程池可以看做给予生产者-消费者模式的一种服务，该服务内部维护的工作者线程相当于消费者线程，线程池的客户端线程相当于生产者线程，客户端代码提交给线程池的任务相当于”产品”,线程池内部用于缓存任务的队列相当于传输通道。方<br>java.util.concurrent.ThreadPoolExecutor类就是一个线程池，客户端可以调用submit()或者execute()方法向其提交任务。</p>
+<p>public ThreadPoolExecutor(int corePoolSize, int maximumPoolSize, long keepAliveTime, TimeUnit unit, BlockingQueue<runnable> workQueue, ThreadFactory threadFactory, RejectedExecutionHandler handler) ;</runnable></p>
+<p>线程池的有关线程的数量的变量总共有三个，当前的线程数量（currentPoolSize）表示线程中实际存在的工作者线程的数量。最大线程池的大小（maximumPoolSize）表示线程池中允许存在的最大线程池的数量。核心线程数（corePoolSize）表示一个不大于最大线程池大小的工作者线程数量上限。</p>
+<p>workQueue:workQueue是被称为工作队列的阻塞队列，它相当于声场这-消费者模式中的传输通道。BlockingQueue是一个接口，在建立线程池中，可以用LinkedBlockingQueue和SynchronousQueue两个实现类，使用不同的实现类有着不同的效果。</p>
+<p>threadFactory指定用于创建工作者线程的线程工厂（比如你向让你创建的线程都有特色，比如是守护线程，优先级等，如果你的线程没有这么多限制的话，可以缺省它）。</p>
+<p>keepAliveTime和unit共同组成了线程池中空闲线程的最大存活时间。</p>
+<p>handler是我们现在需要介绍的。</p>
+<p>  实现类           所实现的处理策略   </p>
+<p>ThreadPoolExecutor.AbortPolicy  直接抛出异常<br>ThreadPoolExecutor.DiscardPolicy 丢弃当前被拒绝的任务（不抛出异常）<br>ThreadPoolExecutor.DiscardOldestPolicy 当工作队列中最老的任务丢弃，然后重新尝试接纳被拒绝的任务<br>ThreadPoolExecutor.CallerRunsPolicy 在客户端线程中执行被拒绝的任务 </p>
+<p>我们先说一下当前线程数(currentPoolSize)，核心线程数（corePoolSize）,最大线程数(maximumPoolSize)以及工作队列（workQueue）之间的关系和联系，我们用例子可能更容易理解一些，刚开始当前线程数(currentPoolSize)为0，核心线程数（corePoolSize）为10，最大线程数设置为100，工作队列为50。</p>
+<p>1.当一下有15个任务的时候，当前线程数将会升到10个。因为没有超过最大队列的容量，所以就不会再增加线程，之后发现5s后线程有空闲的情况，就会降空闲的线程除掉，之后线程池的数量会变为10.<br>2.当一下有70个任务的时候，当前线程数将会升到10个，因为工作队列被装满和当前10个工作者线程都被装满，还有10个线程无法处理，会再新建10个线程，当前线程数为20个，之后发现5s后线程有空闲的情况，就会降空闲的线程除掉，之后线程池的数量会变为10.<br>3.当一下有100个任务的时候，当前线程数将会升到10个，因为工作队列被装满和当前10个工作者线程都被装满，还有40个线程无法处理，会再新建40个线程，当前线程数为50个，之后发现5s后线程有空闲的情况，就会降空闲的线程除掉，之后线程池的数量会变为10.<br>4.当一下有200个任务的时候，当前线程数将会升到10个，因为工作队列被装满和当前10个工作者线程都被装满，还有140个线程无法处理，因为最大线程池中只能有100个线程，还有50个线程在外面无法处理。这时候就需要用到handler了。<br> 1）ThreadPoolExecutor.AbortPolicy：直接抛出异常<br> 2）ThreadPoolExecutor.DiscardPolicy：丢弃当前被拒绝的任务（不抛出异常），也就是最后的50条直接被拒绝不处理，最终只处理150条。<br> 3）ThreadPoolExecutor.DiscardOldestPolicy：将队列中最老的没处理的任务抛弃，在队列中接收新的，最终只处理150条。<br> 4）ThreadPoolExecutor.CallerRunsPolicy：在客户端线程中执行被拒绝的任务，，最终只处理200条都执行。</p>
+<p>这是我们将队列为LinkedBlockingQueue的时候，如果我们的队列为SynchronousQueue的话，其实我们的队列实际上是没有容量的，相当于的容量为0；</p>
+<p>这几个参数关联性非常高，注意，是”非常”，为什么这么强调呢，看我下面的解释。<br>我们默认我们的线程池是新的，里面线程一个都没有，即当前线程数currentPoolSize=0.接下来我们在进行一些模拟，我将以corePoolSize代表核心线程数，workQueue代表等待的队列。keepAliveTime和unit组成线程空闲了5s就销毁。<br>1.corePoolSize=5，maximumPoolSize=8，workQueue为10，任务数为9<br>9个任务队列刚好能放在队列里，而且currentPoolSize&lt;corePoolSize,这个时候currentPoolSize就会涨到5，当线程完成任务后，连续5s都空闲的时候，会被检查，发现池内的线程数刚好等于corePoolSize，不会销毁。<br>2.corePoolSize=5，maximumPoolSize=8，workQueue为10，任务数为2<br>2个任务可以存储到队列里，而且currentPoolSize&lt;corePoolSize,这个时候currentPoolSize就会涨到2，当线程完成任务之后，连续5s都空闲，被检测，发现线程数不超过5个，进行保留，不销毁。<br>3.corePoolSize=5，maximumPoolSize=8，workQueue为10，任务数为20<br>20个任务而队列只能放下容量为10的队列，所以currentPoolSize会涨到8（maximumPoolSize最大线程数）来处理任务，当线程完成任务后，连续5s后空闲后，发现maximumPoolSize&gt;corePoolSize,所以线程数降到5个，剩下的3个进行销毁。<br>4.corePoolSize=0，maximumPoolSize=8，workQueue为100，任务数为20<br>20个任务可以存储到队列里，这时候corePoolSize=0，所以currentPoolSize=1，无法建立新的线程，那么这20个任务只能串行执行。当任务都执行过后5s后，当前线程池的数量是1，要销毁变成0。<br>5.corePoolSize=0，maximumPoolSize=8，workQueue为10，任务数为30<br>30个任务数无法存储到队列，这时候currentPoolSize会涨到8，执行完过后5s后，当前线程数为8，如果都空闲，就会都销毁。</p>
+<p>我们现在就来做测试。简单做一个线程，使用随机数控制在1900~2100内，模拟业务逻辑需要在2s左右，如果随机数可以被2整除，返回”true”,不能返回”false”。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Random rand = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> i=rand.nextInt(<span class="number">200</span>)+<span class="number">1900</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(i);</span><br><span class="line">            System.out.println(<span class="string">"这个线程执行了,i的值为："</span>+i);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"true"</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">"false"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> length=<span class="number">20</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> corePoolSize=<span class="number">4</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span>  workQueue=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> N_CPU =Runtime.getRuntime().availableProcessors();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">static</span> ThreadPoolExecutor executor=<span class="keyword">new</span> ThreadPoolExecutor(corePoolSize,N_CPU*<span class="number">2</span>,<span class="number">5</span>, TimeUnit.SECONDS,<span class="keyword">new</span> ArrayBlockingQueue&lt;Runnable&gt;(workQueue),<span class="keyword">new</span> ThreadPoolExecutor.CallerRunsPolicy());</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> start=System.currentTimeMillis();</span><br><span class="line">        List&lt;Future&gt; list =<span class="keyword">new</span> ArrayList&lt;&gt;(length);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;length;i++)&#123;</span><br><span class="line">            Future&lt;String&gt; future =executor.submit(<span class="keyword">new</span> RandomThread());</span><br><span class="line">            list.add(future);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (Future future:list)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                future.get();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"完成所有"</span>+length+<span class="string">"个任务之后线程数量为："</span>+executor.getPoolSize());</span><br><span class="line">        System.out.println(<span class="string">"所有任务完成耗时："</span>+(System.currentTimeMillis()-start));    </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">6000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"完成任务6s后线程池的线程数量为："</span>+executor.getPoolSize());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>场景1：<br>这个线程执行了,i的值为：1943<br>这个线程执行了,i的值为：1948<br>这个线程执行了,i的值为：1954<br>这个线程执行了,i的值为：2061<br>这个线程执行了,i的值为：2090<br>这个线程执行了,i的值为：1917<br>这个线程执行了,i的值为：1994<br>这个线程执行了,i的值为：2043<br>这个线程执行了,i的值为：2030<br>完成所有9个任务之后线程数量为：5<br>所有任务完成耗时：4094<br>完成任务6s后线程池的线程数量为：5</p>
+<p>场景2：<br>这个线程执行了,i的值为：2038<br>这个线程执行了,i的值为：2043<br>完成所有2个任务之后线程数量为：2<br>所有任务完成耗时：2046<br>完成任务6s后线程池的线程数量为：2</p>
+<p>场景3：<br>这个线程执行了,i的值为：1903<br>这个线程执行了,i的值为：1916<br>这个线程执行了,i的值为：1925<br>这个线程执行了,i的值为：1932<br>这个线程执行了,i的值为：1933<br>这个线程执行了,i的值为：1957<br>这个线程执行了,i的值为：1962<br>这个线程执行了,i的值为：2015<br>这个线程执行了,i的值为：2037<br>这个线程执行了,i的值为：1912<br>这个线程执行了,i的值为：1967<br>这个线程执行了,i的值为：2046<br>这个线程执行了,i的值为：2016<br>这个线程执行了,i的值为：2061<br>这个线程执行了,i的值为：2038<br>这个线程执行了,i的值为：2092<br>这个线程执行了,i的值为：2082<br>这个线程执行了,i的值为：1981<br>这个线程执行了,i的值为：1941<br>这个线程执行了,i的值为：2064<br>完成所有20个任务之后线程数量为：8<br>所有任务完成耗时：5937<br>完成任务6s后线程池的线程数量为：5</p>
+<p>场景4：</p>
+<p>这个线程执行了,i的值为：1956<br>这个线程执行了,i的值为：2072<br>这个线程执行了,i的值为：2008<br>这个线程执行了,i的值为：1920<br>这个线程执行了,i的值为：2024<br>这个线程执行了,i的值为：1920<br>这个线程执行了,i的值为：1928<br>这个线程执行了,i的值为：2012<br>这个线程执行了,i的值为：2049<br>这个线程执行了,i的值为：2020<br>这个线程执行了,i的值为：2046<br>这个线程执行了,i的值为：1980<br>这个线程执行了,i的值为：2094<br>这个线程执行了,i的值为：1905<br>这个线程执行了,i的值为：1991<br>这个线程执行了,i的值为：1918<br>这个线程执行了,i的值为：2021<br>这个线程执行了,i的值为：2012<br>这个线程执行了,i的值为：2087<br>这个线程执行了,i的值为：2059<br>完成所有20个任务之后线程数量为：1<br>所有任务完成耗时：40039<br>完成任务6s后线程池的线程数量为：0</p>
+<p>场景5 </p>
+<p>这个线程执行了,i的值为：1900<br>这个线程执行了,i的值为：1956<br>这个线程执行了,i的值为：1979<br>这个线程执行了,i的值为：1994<br>这个线程执行了,i的值为：2034<br>这个线程执行了,i的值为：2040<br>这个线程执行了,i的值为：2073<br>这个线程执行了,i的值为：2088<br>这个线程执行了,i的值为：2091<br>这个线程执行了,i的值为：2027<br>这个线程执行了,i的值为：1955<br>这个线程执行了,i的值为：2061<br>这个线程执行了,i的值为：1988<br>这个线程执行了,i的值为：1965<br>这个线程执行了,i的值为：2064<br>这个线程执行了,i的值为：2008<br>这个线程执行了,i的值为：2058<br>这个线程执行了,i的值为：2086<br>这个线程执行了,i的值为：1979<br>这个线程执行了,i的值为：2058<br>这个线程执行了,i的值为：1966<br>这个线程执行了,i的值为：1944<br>这个线程执行了,i的值为：1989<br>这个线程执行了,i的值为：2061<br>这个线程执行了,i的值为：2094<br>这个线程执行了,i的值为：2086<br>这个线程执行了,i的值为：2040<br>这个线程执行了,i的值为：1999<br>这个线程执行了,i的值为：2029<br>这个线程执行了,i的值为：2075<br>完成所有30个任务之后线程数量为：8<br>所有任务完成耗时：8074<br>完成任务6s后线程池的线程数量为：0</p>
+<p>我们之前一直没有说我们的handler，ThreadPoolExecutor提供的RejectedExecutionHander实现类</p>
+<p>ThreadPoolExecutor.AbortPolicy            直接抛出异常<br>ThreadPoolExecutor.DiscardPolicy          丢弃当前被拒绝的任务（而不抛出任何异常）<br>ThreadPoolExecutor.DiscardOldestPolicy    将工作队列中最老的任务丢弃，然后重新尝试被拒绝的任务<br>ThreadPoolExecutor.CallerRunsPolicy       在客户端线程中执行被拒绝的任务</p>
+<p>这个就是实际上任务的队列超过了线程池存储的规定值时，会发生的策略。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/guojian731.github.io/tags/java多线程/" rel="tag"># java多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/guojian731.github.io/2018/06/07/设计模式-策略模式/" rel="next" title="设计模式-策略模式">
+                <i class="fa fa-chevron-left"></i> 设计模式-策略模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Jian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/guojian731.github.io/archives/">
+              
+                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/guojian731.github.io/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Jian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
