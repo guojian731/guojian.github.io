@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java多线程," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="CompletionService使用案例之前我们使用了线程池，发现线程池在多线程的使用上非常的好用，但是有一点弊端，是什么呢？我们来用代码看一下。我们现在有一个核心线程数是5个的线程池，现在一下来了6个任务，我们用Thread.sleep()来模拟中间运行时长，我们假设i%5==0的线程刚好发生网络延迟，需要10000ms，其他的线程很快，只需要1000ms。我们来看一下结果。 12345678">
+<meta name="keywords" content="java多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java多线程-CompletionService、FutureTask">
+<meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/2018/06/28/java多线程-CompletionService、FutureTask/index.html">
+<meta property="og:site_name" content="Notes">
+<meta property="og:description" content="CompletionService使用案例之前我们使用了线程池，发现线程池在多线程的使用上非常的好用，但是有一点弊端，是什么呢？我们来用代码看一下。我们现在有一个核心线程数是5个的线程池，现在一下来了6个任务，我们用Thread.sleep()来模拟中间运行时长，我们假设i%5==0的线程刚好发生网络延迟，需要10000ms，其他的线程很快，只需要1000ms。我们来看一下结果。 12345678">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-10T17:11:21.066Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java多线程-CompletionService、FutureTask">
+<meta name="twitter:description" content="CompletionService使用案例之前我们使用了线程池，发现线程池在多线程的使用上非常的好用，但是有一点弊端，是什么呢？我们来用代码看一下。我们现在有一个核心线程数是5个的线程池，现在一下来了6个任务，我们用Thread.sleep()来模拟中间运行时长，我们假设i%5==0的线程刚好发生网络延迟，需要10000ms，其他的线程很快，只需要1000ms。我们来看一下结果。 12345678">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/guojian731.github.io/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://guojian731.github.io/guojian731.github.io/2018/06/28/java多线程-CompletionService、FutureTask/"/>
+
+
+
+
+
+  <title>java多线程-CompletionService、FutureTask | Notes</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/guojian731.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Notes</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/guojian731.github.io/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/guojian731.github.io/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/guojian731.github.io/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/guojian731.github.io/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/06/28/java多线程-CompletionService、FutureTask/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">java多线程-CompletionService、FutureTask</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-06-28T17:57:48+08:00">
+                2018-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="CompletionService使用"><a href="#CompletionService使用" class="headerlink" title="CompletionService使用"></a>CompletionService使用</h2><h3 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h3><p>之前我们使用了线程池，发现线程池在多线程的使用上非常的好用，但是有一点弊端，是什么呢？我们来用代码看一下。我们现在有一个核心线程数是5个的线程池，现在一下来了6个任务，我们用Thread.sleep()来模拟中间运行时长，我们假设i%5==0的线程刚好发生网络延迟，需要10000ms，其他的线程很快，只需要1000ms。我们来看一下结果。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> ExecutorService executor= <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">5</span>, <span class="number">5</span>, <span class="number">0L</span>, TimeUnit.MILLISECONDS, <span class="keyword">new</span> LinkedBlockingQueue(<span class="number">20</span>),<span class="keyword">new</span> ThreadPoolExecutor.CallerRunsPolicy());</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        List&lt;Future&lt;String[]&gt;&gt; futureList=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        <span class="keyword">long</span> start=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">            Future&lt;String[]&gt; future= executor.submit(<span class="keyword">new</span> ThreadTest1(i));</span><br><span class="line">            futureList.add(future);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (Future&lt;String[]&gt; future:futureList)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                System.out.println(future.get()[<span class="number">2</span>]+<span class="string">"序号"</span>+future.get()[<span class="number">0</span>]+<span class="string">"实际处理时间:"</span>+future.get()[<span class="number">1</span>]+<span class="string">";实际所用时间："</span>+(System.currentTimeMillis()-start)+<span class="string">"ms"</span>);</span><br><span class="line">                <span class="comment">//获取到future之后的逻辑处理</span></span><br><span class="line">                <span class="comment">//Thread.sleep(1000);</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"总耗时:"</span>+(System.currentTimeMillis()-start)+<span class="string">"ms"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    static class  ThreadTest1 implements Callable&lt;String[]&gt; &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> num;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ThreadTest1</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.num=num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String[] call() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">5</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;String.valueOf(num),String.valueOf(<span class="number">5000</span>),Thread.currentThread().getName()&#125;;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;String.valueOf(num),String.valueOf(<span class="number">1000</span>),Thread.currentThread().getName()&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>序号<span class="number">0</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>序号<span class="number">1</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>序号<span class="number">2</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>序号<span class="number">3</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>序号<span class="number">4</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>序号<span class="number">5</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">11001</span>ms</span><br><span class="line">总耗时:<span class="number">11001</span>ms</span><br></pre></td></tr></table></figure>
+<p><strong>我们可以看到，其实线程2、3、4、5实际处理的时间都是1000ms，但是因为线程1的future最先进入futureList中，所以线程1的future.get()阻塞了其他的线程。当线程1的future.get()处理完之后，其他线程等待的线程立马可以获取结果了。而且我们看i=5时，会发现，其实线程4在处理完任务1000ms后返回future的值之后就立马返回线程池中，供其他请求使用，所以序号5的实际所用时间是11001ms而不是20000ms。这样看我们觉得没什么太大问题，因为这种情况只是结果阻塞，而线程并没有一起等待，还在实际工作中。但是我们现实生活中，经常会拿到结果future结果后再进行后续操作，假设操作时间为1000ms，我们把上面的Thread.sleep(1000);注释打开，再运行一下，我们使用了16s完成了所有的操作，仔细想一想，如果序号1、2、3、4执行完之后就进行业务处理，可以省下4s的时间，怎么样才能解决这个问题呢？</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>序号<span class="number">0</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">10002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>序号<span class="number">1</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">11002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>序号<span class="number">2</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">12002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>序号<span class="number">3</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">13003</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>序号<span class="number">4</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">14003</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>序号<span class="number">5</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">15003</span>ms</span><br><span class="line">总耗时:<span class="number">16004</span>ms</span><br></pre></td></tr></table></figure>
+<h3 id="CompletionService出厂"><a href="#CompletionService出厂" class="headerlink" title="CompletionService出厂"></a>CompletionService出厂</h3><p>CompletionService是一个借口，他的核心方法是:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Future&lt;V&gt; <span class="title">take</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">   <span class="function">Future&lt;V&gt; <span class="title">poll</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">   <span class="function">Future&lt;V&gt; <span class="title">poll</span><span class="params">(<span class="keyword">long</span> var1, TimeUnit var3)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br></pre></td></tr></table></figure></p>
+<p>其中ExecutorCompletionService实现take()方法的时候，维护了一个队列，将已经处理完的结果放进队列里，取出来的时候按照该队列的顺序来进行，而不是之前的放进去的顺序。如果队列中没有数据，会进行阻塞。建立ExecutorCompletionService的时候我们要传入一个线程池。好了，我们将代码稍稍改变一下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test11</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> ExecutorService executor= Executors.newFixedThreadPool(<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">static</span> CompletionService&lt;String[]&gt; cService = <span class="keyword">new</span> ExecutorCompletionService&lt;String[]&gt;(executor);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">            cService.submit(<span class="keyword">new</span> ThreadTest1(i));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> start=System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">6</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">               Future&lt;String[]&gt; future= cService.take();</span><br><span class="line">                System.out.println(future.get()[<span class="number">2</span>]+<span class="string">"线程"</span>+future.get()[<span class="number">0</span>]+<span class="string">"实际处理时间:"</span>+future.get()[<span class="number">1</span>]+<span class="string">";实际所用时间："</span>+(System.currentTimeMillis()-start)+<span class="string">"ms"</span>);</span><br><span class="line">                <span class="comment">//获取到future之后的逻辑处理</span></span><br><span class="line">                <span class="comment">//Thread.sleep(1000);</span></span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (ExecutionException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"总耗时:"</span>+(System.currentTimeMillis()-start)+<span class="string">"ms"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    static class  ThreadTest1 implements Callable&lt;String[]&gt; &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> num;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ThreadTest1</span><span class="params">(<span class="keyword">int</span> num)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.num=num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> String[] call() <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">            <span class="keyword">if</span> (num % <span class="number">5</span>==<span class="number">0</span>)&#123;</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;String.valueOf(num),String.valueOf(<span class="number">10000</span>),Thread.currentThread().getName()&#125;;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                Thread.sleep(<span class="number">1000</span>);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> String[]&#123;String.valueOf(num),String.valueOf(<span class="number">1000</span>),Thread.currentThread().getName()&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们看到结果，先完成的结果在主线程进行处理了，不会因为没完成的future阻塞完成的future执行了，这样主线程的利用率就变的高效了。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">4</span>线程<span class="number">3</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">1000</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">3</span>线程<span class="number">2</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">2001</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>线程<span class="number">1</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">3002</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">5</span>线程<span class="number">4</span>实际处理时间:<span class="number">1000</span>;实际所用时间：<span class="number">4003</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">1</span>线程<span class="number">0</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">10000</span>ms</span><br><span class="line">pool-<span class="number">1</span>-thread-<span class="number">2</span>线程<span class="number">5</span>实际处理时间:<span class="number">10000</span>;实际所用时间：<span class="number">11001</span>ms</span><br><span class="line">总耗时:<span class="number">12001</span>ms</span><br></pre></td></tr></table></figure></p>
+<h2 id="FutureTask使用"><a href="#FutureTask使用" class="headerlink" title="FutureTask使用"></a>FutureTask使用</h2><p>ExecutorService这个接口，我们需要不需要返回结果的时候,需要的参数必须继承Runnable接口。当我们需要返回结果的时候，必须需要继承Callable接口，而且又能继承future接口代表返回值。我们不能因为返回不返回的问题就继承两个接口，并且里面的核心代码一样吧？有什么解决办法吗？有，它就是FutureTask，他继承了Runnable接口和future接口，而且你可以传入参数Callable实现，他会转成Runnable接口的实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DemoFuture</span> <span class="keyword">implements</span> <span class="title">Callable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DemoFuture</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.i=i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(i);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"执行的是:"</span>+i;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test1</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> ExecutorService executor=Executors.newFixedThreadPool(<span class="number">10</span>);</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        executor.execute(<span class="keyword">new</span> FutureTask&lt;&gt;(<span class="keyword">new</span> DemoFuture(<span class="number">2</span>)));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/guojian731.github.io/tags/java多线程/" rel="tag"># java多线程</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/guojian731.github.io/2018/06/28/多线程-CompletionService、FutureTask/" rel="next" title="多线程-CompletionService、FutureTask">
+                <i class="fa fa-chevron-left"></i> 多线程-CompletionService、FutureTask
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guo Jian</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/guojian731.github.io/archives/">
+              
+                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/guojian731.github.io/tags/index.html">
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CompletionService使用"><span class="nav-number">1.</span> <span class="nav-text">CompletionService使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#案例"><span class="nav-number">1.1.</span> <span class="nav-text">案例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CompletionService出厂"><span class="nav-number">1.2.</span> <span class="nav-text">CompletionService出厂</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FutureTask使用"><span class="nav-number">2.</span> <span class="nav-text">FutureTask使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guo Jian</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

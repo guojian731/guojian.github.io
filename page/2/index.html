@@ -249,6 +249,291 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/04/16/hexo-移植hexo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2018/04/16/hexo-移植hexo/" itemprop="url">hexo-移植hexo</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-16T16:18:08+08:00">
+                2018-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/r9.png" alt="jvm装载步骤"></p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p><strong>前言:我之前记录一下事情的时候都是在有道云笔记，17年的3月份开始写博客，后来了解到了markdown语法，并尝试用hexo/github搭建属于自己的博客。由于公司调用所以我之前写博客的电脑没有了，促成我这次博客迁移（如何新建博客挺多的）。</strong></p>
+<h2 id="nodejs安装"><a href="#nodejs安装" class="headerlink" title="nodejs安装"></a>nodejs安装</h2><p>如我所愿，我有了一台新的电脑，我下载了nodejs并且安装，安装后检查是否安装成功。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -v</span><br></pre></td></tr></table></figure>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/安装nodejs1.png" alt=""></p>
+<h2 id="git安装"><a href="#git安装" class="headerlink" title="git安装"></a>git安装</h2><h3 id="安装git，查看是否安装成功"><a href="#安装git，查看是否安装成功" class="headerlink" title="安装git，查看是否安装成功"></a>安装git，查看是否安装成功</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/3git安装.png" alt=""></p>
+<h2 id="hwxo安装"><a href="#hwxo安装" class="headerlink" title="hwxo安装"></a>hwxo安装</h2><h3 id="建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…"><a href="#建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…" class="headerlink" title="建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…"></a>建立hexo的根据地，我选择d盘的blog里来放我的博客文件。会出现warn警告，不用关心，像java一样…</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/2hexo安装.png" alt=""></p>
+<h3 id="查看hexo是否安装成功"><a href="#查看hexo是否安装成功" class="headerlink" title="查看hexo是否安装成功"></a>查看hexo是否安装成功</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/4hexo查看是否成功.png" alt=""></p>
+<h3 id="初始化hexo，命令为-hexo-init"><a href="#初始化hexo，命令为-hexo-init" class="headerlink" title="初始化hexo，命令为 hexo init"></a>初始化hexo，命令为 hexo init</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/5hexoinit.png" alt=""></p>
+<h1 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h1><h2 id="Git个人信息配置"><a href="#Git个人信息配置" class="headerlink" title="Git个人信息配置"></a>Git个人信息配置</h2><h3 id="如果你之前已经配置好git个人信息，请跳过这一个步骤。"><a href="#如果你之前已经配置好git个人信息，请跳过这一个步骤。" class="headerlink" title="如果你之前已经配置好git个人信息，请跳过这一个步骤。"></a>如果你之前已经配置好git个人信息，请跳过这一个步骤。</h3><ul>
+<li><h3 id="设置Git的user-name和email：-如果是第一次的话"><a href="#设置Git的user-name和email：-如果是第一次的话" class="headerlink" title="设置Git的user name和email：(如果是第一次的话)"></a>设置Git的user name和email：(如果是第一次的话)</h3><p>  git config –global user.name “username”<br>  git config –global user.email “<a href="mailto:username@163.com" target="_blank" rel="noopener">username@163.com</a>“</p>
+</li>
+<li><h3 id="生成密钥"><a href="#生成密钥" class="headerlink" title="生成密钥"></a>生成密钥</h3><p>  ssh-keygen -t rsa -C “<a href="mailto:username@163.com" target="_blank" rel="noopener">username@163.com</a>“</p>
+</li>
+<li><h3 id="在这里会在C-Users-用户名-ssh-文件下生成三个文件，如下图。"><a href="#在这里会在C-Users-用户名-ssh-文件下生成三个文件，如下图。" class="headerlink" title="在这里会在C:\Users\用户名.ssh 文件下生成三个文件，如下图。"></a>在这里会在C:\Users\用户名.ssh 文件下生成三个文件，如下图。</h3><p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/6-id_rsa.png" alt=""></p>
+</li>
+<li><h3 id="将id-rsa-pub文件里的内容，添加到github上，这样我们就可以根据ssh-key方式下载代码了。"><a href="#将id-rsa-pub文件里的内容，添加到github上，这样我们就可以根据ssh-key方式下载代码了。" class="headerlink" title="将id_rsa.pub文件里的内容，添加到github上，这样我们就可以根据ssh key方式下载代码了。"></a>将id_rsa.pub文件里的内容，添加到github上，这样我们就可以根据ssh key方式下载代码了。</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/7github.png" alt=""></p>
+<h2 id="配置Deployment"><a href="#配置Deployment" class="headerlink" title="配置Deployment"></a>配置Deployment</h2><ul>
+<li><h3 id="同样在-config-yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）："><a href="#同样在-config-yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）：" class="headerlink" title="同样在_config.yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）："></a>同样在_config.yml文件中，找到Deployment，然后按照如下修改（记住，在这里“：”后面一定要有空格，否则hexo是一点反应都没有，找错都不知道上哪找去。）：</h3></li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:yourname/yourname.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<ul>
+<li><h3 id="修改参数，可以上传文件："><a href="#修改参数，可以上传文件：" class="headerlink" title="修改参数，可以上传文件："></a>修改参数，可以上传文件：</h3></li>
+<li><h3 id="hexo如果想支持文章中显示图片，需要下载插件并配置-config-yml。"><a href="#hexo如果想支持文章中显示图片，需要下载插件并配置-config-yml。" class="headerlink" title="hexo如果想支持文章中显示图片，需要下载插件并配置_config.yml。"></a>hexo如果想支持文章中显示图片，需要下载插件并配置_config.yml。</h3></li>
+<li><h3 id="post-asset-folder-设置为true"><a href="#post-asset-folder-设置为true" class="headerlink" title="post_asset_folder 设置为true"></a>post_asset_folder 设置为true</h3></li>
+<li><h3 id="npm-install-hexo-asset-image-–save-设置上传图片的插件"><a href="#npm-install-hexo-asset-image-–save-设置上传图片的插件" class="headerlink" title="npm install hexo-asset-image –save 设置上传图片的插件"></a>npm install hexo-asset-image –save 设置上传图片的插件</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/8设置可以上传图片.png" alt=""></p>
+<p><strong>这时候，使用hexo new “test”命令，如果你发现在新建一个test.md文件的同时，出现一个test的文件夹，那么说明成功了。</strong></p>
+<h1 id="移植"><a href="#移植" class="headerlink" title="移植"></a>移植</h1><p><strong><em>现在正式到我们的移植部分了，source是你写的文件，themes是主题。将这两个文件夹覆盖了，我们就完成了移植的部分了。我们现在做的是扩展的作用，当你使用hexo写博客的时候，其实上传到github上的是md文件生成的静态界面，而不是原始文件。如果我有两个电脑，我在B上写了文章，用hexo提交后，A电脑是无法更新到的，因为没办法转义。因为这个需求，我将真实的文件（source）也上传到github上，这样我在B写了文章，将source提交到github上，a那边更新source就会获取b更新的文件，实现同步了，同时你也起到了备份的作用。当然了，也可以使用更刺激的方法，将整个blog文件夹提交到github上也是一个不错的选择。</em></strong></p>
+<ul>
+<li><h3 id="git-初始化（git-init）"><a href="#git-初始化（git-init）" class="headerlink" title="git 初始化（git init）"></a>git 初始化（git init）</h3></li>
+<li><h3 id="git-添加关联（git-remote-add-origin-git-github-com-—–-git）"><a href="#git-添加关联（git-remote-add-origin-git-github-com-—–-git）" class="headerlink" title="git 添加关联（git remote add origin git@github.com:—–.git）"></a>git 添加关联（git remote add origin <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:—–.git）</h3></li>
+<li><h3 id="使用ssh方式下载项目-git-pull-origin-master"><a href="#使用ssh方式下载项目-git-pull-origin-master" class="headerlink" title="使用ssh方式下载项目 (git pull origin master)"></a>使用ssh方式下载项目 (git pull origin master)</h3></li>
+</ul>
+<p><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/9git下载.png" alt=""></p>
+<ul>
+<li><h3 id="修改、添加完文件后"><a href="#修改、添加完文件后" class="headerlink" title="修改、添加完文件后"></a>修改、添加完文件后</h3></li>
+<li><h3 id="使用git将改动的文件添加到本地库（git-add-）"><a href="#使用git将改动的文件添加到本地库（git-add-）" class="headerlink" title="使用git将改动的文件添加到本地库（git add .）"></a>使用git将改动的文件添加到本地库（git add .）</h3></li>
+<li><h3 id="提交并写注释-git-commit-m-‘4-16-commit’"><a href="#提交并写注释-git-commit-m-‘4-16-commit’" class="headerlink" title="提交并写注释 (git commit -m ‘4.16 commit’)"></a>提交并写注释 (git commit -m ‘4.16 commit’)</h3></li>
+<li><h3 id="push到github上-git-push-origin-master"><a href="#push到github上-git-push-origin-master" class="headerlink" title="push到github上(git push origin master)"></a>push到github上(git push origin master)</h3></li>
+<li><h3 id="查看git状态-git-status"><a href="#查看git状态-git-status" class="headerlink" title="查看git状态(git status)"></a>查看git状态(git status)</h3><img src="/guojian731.github.io/2018/04/16/hexo-移植hexo/10git提交.png" alt=""></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/02/06/rabbitmq-8-负载均衡与故障转移/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2018/02/06/rabbitmq-8-负载均衡与故障转移/" itemprop="url">rabbitmq-8-负载均衡与故障转移</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-06T16:33:14+08:00">
+                2018-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/guojian731.github.io/2018/02/06/rabbitmq-8-负载均衡与故障转移/r8.png" alt="jvm装载步骤"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/01/29/rabbitmq-7-设置集群/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1537,279 +1822,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2018/01/04/设计模式-单例模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Jian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/guojian731.github.io/2018/01/04/设计模式-单例模式/" itemprop="url">设计模式-单例模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T22:19:38+08:00">
-                2018-01-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><h2 id="饿汉模式"><a href="#饿汉模式" class="headerlink" title="饿汉模式"></a>饿汉模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span>  Singleton&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance=<span class="keyword">new</span> Singleton();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> instace;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>饿汉模式是一种简单并且有效的一种单例模式的实现方法，当Singleton类被装载的时候就会创建新的对象。构造器创建为私有的，这样外部就不能新建这个类。它唯一一点让人觉得不好的，就是不知道什么时候对象实例被创建出来，当然我们这个例子只有调用getInstance()的时候这个类才会被装载。但是如果我们在Singleton类中加上public static String type=”type-1”;这句话的时候，在其他类中调用Singleton.type的时候，Singleton的类就会装载，在初始化的时候就会调用了new Singleton()。<br>如果对类什么时候被装载有疑问，送你一张飞机票 <a href="http://guojian.fun/2017/12/12/JVM-4-%E8%A3%85%E8%BD%BD%EF%BC%88%E5%8A%A0%E8%BD%BD%E3%80%81%E8%BF%9E%E6%8E%A5%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96%EF%BC%89/" target="_blank" rel="noopener">JVM-4-装载（加载、连接、初始化）</a></p>
-<h2 id="懒汉模式"><a href="#懒汉模式" class="headerlink" title="懒汉模式"></a>懒汉模式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstace</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (instance==<span class="keyword">null</span>)&#123;</span><br><span class="line">            instance=<span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>懒汉模式就是当Singleton被装载时，instance为null，只有调用getInstace()的时候判断instance是否为null，为null的时候在进行创建。因为考虑可能是多线程一起调用getInstace()，所以前面方法用synchronized修饰，防止对象多次被创建的情况。这种场景在竞争比较激烈的情况下，会对效率产生一定的影响。</p>
-<h2 id="使用内部类"><a href="#使用内部类" class="headerlink" title="使用内部类"></a>使用内部类</h2><p>还有一种双重检查策略，但是并不推荐，因为它在低版本的JDK中不能保证准确性。有一种方式结合了第一种和第二种的有点，就是使用内部类创建单例模式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span>  <span class="title">Singleton</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingleHander</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Singleton instance=<span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Singleton <span class="title">getInstace</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> SingleHander.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先将内部类SingleHander设置为private的，让外部无法访问到SingleHander类。那么只有调用Singleton.getInstace()才会创建Singleton对象，首先getInstace()方法没有synchronized修饰，所以它不会有线程多线程竞争的情况，而根据JVM装载的特性，只有第一个调用SingleHander.instanc才会创建Singleton实例。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Jian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/guojian731.github.io/2017/12/26/java多线程-并发包/" itemprop="url">java多线程-并发包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T19:37:41+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>因为本人的知识有限，并发包里我指挥记录一些我个人理解相对比较深的，之后会在慢慢的学习和实践中继续更近我的博客。</strong></p>
-<h1 id="重入锁"><a href="#重入锁" class="headerlink" title="重入锁"></a>重入锁</h1><p>重入锁完全可以代替synchronized关键字。在jdk1.5以前，重入锁的性能远大于synchronized，但是在jdk1.6之后，两者的性能差别不大。</p>
-<h2 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h2><p>lock.lock():进行上锁操作;<br>lock.unclock():解锁操作;<br>lock.lockInterruptibly()：获得锁，但是优先相应中断。<br>lock.tryLock(): 判断当前锁是否被占用，如果没有被占用，返回true，并且占有锁。如果被占用，返回false，那么直接退出。<br>lock.tryLock(Long time,TimeUnit unit):time是代表时间，unit代表单位，在设置的给定时间内获得锁。<br>lock.isHeldByCurrentThread():判断当前线程是否占有锁，true是占有。<br>lock.interrupt():锁中断；</p>
-<h2 id="简单的例子"><a href="#简单的例子" class="headerlink" title="简单的例子"></a>简单的例子</h2><p>重入锁的使用java.util.concurrent.ReentrantLock类来实现。下面是一个重入锁的例子。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span>  <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock =<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">10000</span>;k++)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Test test=<span class="keyword">new</span> Test();</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(test,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(test,<span class="string">"t2"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        t2.join();</span><br><span class="line">        System.out.println(test.i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里使用lock锁住临界区的资源i，确保多线程对i进行操作的安全性，他还有一个好处，就是synchronized是修饰不了int的，只能修饰Integer类型，因为synchronized只能修饰对象，而int不是对象，是基本类型。</p>
-<p>为什么ReentrantLock叫做重入锁呢，因为一个锁可以锁对象多次。但是锁住锁和释放锁的数量应该是一样的，只加锁而不释放锁，会让线程一直占有锁，从而使其他线程一直阻塞。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span>  <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock =<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;<span class="number">10000</span>;k++)&#123; </span><br><span class="line">            lock.lock();</span><br><span class="line">            lock.lock();</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                lock.unlock();</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Test test=<span class="keyword">new</span> Test();</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(test,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(test,<span class="string">"t2"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t1.join();</span><br><span class="line">        t2.join();</span><br><span class="line">        System.out.println(test.i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="中断响应"><a href="#中断响应" class="headerlink" title="中断响应"></a>中断响应</h2><p><strong> 我们再使用synchronized的时候，如果一个线程在等待锁，要不一直在那等待，要不获得锁继续执行，没有第二种可能。但是如果使用重入锁，那么你将会有第三种可能，就是根据需求取消对锁的请求。如果一个线程正在等待锁，那么他依然可能收到一个通知，被告知无须等待，可以停止工作了，这样就减少了死锁。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LockTest</span>  <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ReentrantLock lock1=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ReentrantLock lock2=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">int</span> lock;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LockTest</span><span class="params">(<span class="keyword">int</span> lock)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.lock=lock;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (lock==<span class="number">1</span>)&#123;</span><br><span class="line">                lock1.lockInterruptibly();</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">" 持有了锁lock1"</span>);</span><br><span class="line">                Thread.sleep(<span class="number">10000</span>);</span><br><span class="line"></span><br><span class="line">                lock2.lockInterruptibly();</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">" 持有了锁lock2"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                lock2.lockInterruptibly();</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">" 持有了锁lock2"</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                lock1.lockInterruptibly();</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">" 持有了锁lock1"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (lock1.isHeldByCurrentThread())&#123;</span><br><span class="line">                lock1.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (lock2.isHeldByCurrentThread())&#123;</span><br><span class="line">                lock2.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LockTest test1=<span class="keyword">new</span> LockTest(<span class="number">1</span>);</span><br><span class="line">        LockTest test2=<span class="keyword">new</span> LockTest(<span class="number">2</span>);</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(test1,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(test2,<span class="string">"t2"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">10000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        t2.interrupt();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在这个例子中，我们一个类有两个锁，线程t1先持有lock1，在持有lock2。而线程t2持有lock2，在持有lock1，因为我们使用了Thread.sleep(),确定了t1获得了lock1的锁，而t2获得了lock2的锁，这样就会产生死锁，在线程运行的十秒钟里(Thread.sleep(10000))，一直没有人释放资源，就是两个线程就会一直锁死，当主线程出来解决矛盾，让t2取消请求，t2就会释放锁lock2，这样t1就会获得了锁lock2。</p>
-<p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf1.png" alt="jvm装载步骤"></p>
-<h2 id="给请求设置时间"><a href="#给请求设置时间" class="headerlink" title="给请求设置时间"></a>给请求设置时间</h2><p><strong>我们可以用tryLock()方法来给请求设置时间，它有两个参数，一个是数值，另一个是时间单位。lock.tryLock(5, TimeUnit.SECONDS)就是如果请求如果等待了5秒钟以上，就退出。如果为设置参数，那么就是请求的时候有其他线程持有锁，就退出。如果没有线程持有锁，就执行。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadTimeExample</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ReentrantLock lock=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (lock.tryLock(<span class="number">5</span>, TimeUnit.SECONDS)) &#123;</span><br><span class="line">                Thread.sleep(<span class="number">6000</span>);</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">"执行了"</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(Thread.currentThread().getName()+<span class="string">"未执行"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (lock.isHeldByCurrentThread())</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        ThreadTimeExample t=<span class="keyword">new</span> ThreadTimeExample();</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(t,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(t,<span class="string">"t2"</span>);</span><br><span class="line">        Thread t3=<span class="keyword">new</span> Thread(t,<span class="string">"t3"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        t3.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们新建了三个线程t1，t2,t3三个线程，因为t1,t2几乎同时启动，假设t1先持有锁(因为t1，t2都有机会先获得锁)，持有了锁6s，超过了t2等待时间5s，所以t2就不会运行而是选择退出。当t1运行2s中之后，t3才开始请求锁，相对于t3而言，t1持有锁的时间为大约为4s，没超过5s，所以t3也会执行的。</p>
-<p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf2.png" alt="jvm装载步骤"></p>
-<p>我们要注意一下finally的方法，当我们把finally的方法去掉，看一下运行情况。</p>
-<p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf3.png" alt="jvm装载步骤"></p>
-<p>发现只有t1线程获得了锁，其他线程都没获得到锁，t2没有获得锁正常，是在我们的预想之内，为什么t3也没获得锁呢，这是不应该的。那是因为t1在获得锁之后，没有执行lock.unlock()来释放锁，所以它持有锁的时间并不是6s而是更长。<br>好了，我们知道原因了，我们在finally代码快中添加lock.unlock()方法，运行看一下结果把。</p>
-<p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf4.png" alt="jvm装载步骤"></p>
-<p>我们发现竟然报错了，为什么呢？其实真正的原因就是线程t2，t2根本没有获得过锁，我们执行lock.unlock()当然报错了，之前我们就说过，锁的持有和释放必须是等对的，t2没有获得锁，却要释放锁，当然要报错了。所以我们要在释放锁之前做一下判断当前线程是否获得过锁 （lock.isHeldByCurrentThread())，如果获得过，释放。</p>
-<h2 id="lock设置公平锁"><a href="#lock设置公平锁" class="headerlink" title="lock设置公平锁"></a>lock设置公平锁</h2><p>在锁的竞争中，锁被占用并不是根据来的先后顺序来进行获得锁的，就会出现后来者居上的情况，如何对获得锁需要按照先后顺序来呢，synchronized就无法实现了，但是ReenTrantLock可以。<br>设置起来也很简单，就是在新建Lock对象的是够，传参true。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FairReenTrantLock</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock=<span class="keyword">new</span> ReentrantLock(<span class="keyword">true</span>);</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            System.out.print(Thread.currentThread().getName()+<span class="string">" "</span>);</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        FairReenTrantLock lock=<span class="keyword">new</span> FairReenTrantLock();</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(lock,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(lock,<span class="string">"t2"</span>);</span><br><span class="line">        Thread t3=<span class="keyword">new</span> Thread(lock,<span class="string">"t3"</span>);</span><br><span class="line">        Thread t4=<span class="keyword">new</span> Thread(lock,<span class="string">"t4"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">        t4.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf5.png" alt="jvm装载步骤"></p>
-<p>我们看一下结果，因为最开始的时候，有线程还处于未启动状态，当线程全部启动后，他们获取锁是有顺序的，最先得到锁的线程释放锁之后，就或在申请锁，所以轮一圈后，它依旧先获得锁。</p>
-<h1 id="Condition条件"><a href="#Condition条件" class="headerlink" title="Condition条件"></a>Condition条件</h1><p>它的作用与Object.wait()和Object.notify()，Object.wait()和Object.notify()必须在synchronized修饰的方法块里才能使用，同样的Condition需要与重入锁相关联，在lock.newCondition()来为重入锁绑定一个Condition实例。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReentranctLockConditine</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ReentrantLock lock =<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Condition condition=lock.newCondition();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            condition.await();</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"线程继续运行"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ReentranctLockConditine reentranctLockConditine=<span class="keyword">new</span> ReentranctLockConditine();</span><br><span class="line">            Thread t=<span class="keyword">new</span> Thread(reentranctLockConditine,<span class="string">"t1"</span>);</span><br><span class="line">            t.start();</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            lock.lock();</span><br><span class="line">            condition.signalAll();</span><br><span class="line">            lock.unlock();</span><br><span class="line">            System.out.println(<span class="string">"主线程结束了"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>首先我们在main()方法中建立一个线程并启动，线程获得锁后，执行 condition.await();，要求condition在这个对象上进行等待，这时候线程会释放锁和资源，当condition.signalAll();会唤醒所有的资源，之前的锁又会尝试绑定之前的锁，这期间，需要获得锁的线程(也就是现在的主线程main方法)释放锁，要不然线程t1就会只与锁进行绑定，而不会获得锁。如果你讲33行的代码注掉的话，你会发现t1是无法执行到输入的语句的。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1860,7 +1872,7 @@
               
                 <a href="/guojian731.github.io/archives/">
               
-                  <span class="site-state-item-count">44</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
