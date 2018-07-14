@@ -249,6 +249,220 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/" itemprop="url">JVM-4-装载（加载、连接、初始化）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T00:47:11+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>Class类型通常以文件的形式存在（当然，任何二进制流都可以是class类型），只有被java虚拟机装在的class类型才能在程序中使用。系统装载Class类型可以分为加载、连接和初始化3个步骤。其中连接又可分为验证、准备、解析3步。</strong></p>
+<p><img src="/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm1.png" alt="jvm装载步骤"></p>
+<h1 id="装载类的条件："><a href="#装载类的条件：" class="headerlink" title="装载类的条件："></a>装载类的条件：</h1><p><strong>Class只有在必要的时候才会被装载，JVM虚拟机不会无条件地加载Class类型。Java虚拟机规定，一个类或接口在初次使用前，必须要进行初始化。这里指的“使用”，是主动使用、主动使用只有下列几种情况。</strong></p>
+<p>1、当创建一个类的实例的时候，new关键字、或者通过反射、克隆、反序列化。</p>
+<p>2、当调用类的静态方法时，即当使用了字节码invokestatic指令。</p>
+<p>3、当使用类或接口的静态字段时（final常量外）。</p>
+<p>4、当使用java.lang.reflect包中的方法反射类的方法时。</p>
+<p>5、初始化子类时，要求先初始化父类。</p>
+<p>6、作为启动虚拟机，含有main()方法的那个类。</p>
+<p>1、创建实例<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> String name =<span class="string">"liumou"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"student完成装载"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">Student student=<span class="keyword">new</span> Student();</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果是：student完成装载，说明student已经装载完成。</p>
+<p>2、删除main中的方法改为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">String name=Student.name;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> 输出结果：student完成装载，说明调用类的静态变量可以完成该类的装载。</p>
+<p>3、在student类中添加静态变量方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">System.out.println(<span class="string">"调用了student的静态方法"</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在test类中用调用staticMethod()方法。</p>
+<p>输出结果：</p>
+<pre><code>student完成装载
+
+调用了student的静态方法
+</code></pre><p>说明：调用类的静态方法是可以完成类的装载。</p>
+<p>4、同样是student类，继承Person。</p>
+<pre><code class="java">
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">extends</span> <span class="title">Person</span></span>{
+
+<span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span>  String name =<span class="string">"liumou"</span>;
+
+
+
+<span class="keyword">static</span>{
+
+System.out.println(<span class="string">"student完成装载"</span>);
+
+}
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">staticMethod</span><span class="params">()</span></span>{
+
+System.out.println(<span class="string">"调用了student的静态方法"</span>);
+
+}
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{
+
+System.out.println(<span class="string">"student可以被装载"</span>);
+
+}
+
+}
+
+
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>{
+
+<span class="keyword">static</span> {
+
+System.out.println(<span class="string">"父类Person完成装载"</span>);
+
+}
+
+<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">methodStatic</span><span class="params">()</span></span>{
+
+System.out.println(<span class="string">"父类PerSon的方法"</span>);
+
+}
+
+}
+</code></pre>
+<p>（1） 在test类中，新建student对象。</p>
+<p>输出结果：父类Person完成装载</p>
+<p>student完成装载</p>
+<p>调用了student的静态方法</p>
+<p><strong>结论：对象装载之前需先装载其父类，然后才能装载自己。</strong></p>
+<p>（2）在test类中，调用子类调用父类的静态方法methodStatic（），（子类并未覆盖此方法）。</p>
+<p>  输出结果：父类Person完成装载</p>
+<p>父类PerSon的方法</p>
+<p><strong>结论：当子类调用父类的静态方法，子类是不会进行装载的。此时的装载，代表的是此时的子类student并未初始化，但是已经被系统加载。使用-XX:+TraceClassLoading可以看日志装载情况。</strong>   </p>
+<p> （3）在test方法中，调用Student的name属性（final修饰的静态变量）。</p>
+<p>输出结果：只有“liumou”</p>
+<p>结论：说明调用类的final修饰的静态变量不会进行类的装载。此时类连加载都没有。  </p>
+<p>注：这里说明其他类调用一个类的final修饰的变量时，是不会存在类的加载的，是在编译时直接放在常量池的。     </p>
+<h1 id="加载类"><a href="#加载类" class="headerlink" title="加载类"></a>加载类</h1><p>加载类处于类加载的第一个阶段。在加载类时，Java虚拟机必须完成以下工作：</p>
+<p>   通过类的全名，获取类的二进制数据流<br>   解析类的二进制数据流为方法区内的数据结构<br>   创建java.lang.Class类的实例，表示该类型</p>
+<h1 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h1><h2 id="验证类"><a href="#验证类" class="headerlink" title="验证类"></a>验证类</h2><p><img src="/guojian731.github.io/2017/12/12/JVM-4-装载（加载、连接、初始化）/jvm2.png" alt="jvm装载步骤"></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>当一个类验证通过时，虚拟机就会进入准备阶段。在这个阶段，虚拟机就会为这个类分配相应的内存空间，并设置初始值。<br>int：0</p>
+<p>long:0L</p>
+<p>short:(short)0</p>
+<p>char: \u000</p>
+<p>boolean: false</p>
+<p>reference: null</p>
+<p>float: 0f</p>
+<p>double: 0f </p>
+<p> 当类中存在常量字段，分情况。在准备阶段，是不会发生字节码行为的。<br> public static final String constString =”const”;<br> 当静态变量被final修饰后，该常量 constString在准备阶段被附上字符串”const”</p>
+<p> 但是如果没有final修饰过，仅仅作为普通变量：<br> public static String cString=”const”<br> 此时，   cString的赋值在函数<clinit>中发生，属于java字节码的行为，此时是在初始化中赋值（后面会说到）</clinit></p>
+<h2 id="解析类"><a href="#解析类" class="headerlink" title="解析类"></a>解析类</h2><p>在准备阶段完成后，进入解析阶段。解析阶段的工作就是讲类、接口、字段和方法的符号引用转化为直接引用。<br>符号引用就是字面量的引用。就是在class类文件中，通过常量池进行大量的符号引用。</p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>类的初始化是类的装载的最后一个阶段。如果前面的步骤都没有问题，那么表示类可以顺利的装载到系统中。此时，类才会执行java字节码。初始化阶段的重要是执行类的初始化方法<clinit>。方法<clinit>是由编译器自动生成的，他是有类静态成员的赋值语句以及static语句块合并产生的。<br>由于加载一个类之前，虚拟机总是试图尝试加载该类的父类，因此父类的<clinit>总是在子类<clinit>之前被调用。也就是说，子类的static块优先级高于父类。</clinit></clinit></clinit></clinit></p>
+<p><strong>注：classLoader只负责类的加载，连接和初始化与classLoader无关。</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/JVM-3-字符串的存储方式以及equals、intern、-之间的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1511,151 +1725,6 @@ where ID = #{id,jdbcType=INTEGER}
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guo Jian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Notes">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/" itemprop="url">ActiveMQ的简单实现</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T13:00:11+08:00">
-                2017-12-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>jdk1.8</strong></p>
-<p><strong>ActiveMQ环境并启动</strong></p>
-<p><strong>ActiveMQ的依赖包</strong></p>
-<pre><code>&lt;dependencies&gt;
-    &lt;dependency&gt;
-        &lt;groupId&gt;org.apache.activemq&lt;/groupId&gt;
-        &lt;artifactId&gt;activemq-all&lt;/artifactId&gt;
-        &lt;version&gt;5.9.0&lt;/version&gt;
-    &lt;/dependency&gt;
-&lt;/dependencies&gt;
-</code></pre><h1 id="队列模式"><a href="#队列模式" class="headerlink" title="队列模式"></a>队列模式</h1><p><strong>新建类队列模式生产者</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueProducer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String queneName = <span class="string">"qqueue-test"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JMSException </span>&#123;</span><br><span class="line">        <span class="comment">//创建连接工厂</span></span><br><span class="line">        ConnectionFactory connectionFactory=<span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, ActiveMQConnection.DEFAULT_BROKER_URL);</span><br><span class="line">        <span class="comment">//创建连接</span></span><br><span class="line">        Connection connection= connectionFactory.createConnection();</span><br><span class="line">        <span class="comment">//启动连接</span></span><br><span class="line">        connection.start();</span><br><span class="line">        <span class="comment">//创建会话</span></span><br><span class="line">        Session session=connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">        <span class="comment">//创建一个目标</span></span><br><span class="line">        Destination destination= session.createQueue(queneName);</span><br><span class="line">        <span class="comment">//创建一个生产者</span></span><br><span class="line">        MessageProducer producer=session.createProducer(destination);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">            TextMessage textMessage=session.createTextMessage(<span class="string">"test"</span>+i);</span><br><span class="line">            producer.send(textMessage);</span><br><span class="line">            System.out.println(<span class="string">"发送消息:"</span>+textMessage.getText());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭连接</span></span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>因为是默认启动，所以连接工厂的用户名、密码以及ip均是默认。</p>
-<p>然后我们输入默认网址：127.0.0.1:8161  初始帐号密码是admin/admin</p>
-<p>可以查看队列的详细信息。</p>
-<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active1.png" alt="你想输入的替代文字"></p>
-<p>我们可以在这里看一下信息：</p>
-<p><strong>name：名称</strong></p>
-<p><strong>Number Of Pending Messages ：被挂起的消息，指的是还未被消费的信息。</strong></p>
-<p><strong>Number Of Consumers  ：连接的消费者，0代表当前连接的消费者为0.</strong></p>
-<p><strong>Messages Enqueued ：发送消息的总数。</strong></p>
-<p><strong>Messages Dequeued：消息出队，已经被消费的消息。</strong></p>
-<p>然后我们创建消费者进行消费</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueConsumer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String queneName = <span class="string">"qqueue-test"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JMSException </span>&#123;</span><br><span class="line">        <span class="comment">//创建工厂</span></span><br><span class="line">        ConnectionFactory connectionFactory=<span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"admin"</span>,<span class="string">"admin"</span>,<span class="string">"failover://tcp://localhost:61616"</span>);</span><br><span class="line">        <span class="comment">//新建连接</span></span><br><span class="line">        Connection connection=connectionFactory.createConnection();</span><br><span class="line">        <span class="comment">//启动连接</span></span><br><span class="line">        connection.start();</span><br><span class="line">        <span class="comment">//创建会话，并且设置会话的模式</span></span><br><span class="line">        Session  session=connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">        <span class="comment">//创建一个目标</span></span><br><span class="line">        Destination destination=session.createQueue(queneName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建一个消费者</span></span><br><span class="line">        MessageConsumer consumer=session.createConsumer(destination);</span><br><span class="line">        <span class="comment">//创建一个监听</span></span><br><span class="line">        consumer.setMessageListener(<span class="keyword">new</span> MessageListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message message)</span> </span>&#123;</span><br><span class="line">                TextMessage textMessage= (TextMessage) message;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"接收消息："</span>+textMessage.getText());</span><br><span class="line">                &#125; <span class="keyword">catch</span> (JMSException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//连接不能在这里关闭，可以让监听一直启动，因为lisener是异步的，当线程还没执行完任务时，连接就已经关闭了。</span></span><br><span class="line">        <span class="comment">//connection.close();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>然后我们运行QueueConsumer，那么十条信息会被消费者消费。然后我们再启动一个消费者，即有两个消费者时，在运行QueueProducer，两个消费者会依次消费信息</strong></p>
-<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active2.png" alt="你想输入的替代文字"> <img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active3.png" alt="你想输入的替代文字"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1706,7 +1775,7 @@ where ID = #{id,jdbcType=INTEGER}
               
                 <a href="/guojian731.github.io/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1719,7 +1788,7 @@ where ID = #{id,jdbcType=INTEGER}
               
               <div class="site-state-item site-state-tags">
                 <a href="/guojian731.github.io/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

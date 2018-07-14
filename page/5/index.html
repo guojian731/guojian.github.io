@@ -249,6 +249,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guo Jian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/" itemprop="url">ActiveMQ的简单实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-11T13:00:11+08:00">
+                2017-12-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><p><strong>jdk1.8</strong></p>
+<p><strong>ActiveMQ环境并启动</strong></p>
+<p><strong>ActiveMQ的依赖包</strong></p>
+<pre><code>&lt;dependencies&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.apache.activemq&lt;/groupId&gt;
+        &lt;artifactId&gt;activemq-all&lt;/artifactId&gt;
+        &lt;version&gt;5.9.0&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre><h1 id="队列模式"><a href="#队列模式" class="headerlink" title="队列模式"></a>队列模式</h1><p><strong>新建类队列模式生产者</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueProducer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String queneName = <span class="string">"qqueue-test"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JMSException </span>&#123;</span><br><span class="line">        <span class="comment">//创建连接工厂</span></span><br><span class="line">        ConnectionFactory connectionFactory=<span class="keyword">new</span> ActiveMQConnectionFactory(ActiveMQConnection.DEFAULT_USER, ActiveMQConnection.DEFAULT_PASSWORD, ActiveMQConnection.DEFAULT_BROKER_URL);</span><br><span class="line">        <span class="comment">//创建连接</span></span><br><span class="line">        Connection connection= connectionFactory.createConnection();</span><br><span class="line">        <span class="comment">//启动连接</span></span><br><span class="line">        connection.start();</span><br><span class="line">        <span class="comment">//创建会话</span></span><br><span class="line">        Session session=connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">        <span class="comment">//创建一个目标</span></span><br><span class="line">        Destination destination= session.createQueue(queneName);</span><br><span class="line">        <span class="comment">//创建一个生产者</span></span><br><span class="line">        MessageProducer producer=session.createProducer(destination);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;<span class="number">10</span> ; i++) &#123;</span><br><span class="line">            TextMessage textMessage=session.createTextMessage(<span class="string">"test"</span>+i);</span><br><span class="line">            producer.send(textMessage);</span><br><span class="line">            System.out.println(<span class="string">"发送消息:"</span>+textMessage.getText());</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//关闭连接</span></span><br><span class="line">        connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为是默认启动，所以连接工厂的用户名、密码以及ip均是默认。</p>
+<p>然后我们输入默认网址：127.0.0.1:8161  初始帐号密码是admin/admin</p>
+<p>可以查看队列的详细信息。</p>
+<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active1.png" alt="你想输入的替代文字"></p>
+<p>我们可以在这里看一下信息：</p>
+<p><strong>name：名称</strong></p>
+<p><strong>Number Of Pending Messages ：被挂起的消息，指的是还未被消费的信息。</strong></p>
+<p><strong>Number Of Consumers  ：连接的消费者，0代表当前连接的消费者为0.</strong></p>
+<p><strong>Messages Enqueued ：发送消息的总数。</strong></p>
+<p><strong>Messages Dequeued：消息出队，已经被消费的消息。</strong></p>
+<p>然后我们创建消费者进行消费</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">QueueConsumer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String queneName = <span class="string">"qqueue-test"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> JMSException </span>&#123;</span><br><span class="line">        <span class="comment">//创建工厂</span></span><br><span class="line">        ConnectionFactory connectionFactory=<span class="keyword">new</span> ActiveMQConnectionFactory(<span class="string">"admin"</span>,<span class="string">"admin"</span>,<span class="string">"failover://tcp://localhost:61616"</span>);</span><br><span class="line">        <span class="comment">//新建连接</span></span><br><span class="line">        Connection connection=connectionFactory.createConnection();</span><br><span class="line">        <span class="comment">//启动连接</span></span><br><span class="line">        connection.start();</span><br><span class="line">        <span class="comment">//创建会话，并且设置会话的模式</span></span><br><span class="line">        Session  session=connection.createSession(<span class="keyword">false</span>, Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">        <span class="comment">//创建一个目标</span></span><br><span class="line">        Destination destination=session.createQueue(queneName);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建一个消费者</span></span><br><span class="line">        MessageConsumer consumer=session.createConsumer(destination);</span><br><span class="line">        <span class="comment">//创建一个监听</span></span><br><span class="line">        consumer.setMessageListener(<span class="keyword">new</span> MessageListener() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onMessage</span><span class="params">(Message message)</span> </span>&#123;</span><br><span class="line">                TextMessage textMessage= (TextMessage) message;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.printf(<span class="string">"接收消息："</span>+textMessage.getText());</span><br><span class="line">                &#125; <span class="keyword">catch</span> (JMSException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">//连接不能在这里关闭，可以让监听一直启动，因为lisener是异步的，当线程还没执行完任务时，连接就已经关闭了。</span></span><br><span class="line">        <span class="comment">//connection.close();</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>然后我们运行QueueConsumer，那么十条信息会被消费者消费。然后我们再启动一个消费者，即有两个消费者时，在运行QueueProducer，两个消费者会依次消费信息</strong></p>
+<p><img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active2.png" alt="你想输入的替代文字"> <img src="/guojian731.github.io/2017/12/11/ActiveMQ的简单实现/active3.png" alt="你想输入的替代文字"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://guojian731.github.io/guojian731.github.io/guojian731.github.io/2017/12/11/ActiveMQ概述/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1130,7 +1275,7 @@
               
                 <a href="/guojian731.github.io/archives/">
               
-                  <span class="site-state-item-count">46</span>
+                  <span class="site-state-item-count">47</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1143,7 +1288,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/guojian731.github.io/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
