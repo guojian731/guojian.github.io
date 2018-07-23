@@ -50,19 +50,19 @@
 
 <link href="/guojian731.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/guojian731.github.io/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/guojian731.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon.png?v=5.1.3">
+  <link rel="apple-touch-icon" sizes="180x180" href="/guojian731.github.io/images/apple-touch-icon-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="32x32" href="/guojian731.github.io/images/favicon-32x32-next.png?v=5.1.4">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16.png?v=5.1.3">
+  <link rel="icon" type="image/png" sizes="16x16" href="/guojian731.github.io/images/favicon-16x16-next.png?v=5.1.4">
 
 
-  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.3" color="#222">
+  <link rel="mask-icon" href="/guojian731.github.io/images/logo.svg?v=5.1.4" color="#222">
 
 
 
@@ -84,7 +84,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="java多线程-并发包">
 <meta property="og:url" content="https://guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/index.html">
-<meta property="og:site_name" content="Notes">
+<meta property="og:site_name" content="Grow up">
 <meta property="og:description" content="因为本人的知识有限，并发包里我指挥记录一些我个人理解相对比较深的，之后会在慢慢的学习和实践中继续更近我的博客。 重入锁重入锁完全可以代替synchronized关键字。在jdk1.5以前，重入锁的性能远大于synchronized，但是在jdk1.6之后，两者的性能差别不大。 核心方法lock.lock():进行上锁操作;lock.unclock():解锁操作;lock.lockInterrupt">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/bf1.png">
@@ -92,7 +92,7 @@
 <meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/bf3.png">
 <meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/bf4.png">
 <meta property="og:image" content="https://guojian731.github.io/guojian731.github.io/2017/12/26/java多线程-并发包/bf5.png">
-<meta property="og:updated_time" content="2018-04-16T15:06:09.430Z">
+<meta property="og:updated_time" content="2018-07-23T15:09:34.311Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java多线程-并发包">
 <meta name="twitter:description" content="因为本人的知识有限，并发包里我指挥记录一些我个人理解相对比较深的，之后会在慢慢的学习和实践中继续更近我的博客。 重入锁重入锁完全可以代替synchronized关键字。在jdk1.5以前，重入锁的性能远大于synchronized，但是在jdk1.6之后，两者的性能差别不大。 核心方法lock.lock():进行上锁操作;lock.unclock():解锁操作;lock.lockInterrupt">
@@ -105,7 +105,7 @@
   var CONFIG = {
     root: '/guojian731.github.io/',
     scheme: 'Gemini',
-    version: '5.1.3',
+    version: '5.1.4',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -132,7 +132,7 @@
 
 
 
-  <title>java多线程-并发包 | Notes</title>
+  <title>java多线程-并发包 | Grow up</title>
   
 
 
@@ -162,12 +162,12 @@
     <div class="custom-logo-site-title">
       <a href="/guojian731.github.io/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Notes</span>
+        <span class="site-title">Grow up</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">change is right</p>
       
   </div>
 
@@ -207,16 +207,6 @@
         </li>
       
         
-        <li class="menu-item menu-item-categories">
-          <a href="/guojian731.github.io/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
         <li class="menu-item menu-item-archives">
           <a href="/guojian731.github.io/archives/" rel="section">
             
@@ -228,9 +218,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -264,11 +288,11 @@
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guo Jian">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/guojian731.github.io/images/avatar.gif">
+      <meta itemprop="image" content="/guojian731.github.io/images/guojian.png">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Notes">
+      <meta itemprop="name" content="Grow up">
     </span>
 
     
@@ -351,9 +375,32 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FairReenTrantLock</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> ReentrantLock lock=<span class="keyword">new</span> ReentrantLock(<span class="keyword">true</span>);</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">            lock.lock();</span><br><span class="line">            System.out.print(Thread.currentThread().getName()+<span class="string">" "</span>);</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        FairReenTrantLock lock=<span class="keyword">new</span> FairReenTrantLock();</span><br><span class="line">        Thread t1=<span class="keyword">new</span> Thread(lock,<span class="string">"t1"</span>);</span><br><span class="line">        Thread t2=<span class="keyword">new</span> Thread(lock,<span class="string">"t2"</span>);</span><br><span class="line">        Thread t3=<span class="keyword">new</span> Thread(lock,<span class="string">"t3"</span>);</span><br><span class="line">        Thread t4=<span class="keyword">new</span> Thread(lock,<span class="string">"t4"</span>);</span><br><span class="line">        t1.start();</span><br><span class="line">        t2.start();</span><br><span class="line">        t3.start();</span><br><span class="line">        t4.start();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/guojian731.github.io/2017/12/26/java多线程-并发包/bf5.png" alt="jvm装载步骤"></p>
 <p>我们看一下结果，因为最开始的时候，有线程还处于未启动状态，当线程全部启动后，他们获取锁是有顺序的，最先得到锁的线程释放锁之后，就或在申请锁，所以轮一圈后，它依旧先获得锁。</p>
-<h1 id="Condition条件"><a href="#Condition条件" class="headerlink" title="Condition条件"></a>Condition条件</h1><p>它的作用与Object.wait()和Object.notify()，Object.wait()和Object.notify()必须在synchronized修饰的方法块里才能使用，同样的Condition需要与重入锁相关联，在lock.newCondition()来为重入锁绑定一个Condition实例。</p>
+<h1 id="Condition条件"><a href="#Condition条件" class="headerlink" title="Condition条件"></a>Condition条件</h1><p>它的作用是在可重入锁下ReentrantLock实现wait(),notify()以及notifyAll()的功能，Object.wait()和Object.notify()必须在synchronized修饰的方法块里才能使用，同样的Condition需要与重入锁相关联，在lock.newCondition()来为重入锁绑定一个Condition实例。下面是一个Condition接口方法以及使用Condition的简单实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Condition</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">await</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">awaitUninterruptibly</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="title">awaitNanos</span><span class="params">(<span class="keyword">long</span> var1)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">await</span><span class="params">(<span class="keyword">long</span> var1, TimeUnit var3)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">awaitUntil</span><span class="params">(Date var1)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">signal</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">signalAll</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.Condition;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.ReentrantLock;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ReentranctLockConditine</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> ReentrantLock lock =<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Condition condition=lock.newCondition();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            condition.await();</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+<span class="string">"线程继续运行"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            ReentranctLockConditine reentranctLockConditine=<span class="keyword">new</span> ReentranctLockConditine();</span><br><span class="line">            Thread t=<span class="keyword">new</span> Thread(reentranctLockConditine,<span class="string">"t1"</span>);</span><br><span class="line">            t.start();</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">            lock.lock();</span><br><span class="line">            condition.signalAll();</span><br><span class="line">            lock.unlock();</span><br><span class="line">            System.out.println(<span class="string">"主线程结束了"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>首先我们在main()方法中建立一个线程并启动，线程获得锁后，执行 condition.await();，要求condition在这个对象上进行等待，这时候线程会释放锁和资源，当condition.signalAll();会唤醒所有的资源，之前的锁又会尝试绑定之前的锁，这期间，需要获得锁的线程(也就是现在的主线程main方法)释放锁，要不然线程t1就会只与锁进行绑定，而不会获得锁。如果你讲33行的代码注掉的话，你会发现t1是无法执行到输入的语句的。</p>
+<h2 id="Condition优点"><a href="#Condition优点" class="headerlink" title="Condition优点"></a>Condition优点</h2><p>其实Condition对比wait()有自己的优势，</p>
+<ul>
+<li>首先是它的await(long var1, TimeUnit var3)，返回true的时候，说明是其他线程唤醒它的，返回false是因为达到了超时时间自己唤醒的。还有awaitUntil(Date var1)可以设置时间点，在现实场景中应用也是比较广泛的。</li>
+<li>一个ReentrantLock下可以有多个Condition对象，我们在做业务处理时，可以根据共享变量场景不同，使用不同的Condition，然后避免过早唤醒问题(即一些线程不满足条件依然被唤醒之后，发现条件不符合之后，再次将状态变成等待)。下面我们开始举个例子</li>
+</ul>
+<p><strong>Q：现在有一个房地产开发商发放礼物，总共有十个柜台，如果柜台有空余的话，买房的人(vip)和没买房的人(normal)都可以领取礼物，当时一旦发放礼物的柜台都满的情况下，当空出柜台的时候，优先给vip办理，normal只能在没有vip等待的时候才能过去领取奖励。</strong></p>
+<p><strong><em>A：</em></strong></p>
+<p>柜台代表类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Counter</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Lock lock=<span class="keyword">new</span> ReentrantLock();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Condition vipCondition=lock.newCondition();<span class="comment">//vip的Condition</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Condition normalCondition=lock.newCondition();<span class="comment">//普通用户的Condition</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> ConcurrentHashMap vipWaitMap=<span class="keyword">new</span> ConcurrentHashMap();<span class="comment">//记录等待的vip用户</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> AtomicInteger amout=<span class="keyword">new</span> AtomicInteger(<span class="number">10</span>);<span class="comment">//柜台数</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">take</span><span class="params">(String type,<span class="keyword">int</span> i)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (amout.get()&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">                 <span class="keyword">if</span> (type.equals(<span class="string">"vip"</span>))&#123;</span><br><span class="line">                    vipWaitMap.put(i,i);<span class="comment">//记录等待的vip用户</span></span><br><span class="line">                    System.out.println(<span class="keyword">new</span> StringBuffer(<span class="string">"vip，号码为:"</span>).append(i).append(<span class="string">"进行等待"</span>));</span><br><span class="line">                    vipCondition.await();</span><br><span class="line">                &#125;</span><br><span class="line">                 <span class="keyword">if</span> (type.equals(<span class="string">"normal"</span>))&#123;</span><br><span class="line">                     System.out.println(<span class="keyword">new</span> StringBuffer(<span class="string">"normal，号码为:"</span>).append(i).append(<span class="string">"进行等待"</span>));</span><br><span class="line">                     normalCondition.await();</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="keyword">new</span> StringBuffer(<span class="string">"正在处理，客户类型为："</span>).append(type)</span><br><span class="line">                    .append(<span class="string">"，序号为："</span>).append(i).append(<span class="string">"的客户"</span>));</span><br><span class="line">            amout.decrementAndGet();<span class="comment">//处理业务，需要占用一个柜台</span></span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        Thread.sleep(<span class="number">2000</span>);<span class="comment">//模拟业务处理耗时</span></span><br><span class="line">        amout.incrementAndGet();<span class="comment">//业务处理完，柜台空余出来</span></span><br><span class="line">        vipWaitMap.remove(i);<span class="comment">//如果这个号码之前被记录过vip等待，移除。</span></span><br><span class="line">        lock.lock();</span><br><span class="line">        vipCondition.signalAll();<span class="comment">//为了更好展现，释放所有vip等待线程</span></span><br><span class="line">        <span class="keyword">if</span> (vipWaitMap.size()==<span class="number">0</span>)&#123;</span><br><span class="line">            normalCondition.signalAll();<span class="comment">//如果vipWaitMap为0，说明没有vip进行等待，唤醒所有普通用户。</span></span><br><span class="line">        &#125;</span><br><span class="line">        lock.unlock();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>封装线程：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CounterThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Counter counter;</span><br><span class="line">    <span class="keyword">private</span> String type;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CounterThread</span><span class="params">(Counter counter,String type,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.counter=counter;</span><br><span class="line">        <span class="keyword">this</span>.type=type;</span><br><span class="line">        <span class="keyword">this</span>.i=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            counter.take(type,i);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>客户端：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String [] table=&#123;<span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>,</span><br><span class="line">                <span class="string">"normal"</span>,<span class="string">"vip"</span>,<span class="string">"normal"</span>,<span class="string">"vip"</span>&#125;;</span><br><span class="line">        Counter counter=<span class="keyword">new</span> Counter();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;table.length;i++)&#123;</span><br><span class="line">            Thread thread=<span class="keyword">new</span> Thread(<span class="keyword">new</span> CounterThread(counter,table[i],i));</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">0</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">1</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">2</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">3</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">4</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">5</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">6</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">7</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">8</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">9</span>的客户</span><br><span class="line">normal，号码为:<span class="number">10</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">11</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">12</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">14</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">15</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">16</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">17</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">18</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">19</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">20</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">21</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">22</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">23</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">24</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">25</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">26</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">27</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">28</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">13</span>进行等待</span><br><span class="line">normal，号码为:<span class="number">30</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">29</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">31</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">11</span>的客户</span><br><span class="line">vip，号码为:<span class="number">15</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">17</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">19</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">21</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">23</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">25</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">27</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">13</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">29</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">31</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">15</span>的客户</span><br><span class="line">vip，号码为:<span class="number">17</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">19</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">21</span>的客户</span><br><span class="line">vip，号码为:<span class="number">23</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">25</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">27</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">13</span>的客户</span><br><span class="line">vip，号码为:<span class="number">29</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">31</span>进行等待</span><br><span class="line">vip，号码为:<span class="number">17</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">19</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">23</span>的客户</span><br><span class="line">vip，号码为:<span class="number">29</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">31</span>的客户</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">17</span>的客户</span><br><span class="line">vip，号码为:<span class="number">29</span>进行等待</span><br><span class="line">正在处理，客户类型为：vip，序号为：<span class="number">29</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">10</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">12</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">14</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">16</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">18</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">20</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">22</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">24</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">26</span>的客户</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">28</span>的客户</span><br><span class="line">normal，号码为:<span class="number">30</span>进行等待</span><br><span class="line">正在处理，客户类型为：normal，序号为：<span class="number">30</span>的客户</span><br></pre></td></tr></table></figure>
+<h1 id="CountDownLatch-倒计时协调器"><a href="#CountDownLatch-倒计时协调器" class="headerlink" title="CountDownLatch:倒计时协调器"></a>CountDownLatch:倒计时协调器</h1><p>Thread.join()的实现是一个线程等待另一个线程结束，但是有时候一个线程做到中间的一个关键步骤，就可以使其他线程线程继续运行，而不必等在这个线程终止。我们可以使用代码来执行，但是我们可以使用java.util.concurrent.CountDownLatch来解决。</p>
+<p>public CountDownLatch(int i)在创建一个CountDownLatch对象时要传入一个数字作为计数器，CountDownLatch.countDown()每次执行一次就会使计数器-1。CountDownLatch.wait()的方法保护条件，执行的时候判断一下计数器的值是否为0，当不为0的时候，线程将变成等待状态，等到计数器为0的时候，线程被唤醒。CountDownLatch的使用是一次性的，一个CountDownLatch实例只能够实现一次等待和唤醒。</p>
+<p>CountDownLatch内部实现了对”全部先决操作已执行完毕”(计数器值为0)这个保护条件的等待和通知的逻辑，所以它在使用await、coutDown的时候都无须加锁，不需要加锁，不需要加锁，不需要加锁！！！</p>
+<p><strong>Q:一个项目有n个服务器，启动命令后，服务开始启动，当每个服务器均启动成功了，才算真正的启动成功，如果有任何一个服务器没有成功，将作为失败，如何实现？</strong></p>
+<p><strong><em>A：</em></strong></p>
+<p>不管我们启动服务成功或者失败，我们都必须调用countDownLatch.countDown()，否则CountDownLatch的计数器会一直无法达到0，就会一直处于等待状态。</p>
+<p>服务器类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ComputerServer</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">private</span> CountDownLatch countDownLatch;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Boolean isStarted =<span class="keyword">false</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ComputerServer</span><span class="params">(CountDownLatch countDownLatch)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.countDownLatch = countDownLatch;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            doStart();</span><br><span class="line">            isStarted=<span class="keyword">true</span>;</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            <span class="comment">//异常的时候进行处理</span></span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            countDownLatch.countDown();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">doStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="comment">//服务启动方法</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Boolean <span class="title">isStarted</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> isStarted;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span> CountDownLatch countDownLatch;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       Boolean isAllOk=<span class="keyword">true</span>;</span><br><span class="line">       List&lt;ComputerServer&gt;list= servicesStart();</span><br><span class="line">       <span class="keyword">try</span> &#123;</span><br><span class="line">            countDownLatch.await();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    </span><br><span class="line">        <span class="keyword">for</span> (ComputerServer computerServer:list)&#123;</span><br><span class="line">            <span class="keyword">if</span> (!computerServer.isStarted())&#123;</span><br><span class="line">                isAllOk=<span class="keyword">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"服务器启动成功"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List <span class="title">servicesStart</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        countDownLatch=<span class="keyword">new</span> CountDownLatch(<span class="number">3</span>);</span><br><span class="line">        List&lt;ComputerServer&gt; list =<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        list.add(<span class="keyword">new</span> ComputerServer(countDownLatch));</span><br><span class="line">        list.add(<span class="keyword">new</span> ComputerServer(countDownLatch));</span><br><span class="line">        list.add(<span class="keyword">new</span> ComputerServer(countDownLatch));</span><br><span class="line">        <span class="keyword">for</span> (ComputerServer computterServer:list)&#123;</span><br><span class="line">            Thread thread=<span class="keyword">new</span> Thread(computterServer);</span><br><span class="line">            thread.start();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> list;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -424,7 +471,9 @@
 
 
           
+
   
+
 
 
         </div>
@@ -460,6 +509,10 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
+              <img class="site-author-image" itemprop="image"
+                src="/guojian731.github.io/images/guojian.png"
+                alt="Guo Jian" />
+            
               <p class="site-author-name" itemprop="name">Guo Jian</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
@@ -494,9 +547,7 @@
 
           
 
-          <div class="links-of-author motion-element">
-            
-          </div>
+          
 
           
           
@@ -519,7 +570,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重入锁"><span class="nav-number">1.</span> <span class="nav-text">重入锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心方法"><span class="nav-number">1.1.</span> <span class="nav-text">核心方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的例子"><span class="nav-number">1.2.</span> <span class="nav-text">简单的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断响应"><span class="nav-number">1.3.</span> <span class="nav-text">中断响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给请求设置时间"><span class="nav-number">1.4.</span> <span class="nav-text">给请求设置时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lock设置公平锁"><span class="nav-number">1.5.</span> <span class="nav-text">lock设置公平锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Condition条件"><span class="nav-number">2.</span> <span class="nav-text">Condition条件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#重入锁"><span class="nav-number">1.</span> <span class="nav-text">重入锁</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#核心方法"><span class="nav-number">1.1.</span> <span class="nav-text">核心方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单的例子"><span class="nav-number">1.2.</span> <span class="nav-text">简单的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断响应"><span class="nav-number">1.3.</span> <span class="nav-text">中断响应</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给请求设置时间"><span class="nav-number">1.4.</span> <span class="nav-text">给请求设置时间</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lock设置公平锁"><span class="nav-number">1.5.</span> <span class="nav-text">lock设置公平锁</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Condition条件"><span class="nav-number">2.</span> <span class="nav-text">Condition条件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition优点"><span class="nav-number">2.1.</span> <span class="nav-text">Condition优点</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CountDownLatch-倒计时协调器"><span class="nav-number">3.</span> <span class="nav-text">CountDownLatch:倒计时协调器</span></a></li></ol></div>
             
 
           </div>
@@ -557,7 +608,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
 
 
 
@@ -579,6 +630,8 @@
         <i class="fa fa-arrow-up"></i>
         
       </div>
+    
+
     
 
   </div>
@@ -613,53 +666,65 @@
 
 
   
-  <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
-
   
-  <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-
+    <script type="text/javascript" src="/guojian731.github.io/lib/jquery/index.js?v=2.1.3"></script>
   
-  <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-
-  
-  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.3"></script>
-
-
 
   
   
-
-
-  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.3"></script>
-
-  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.3"></script>
-
-
+    <script type="text/javascript" src="/guojian731.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
 
   
-  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.3"></script>
+  
+    <script type="text/javascript" src="/guojian731.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
 
+  
+  
+    <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/guojian731.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/guojian731.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
 
 
   
 
 
-  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.3"></script>
+  <script type="text/javascript" src="/guojian731.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/guojian731.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/guojian731.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/guojian731.github.io/js/src/bootstrap.js?v=5.1.4"></script>
 
 
 
@@ -692,16 +757,340 @@
 
 
 
-  
 
 
 
-
-
-  
 
   
 
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/guojian731.github.io/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
   
 
   
